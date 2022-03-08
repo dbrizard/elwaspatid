@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: wave-space-time-diagrams
+Version: 0.0.3
+Summary: Space-time diagrams for 1D longitudinal elastic wave propagation in rod
+Home-page: https://github.com/dbrizard/space_time_diagrams
+Author: Denis Brizard
+Author-email: denis.brizard@univ-eiffel.fr
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/pypa/sampleproject/issues
+Keywords: wave propagation,SHPB,1D,traction,compression
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Physics
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Wave space-time diagrams
+
+This is a simple example package. You can use
+[Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
+to write your content.
+
+## Installation
+
+`pip install wave-space-time-diagrams`
+
+## Usage
+
+`add_ones(5)`
+
+## Credit
+
+LBMC
+
+

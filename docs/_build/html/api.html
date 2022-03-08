@@ -1,0 +1,911 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API reference &#8212; ELWA-SPATID 0.0.2 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Under the hood" href="auto_examples/plot_5_underHood.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-prop1D">
+<span id="api-reference"></span><h1>API reference<a class="headerlink" href="#module-prop1D" title="Permalink to this headline">¶</a></h1>
+<p>This module is based on the following paper:</p>
+<p>Bacon, C. (1993). Numerical prediction of the propagation of elastic waves in 
+longitudinally impacted rods : Applications to Hopkinson testing. 
+<em>International Journal of Impact Engineering</em>, 13(4), 527‑539. 
+<a class="reference external" href="https://doi.org/10.1016/0734-743X(93)90084-K">https://doi.org/10.1016/0734-743X(93)90084-K</a></p>
+<blockquote>
+<div><p>Summary– Simple expressions, based on one-dimensional elastic wave theory, are
+established which permit prediction of normal force and particle velocity at 
+cross-sections of a non-uniform linearly-elastic rod. The initial normal force
+and particle velocity at each cross-section of that rod must be known.</p>
+</div></blockquote>
+<p>First define a bar, then give it to <a class="reference internal" href="#prop1D.WP2" title="prop1D.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a> or <a class="reference internal" href="#prop1D.Waveprop" title="prop1D.Waveprop"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code></a> along 
+with an incident wave for propagation computation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bar</span> <span class="o">=</span> <span class="n">Barhete</span><span class="p">(</span><span class="n">E</span><span class="o">=</span><span class="p">[</span><span class="mi">210</span><span class="p">,</span> <span class="mi">78</span><span class="p">],</span> <span class="n">rho</span><span class="o">=</span><span class="p">[</span><span class="mi">7800</span><span class="p">,</span> <span class="mi">2800</span><span class="p">],</span> <span class="n">L</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">],</span> <span class="n">d</span><span class="o">=</span><span class="p">[</span><span class="mf">0.030</span><span class="p">,</span> <span class="mf">0.028</span><span class="p">])</span>
+<span class="n">incw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">prop</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="n">incw</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Be careful:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#prop1D.WP2" title="prop1D.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a> works only with <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a> bars; traction is not transmitted throught interfaces</p></li>
+<li><p><a class="reference internal" href="#prop1D.Waveprop" title="prop1D.Waveprop"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code></a> works with <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a> and <a class="reference internal" href="#prop1D.Barhomo" title="prop1D.Barhomo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code></a> bars, but does not take interfaces between bars/segments into account (the bars are stuck, traction can cross interfaces)</p></li>
+</ul>
+<p>Created on Fri Aug 22 11:13:37 2014</p>
+<p>&#64;author: dbrizard</p>
+<dl class="py class">
+<dt id="prop1D.Bar">
+<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">Bar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description d’une barre continue par morceaux, avant discrétisation.</p>
+<p>Internally used in <a class="reference internal" href="#prop1D.Barhomo" title="prop1D.Barhomo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code></a> and <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a></p>
+<dl class="py method">
+<dt id="prop1D.Bar.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Bar.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute area <strong>A</strong>, celerity <strong>c_o</strong> and impedance <strong>Z</strong> of bar segments.</p>
+<p>All imput variables should have the same length and should be lists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>E</strong> (<em>list</em>) – Young’s moduli</p></li>
+<li><p><strong>rho</strong> (<em>list</em>) – densities</p></li>
+<li><p><strong>L</strong> (<em>list</em>) – lengthes of the corresponding segments/bars</p></li>
+<li><p><strong>d</strong> (<em>list</em>) – diameters</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="prop1D.Bar.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#prop1D.Bar.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Bar.plot">
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Bar.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subplot of continuous variables across the bar length:</p>
+<ul class="simple">
+<li><p>diameter d;</p></li>
+<li><p>area A;</p></li>
+<li><p>density rho;</p></li>
+<li><p>modulus E;</p></li>
+<li><p>celerity c_o;</p></li>
+<li><p>impedance Z.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Bar.printtable">
+<code class="sig-name descname">printtable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Bar.printtable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Text representation of the bar through a table</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="prop1D.Barhete">
+<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">Barhete</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">dt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">nmin</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Heterogeneous bar with cross-section/modulus/density changes along the
+bar length.</p>
+<p>Sister class of <a class="reference internal" href="#prop1D.Barhomo" title="prop1D.Barhomo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code></a></p>
+<p><code class="xref py py-attr docutils literal notranslate"><span class="pre">seg</span></code> is a list of <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> objects, this is then used in <a class="reference internal" href="#prop1D.WP2" title="prop1D.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a>.</p>
+<p><a class="reference internal" href="#prop1D.Waveprop" title="prop1D.Waveprop"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code></a> uses the other attributes.</p>
+<dl class="py method">
+<dt id="prop1D.Barhete.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">dt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">nmin</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhete.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define and spatially discretize bar into <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> s of constant properties</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>E</strong> (<em>list</em>) – Young’s moduli</p></li>
+<li><p><strong>rho</strong> (<em>list</em>) – densities</p></li>
+<li><p><strong>L</strong> (<em>list</em>) – bar segment lengthes</p></li>
+<li><p><strong>d</strong> (<em>list</em>) – bar segment diameters</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – time step (automatically determined if 0)</p></li>
+<li><p><strong>nmin</strong> (<em>int</em>) – minimum number of ‘elements’ in a bar segment of constant properties</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Barhete.__repr__">
+<code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhete.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instance representation method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Barhete.changeSection">
+<code class="sig-name descname">changeSection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">iseg</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">l</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">d</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhete.changeSection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the section of part of a Segment to model a bar with section 
+change.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iseg</strong> (<em>int</em>) – index of segment</p></li>
+<li><p><strong>l</strong> (<em>float</em>) – position of the section change</p></li>
+<li><p><strong>d</strong> (<em>float</em>) – new section for the right portion</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Barhete.plotProperties">
+<code class="sig-name descname">plotProperties</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhete.plotProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot evolution of properties of the bar along the length</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>figname</strong> (<em>str</em>) – name for the figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="prop1D.Barhomo">
+<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">Barhomo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhomo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Homogeneous bar (ie continuous rod) with section changes.</p>
+<p>Mother class of <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a></p>
+<dl class="py method">
+<dt id="prop1D.Barhomo.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhomo.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Barre homogème, avec uniquement des variations se section (d)</p>
+<p>Zero impedance should be avoided for calculation step coming next within
+<a class="reference internal" href="#prop1D.Waveprop" title="prop1D.Waveprop"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dx</strong> (<em>flaot</em>) – spatial discretization</p></li>
+<li><p><strong>d</strong> (<em>list</em>) – diameters</p></li>
+<li><p><strong>E</strong> (<em>float</em>) – Young’s modulus</p></li>
+<li><p><strong>rho</strong> (<em>float</em>) – density</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="prop1D.Barhomo.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#prop1D.Barhomo.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Barhomo.plot">
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'DZ'</span></em>, <em class="sig-param"><span class="n">ls</span><span class="o">=</span><span class="default_value">'.-'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhomo.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Graphical representation of discretized bar: geometry and impedance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>typ</strong> (<em>str</em>) – choose graphical output (‘D’:diameter, ‘Z’:impedance)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="prop1D.ElasticImpact">
+<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">ElasticImpact</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span><span class="o">=</span><span class="default_value">210000000000.0</span></em>, <em class="sig-param"><span class="n">rho</span><span class="o">=</span><span class="default_value">7800</span></em>, <em class="sig-param"><span class="n">d</span><span class="o">=</span><span class="default_value">0.03</span></em>, <em class="sig-param"><span class="n">L</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">V</span><span class="o">=</span><span class="default_value">5.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.ElasticImpact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bussac, M.-N., P. Collet, G. Gary, B. Lundberg, and S. Mousavi. 2008. 
+‘Viscoelastic Impact between a Cylindrical Striker and a Long Cylindrical Bar’.
+International Journal of Impact Engineering 35 (4): 226–39.
+<a class="reference external" href="https://doi.org/10.1016/j.ijimpeng.2007.02.003">https://doi.org/10.1016/j.ijimpeng.2007.02.003</a>.</p>
+<dl class="py method">
+<dt id="prop1D.ElasticImpact.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span><span class="o">=</span><span class="default_value">210000000000.0</span></em>, <em class="sig-param"><span class="n">rho</span><span class="o">=</span><span class="default_value">7800</span></em>, <em class="sig-param"><span class="n">d</span><span class="o">=</span><span class="default_value">0.03</span></em>, <em class="sig-param"><span class="n">L</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">V</span><span class="o">=</span><span class="default_value">5.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.ElasticImpact.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Striker and bar of the same material. Only cross-section can change</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>E</strong> (<em>float</em>) – Young’s modulus [Pa]</p></li>
+<li><p><strong>rho</strong> (<em>float</em>) – density [kg/m3]</p></li>
+<li><p><strong>d</strong> (<em>list</em>) – striker and bar diamter (can be a single float) [m]</p></li>
+<li><p><strong>L</strong> (<em>float</em>) – length of the striker [m]</p></li>
+<li><p><strong>V</strong> (<em>flat</em>) – impact velocity  [m/s]</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="prop1D.ElasticImpact.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#prop1D.ElasticImpact.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.ElasticImpact.computeImpact">
+<code class="sig-name descname">computeImpact</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">16</span></em>, <em class="sig-param"><span class="n">y0</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">plot</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.ElasticImpact.computeImpact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute impact of stricker on bar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>array</em>) – time array</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – number of terms in the summation</p></li>
+<li><p><strong>y0</strong> (<em>float</em>) – value of Heaviside function when t=0</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.ElasticImpact.plotForce">
+<code class="sig-name descname">plotForce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.ElasticImpact.plotForce" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>figname</strong> (<em>str</em>) – name for the figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.ElasticImpact.plotRn">
+<code class="sig-name descname">plotRn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.ElasticImpact.plotRn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot amplitude of successive steps in case striker impendace is greater
+than bar impedance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>figname</strong> (<em>str</em>) – name for the figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="prop1D.Segment">
+<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">Segment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bar segment with constant properties</p>
+<p>For later use in <a class="reference internal" href="#prop1D.WP2" title="prop1D.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a> through <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a></p>
+<dl class="py method">
+<dt id="prop1D.Segment.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nel</strong> (<em>int</em>) – number of elements in segment</p></li>
+<li><p><strong>z</strong> (<em>float</em>) – segment impedance</p></li>
+<li><p><strong>l</strong> (<em>float</em>) – segment length</p></li>
+<li><p><strong>dx</strong> (<em>float</em>) – length of elements in segment</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – time step</p></li>
+<li><p><strong>xo</strong> (<em>float</em>) – abscissa of left end of segment</p></li>
+<li><p><strong>left</strong> (<em>str</em>) – ‘infinite’, ‘free’, ‘impact’ or ‘interf’</p></li>
+<li><p><strong>right</strong> (<em>str</em>) – idem</p></li>
+</ul>
+</dd>
+</dl>
+<p>The following attributes are added:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nX</strong> (<em>int</em>) – number of points along x direction</p></li>
+<li><p><strong>xplot</strong> (<em>array</em>) – x position of points in global coordinate system</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Segment.__repr__">
+<code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instance representation method</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="prop1D.Segment.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#prop1D.Segment.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Segment.compDispl">
+<code class="sig-name descname">compDispl</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">it</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.compDispl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute displacement of the bar nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>it</strong> (<em>int</em>) – time index</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Segment.compLeft">
+<code class="sig-name descname">compLeft</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">it</span></em>, <em class="sig-param"><span class="n">lseg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">incw</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.compLeft" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute state of left bar end.</p>
+<p>Bar end can be: free, infinite, interf (interface with another <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a>),
+impact (impacted end, in which case <strong>incw</strong> must be given).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>it</strong> (<em>int</em>) – time index</p></li>
+<li><p><strong>lseg</strong> (<em>obj</em>) – left <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a></p></li>
+<li><p><strong>incw</strong> (<em>float</em>) – input force (incident wave)</p></li>
+<li><p><strong>left</strong> (<em>str</em>) – left boundary condition (supersedes <code class="xref py py-attr docutils literal notranslate"><span class="pre">Segment.left</span></code>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Segment.compMiddle">
+<code class="sig-name descname">compMiddle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">it</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.compMiddle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute state in the middle of the segment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>it</strong> (<em>int</em>) – time index</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Segment.compRight">
+<code class="sig-name descname">compRight</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">it</span></em>, <em class="sig-param"><span class="n">rseg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.compRight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute state of right bar end.</p>
+<p>Bar end can be: free, infinite, interf (interface with another <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>it</strong> (<em>int</em>) – time index</p></li>
+<li><p><strong>rseg</strong> (<em>obj</em>) – right <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a></p></li>
+<li><p><strong>right</strong> (<em>str</em>) – right boundary condition (supersedes <code class="xref py py-attr docutils literal notranslate"><span class="pre">Segment.right</span></code>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Segment.initCalc">
+<code class="sig-name descname">initCalc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nT</span></em>, <em class="sig-param"><span class="n">Vo</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.initCalc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize before wave propagation computation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nT</strong> (<em>int</em>) – number of computation/time steps</p></li>
+<li><p><strong>Vo</strong> (<em>float</em>) – initial velocity</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Segment.plot">
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'VF'</span></em>, <em class="sig-param"><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">autovert</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot lagrange diagram.</p>
+<p>Wrapper for <a class="reference internal" href="#prop1D.Segment.plotmatrix" title="prop1D.Segment.plotmatrix"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Segment.plotmatrix()</span></code></a> allowing to choose the plotted data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>typ</strong> (<em>str</em>) – choose the diagram to plot (‘V’: Velocity, ‘F’:Force)</p></li>
+<li><p><strong>vert</strong> (<em>list</em>) – vertical lines to add</p></li>
+<li><p><strong>autovert</strong> (<em>bool</em>) – automatically plot vertical lines at bar ends</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Segment.plotProperties">
+<code class="sig-name descname">plotProperties</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.plotProperties" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>figname</strong> (<em>str</em>) – name for the figure</p></li>
+<li><p><strong>color</strong> (<em>str</em>) – filling color of elements</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Segment.plotmatrix">
+<code class="sig-name descname">plotmatrix</code><span class="sig-paren">(</span><em class="sig-param">Zvalues</em>, <em class="sig-param">title=None</em>, <em class="sig-param">cmap=&lt;matplotlib.colors.LinearSegmentedColormap object&gt;</em>, <em class="sig-param">vert=None</em>, <em class="sig-param">autovert=True</em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.plotmatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot lagrange diagram of matrix <em>Zvalues</em>.</p>
+<p>Mainly used in <a class="reference internal" href="#prop1D.Segment.plot" title="prop1D.Segment.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Segment.plot()</span></code></a> or directly for development.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Segment.resetImpedance">
+<code class="sig-name descname">resetImpedance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">z</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.resetImpedance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset impedance of elements after position l along the length</p>
+<p>Be careful, this new impedance MUST NOT change wave speed. Otherwise
+spatial discretization is obsolete. Only section change is permitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>l</strong> (<em>float</em>) – beginning position of new impedance</p></li>
+<li><p><strong>z</strong> (<em>float</em>) – new impedance</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Segment.setTime">
+<code class="sig-name descname">setTime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.setTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set <code class="xref py py-attr docutils literal notranslate"><span class="pre">time</span></code> attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>time</strong> (<em>array</em>) – time vector</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="prop1D.WP2">
+<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">WP2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span></em>, <em class="sig-param"><span class="n">incw</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">nstep</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">Vinit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">contactLoss</span><span class="o">=</span><span class="default_value">1e-09</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Second version of wave propagation, using <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> for each bar
+of constant section.</p>
+<p>No traction crossing interfaces (=section changes).</p>
+<dl class="py method">
+<dt id="prop1D.WP2.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span></em>, <em class="sig-param"><span class="n">incw</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">nstep</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">Vinit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">contactLoss</span><span class="o">=</span><span class="default_value">1e-09</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computte wave propagation</p>
+<p>/!Anechoic condition at impact end (left) until the end of the 
+prescribed incident wave <em>incw</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bar</strong> (<em>obj</em>) – bar setup (<a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a> object)</p></li>
+<li><p><strong>incw</strong> (<em>array</em>) – incident force wave (input left impact)</p></li>
+<li><p><strong>nstep</strong> (<em>int</em>) – optional number of time step</p></li>
+<li><p><strong>left</strong> (<em>str</em>) – left boundary condition, once incident wave is finished</p></li>
+<li><p><strong>right</strong> (<em>str</em>) – right boundary condition (‘free’ or ‘infinite’)</p></li>
+<li><p><strong>Vinit</strong> (<em>float</em>) – initial velocity of left bar</p></li>
+<li><p><strong>contactLoss</strong> (<em>float</em>) – threshold for contact loss between segments. No loss if None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="prop1D.WP2.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#prop1D.WP2.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.WP2.gatherForce">
+<code class="sig-name descname">gatherForce</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.gatherForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gather all the <code class="xref py py-attr docutils literal notranslate"><span class="pre">Force</span></code> of each <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> in <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a>
+in one array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.WP2.getSignal">
+<code class="sig-name descname">getSignal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">iseg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">plot</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">Displ</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">time</span><span class="o">=</span><span class="default_value">'ms'</span></em>, <em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">marker</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.getSignal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get temporal signal at given position on the bar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – x position of sensor (local coordinates if <strong>iseg</strong> is given, otherwise global)</p></li>
+<li><p><strong>iseg</strong> (<em>int</em>) – index of segment where the sensor is</p></li>
+<li><p><strong>plot</strong> (<em>bool</em>) – enable graphical output or not</p></li>
+<li><p><strong>Displ</strong> (<em>bool</em>) – also return (and plot) displacement</p></li>
+<li><p><strong>time</strong> (<em>str</em>) – time scale (‘s’, ‘ms’, ‘µs’)</p></li>
+<li><p><strong>figname</strong> (<em>str</em>) – name for the figure</p></li>
+<li><p><strong>marker</strong> (<em>str</em>) – marker</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>F</strong> (<em>array</em>) – Force</p></li>
+<li><p><strong>V</strong> (<em>array</em>) – Velocity</p></li>
+<li><p><strong>xx</strong> (<em>array</em>) – <p>??</p>
+</p></li>
+<li><p><strong>indx</strong> (<em>array</em>) – <p>??</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.WP2.getState">
+<code class="sig-name descname">getState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">plot</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.getState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get state of the bars at given time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>float</em>) – time at which state is desired</p></li>
+<li><p><strong>plot</strong> (<em>bool</em>) – enable graphical output or not</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.WP2.plot">
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">gatherForce</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot Force and Velocity lagrangian diagrams (time versus space)</p>
+<p>Wrapper of <a class="reference internal" href="#prop1D.WP2.subplot" title="prop1D.WP2.subplot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WP2.subplot()</span></code></a> method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>figname</strong> (<em>str</em>) – name for the figure</p></li>
+<li><p><strong>gatherForce</strong> (<em>bool</em>) – do not use subplot for Force diagram</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.WP2.plotForce">
+<code class="sig-name descname">plotForce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">autovert</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.plotForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot Force lagrangian diagram (time versus space)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>figname</strong> (<em>str</em>) – name for the figure</p></li>
+<li><p><strong>vert</strong> (<em>list</em>) – vertical lines to trace</p></li>
+<li><p><strong>autovert</strong> (<em>bool</em>) – automatically plot vertical lines at interfaces and bar ends</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.WP2.plotInterface">
+<code class="sig-name descname">plotInterface</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">interf</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">markers</span><span class="o">=</span><span class="default_value">'.+'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.plotInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot Force, Velocity and Displacement at interface between Segments</p>
+<p>Basically a wrapper of <a class="reference internal" href="#prop1D.WP2.getSignal" title="prop1D.WP2.getSignal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WP2.getSignal()</span></code></a> which takes care of selecting
+the right indices to get data at the given interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interf</strong> (<em>int</em>) – interface index</p></li>
+<li><p><strong>figname</strong> (<em>str</em>) – name for the figure</p></li>
+<li><p><strong>markers</strong> (<em>str</em>) – markers for left and right variables</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.WP2.subplot">
+<code class="sig-name descname">subplot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'Veloc'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.subplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot Force or Velocity lagrangian diagram (time versus space) on a
+subplot for each segment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ForV</strong> (<em>str</em>) – Force or Velocity (‘F’, ‘V’)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="prop1D.Waveprop">
+<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">Waveprop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span></em>, <em class="sig-param"><span class="n">incw</span></em>, <em class="sig-param"><span class="n">nstep</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">Vinit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">indV</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop" title="Permalink to this definition">¶</a></dt>
+<dd><p>One-dimensional wave propagation problem for a rod with a piecewise
+constant impedance.</p>
+<p>/!Impedance should not be null.</p>
+<p>Right side of the bar is a free end
+Left side of the bar is infinite bar (anechoic conditions)</p>
+<dl class="py method">
+<dt id="prop1D.Waveprop.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span></em>, <em class="sig-param"><span class="n">incw</span></em>, <em class="sig-param"><span class="n">nstep</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">Vinit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">indV</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute propagation of incident wave in the given bar.</p>
+<p>First version: traction can cross section changes (ie interfaces)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bar</strong> (<em>obj</em>) – instance of <a class="reference internal" href="#prop1D.Barhomo" title="prop1D.Barhomo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code></a> or <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a></p></li>
+<li><p><strong>incw</strong> (<em>array</em>) – incident wave</p></li>
+<li><p><strong>nstep</strong> (<em>int</em>) – number of calculation steps (if 0, length of <strong>incw</strong>)</p></li>
+<li><p><strong>left</strong> (<em>str</em>) – left boundary condition (‘free’ or ‘infinite’) after the end of <strong>incw</strong></p></li>
+<li><p><strong>right</strong> (<em>str</em>) – right boundary condition (‘free’ or ‘infinite’)</p></li>
+<li><p><strong>Vinit</strong> (<em>float</em>) – initial bar velocity</p></li>
+<li><p><strong>indV</strong> (<em>int</em>) – index of end of impact section! LEFT=impactor=speed, RIGHT=bars=static</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="prop1D.Waveprop.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#prop1D.Waveprop.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Waveprop.compState">
+<code class="sig-name descname">compState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seuil</span></em>, <em class="sig-param"><span class="n">plot</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.compState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute again state (left or right propagating waves) based on given <em>seuil</em></p>
+<p>The threshold above which the wave is taken into account is computed 
+as LR.ptp()*seuil</p>
+<p><code class="xref py py-attr docutils literal notranslate"><span class="pre">seuil</span></code> means that this method was used.</p>
+<p>Mainly for development purpose…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seuil</strong> (<em>float</em>) – threshold</p></li>
+<li><p><strong>plot</strong> (<em>bool</em>) – enable graphical output</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Waveprop.getcut">
+<code class="sig-name descname">getcut</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">t</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">isind</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.getcut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get temporal evolution at given abscissa x,
+or state of the bar at given time t.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – get temporal evolution at abscissa x.</p></li>
+<li><p><strong>t</strong> (<em>float</em>) – get bar state at given time t.</p></li>
+<li><p><strong>isind</strong> (<em>bool</em>) – boolean to specify index instead of abscissa/time value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>time (for given x) or abscissa (for given t)</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>force</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>particule velocity</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Waveprop.plot">
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'VF'</span></em>, <em class="sig-param"><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">autovert</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot lagrange diagram -time versus space- of wave propagation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>typ</strong> (<em>str</em>) – the diagram to plot (‘V’:Velocity, ‘F’:Force, ‘D’:Direction’, ‘S’:State)</p></li>
+<li><p><strong>vert</strong> (<em>list</em>) – list of vertical lines to plot on the diagram.</p></li>
+<li><p><strong>autovert</strong> (<em>bool</em>) – automatically plot vertical lines corresponding to bar lengthes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Waveprop.plotEvol">
+<code class="sig-name descname">plotEvol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indf</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.plotEvol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot evolution of state of the bar as time increases</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indf</strong> (<em>int</em>) – final index until which to plot data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Waveprop.plotFV">
+<code class="sig-name descname">plotFV</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.plotFV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot wave in Force-Velocity plane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>float</em>) – get temporal evolution at abscissa x.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Waveprop.plotcut">
+<code class="sig-name descname">plotcut</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">t</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">isind</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">tscale</span><span class="o">=</span><span class="default_value">'ms'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.plotcut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot temporal evolution at given abscissa x,
+or state of the bar at given time t.</p>
+<p>/!one of x or t arguments MUST be None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – get temporal evolution at abscissa x.</p></li>
+<li><p><strong>t</strong> (<em>float</em>) – get bar state at given time t.</p></li>
+<li><p><strong>isind</strong> (<em>bool</em>) – give time/abscissa index instead of time/abscissa value</p></li>
+</ul>
+</dd>
+</dl>
+<p>See also <a class="reference internal" href="#prop1D.Waveprop.getcut" title="prop1D.Waveprop.getcut"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Waveprop.getcut()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Waveprop.plotmatrix">
+<code class="sig-name descname">plotmatrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Zvalues</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cmap</span><span class="o">=</span><span class="default_value">'PRGn'</span></em>, <em class="sig-param"><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">autovert</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">time</span><span class="o">=</span><span class="default_value">'ms'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.plotmatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot lagrange diagram of matrix <em>Zvalues</em>.</p>
+<p>Mainly used in <a class="reference internal" href="#prop1D.Waveprop.plot" title="prop1D.Waveprop.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a> or directly for development.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Zvalues</strong> (<em>array</em>) – </p></li>
+<li><p><strong>title</strong> (<em>str</em>) – title for the figure</p></li>
+<li><p><strong>cmap</strong> (<em>cmap</em>) – colormap</p></li>
+<li><p><strong>vert</strong> (<em>list</em>) – list of position of vertical lines to plot (or None)</p></li>
+<li><p><strong>autovert</strong> (<em>bool</em>) – automatic vertical lines at segment changes</p></li>
+<li><p><strong>time</strong> (<em>str</em>) – time scale (‘ms’, ‘s’, ‘µs’)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="prop1D.getMax">
+<code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">getMax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.getMax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the maximum absolute extremum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mat</strong> (<em>array</em>) – 2D array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="prop1D.getMinMaxQMCoordinates">
+<code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">getMinMaxQMCoordinates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">QM</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.getMinMaxQMCoordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get min and max for x and y coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>QM</strong> (<em>QuadMesh</em>) – <code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.collections.QuadMesh</span></code> object from <code class="xref py py-func docutils literal notranslate"><span class="pre">plt.pcolormesh()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="prop1D.groovedBar">
+<code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">groovedBar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">interv</span></em>, <em class="sig-param"><span class="n">lg</span><span class="o">=</span><span class="default_value">0.003</span></em>, <em class="sig-param"><span class="n">LL</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">d0</span><span class="o">=</span><span class="default_value">0.03</span></em>, <em class="sig-param"><span class="n">d1</span><span class="o">=</span><span class="default_value">0.0278</span></em>, <em class="sig-param"><span class="n">E</span><span class="o">=</span><span class="default_value">78000000000.0</span></em>, <em class="sig-param"><span class="n">rho</span><span class="o">=</span><span class="default_value">2800</span></em>, <em class="sig-param"><span class="n">pin</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.groovedBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a> object with grooves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interv</strong> (<em>list</em>) – interval length seperating each groove</p></li>
+<li><p><strong>lg</strong> (<em>float</em>) – lenght of groove along bar axis</p></li>
+<li><p><strong>LL</strong> (<em>float</em>) – total length of grooved stricker + impacted bar</p></li>
+<li><p><strong>d0</strong> (<em>float</em>) – initial diameter of bar</p></li>
+<li><p><strong>d1</strong> (<em>float</em>) – groove diameter</p></li>
+<li><p><strong>E</strong> (<em>float</em>) – Young’s modulus</p></li>
+<li><p><strong>rho</strong> (<em>float</em>) – density</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="prop1D.scaleTime">
+<code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">scaleTime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">'s'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.scaleTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return scaled time or index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<em>array</em>) – input time array, unit supposed to be in [s]</p></li>
+<li><p><strong>scale</strong> (<em>str</em>) – desired output unit (‘s’, ‘ms’, ‘µs’). Can also be ‘ind’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="prop1D.trapezeWave">
+<code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">trapezeWave</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">plateau</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">rise</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">fall</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">A</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.trapezeWave" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define trapezoidal incident wave</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plateau</strong> (<em>int</em>) – number of points on the plateau</p></li>
+<li><p><strong>rise</strong> (<em>int</em>) – number of points for rising part</p></li>
+<li><p><strong>fall</strong> (<em>int</em>) – number of points for falling part</p></li>
+<li><p><strong>A</strong> (<em>float</em>) – amplitude of wave</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">ELWA-SPATID</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Examples of diagrams</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="auto_examples/plot_5_underHood.html" title="previous chapter">Under the hood</a></li>
+      <li>Next: <a href="changelog.html" title="next chapter">Changelog</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Denis Brizard.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/api.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Displacement and contact loss &#8212; ELWA-SPATID 0.0.2 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Under the hood" href="plot_5_underHood.html" />
+    <link rel="prev" title="Compare ElasticImpact and WP2" href="plot_3_ElasticImpact.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-plot-4-contactloss-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="displacement-and-contact-loss">
+<span id="sphx-glr-auto-examples-plot-4-contactloss-py"></span><h1>Displacement and contact loss<a class="headerlink" href="#displacement-and-contact-loss" title="Permalink to this headline">¶</a></h1>
+<p>This example illustrates the loss of contact when two bars in contact do not
+have the same impedance.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">prop1D</span> <span class="kn">import</span> <span class="n">Waveprop</span><span class="p">,</span> <span class="n">WP2</span><span class="p">,</span> <span class="n">Barhomo</span><span class="p">,</span> <span class="n">Barhete</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+
+<span class="n">E</span> <span class="o">=</span> <span class="mf">210e9</span>  <span class="c1"># [MPa]</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mi">7800</span>  <span class="c1"># [kg/m3]</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># [m]</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mf">0.02</span>  <span class="c1"># [m]</span>
+
+<span class="n">incw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>  <span class="c1"># incident wave</span>
+<span class="n">incw</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># /!\ traction pulse</span>
+</pre></div>
+</div>
+<div class="section" id="small-impedance-against-large-impedance">
+<h2>Small impedance against large impedance<a class="headerlink" href="#small-impedance-against-large-impedance" title="Permalink to this headline">¶</a></h2>
+<p>The impacting bar stays in contact with the right bar during one back-and-forth
+travel of the compression wave in it. Then contact ceases and the left bar
+strarts travelling to the left.
+A Heaviside compression pulse travels down the right bar.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># [m]</span>
+<span class="n">bar</span> <span class="o">=</span> <span class="n">Barhete</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">E</span><span class="p">],</span> <span class="p">[</span><span class="n">rho</span><span class="p">,</span> <span class="n">rho</span><span class="p">],</span> <span class="p">[</span><span class="n">L</span><span class="p">,</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">L</span><span class="p">],</span> <span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="p">],</span> <span class="n">nmin</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">testk</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;infinite&#39;</span><span class="p">,</span> <span class="n">Vinit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">testk</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">testk</span><span class="o">.</span><span class="n">plotInterface</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;interface&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_001.png" srcset="../_images/sphx_glr_plot_4_contactLoss_001.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_002.png" srcset="../_images/sphx_glr_plot_4_contactLoss_002.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_003.png" srcset="../_images/sphx_glr_plot_4_contactLoss_003.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_004.png" srcset="../_images/sphx_glr_plot_4_contactLoss_004.png" alt="x = 0 m" class = "sphx-glr-multi-img"/></li>
+</ul>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Simulation time set to 2 travels across all bars.
+Setting initial velocity of first segment (Vo=5)
+/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:375: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  ax1 = plt.subplot(nsbp, 1, 1)
+/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:382: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  plt.subplot(nsbp, 1, 2, sharex=ax1)
+/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:389: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  plt.subplot(nsbp, 1, 3, sharex=ax1)
+</pre></div>
+</div>
+</div>
+<div class="section" id="large-impedance-against-small-impedance">
+<h2>Large impedance against small impedance<a class="headerlink" href="#large-impedance-against-small-impedance" title="Permalink to this headline">¶</a></h2>
+<p>In that case, the impacting bar stays in contact indefinitly with the right
+bar and a “stair” compression pulse develops in the right bar, with steps of
+decreasing amplitude.
+See also <a class="reference internal" href="plot_3_ElasticImpact.html#sphx-glr-auto-examples-plot-3-elasticimpact-py"><span class="std std-ref">Compare ElasticImpact and WP2</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bar</span> <span class="o">=</span> <span class="n">Barhete</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">E</span><span class="p">],</span> <span class="p">[</span><span class="n">rho</span><span class="p">,</span> <span class="n">rho</span><span class="p">],</span> <span class="p">[</span><span class="n">L</span><span class="p">,</span> <span class="n">L</span><span class="p">],</span> <span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">d</span><span class="p">],</span> <span class="n">nmin</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">testl</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;infinite&#39;</span><span class="p">,</span> <span class="n">Vinit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">testl</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">testl</span><span class="o">.</span><span class="n">plotInterface</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;interface2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_005.png" srcset="../_images/sphx_glr_plot_4_contactLoss_005.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_006.png" srcset="../_images/sphx_glr_plot_4_contactLoss_006.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_007.png" srcset="../_images/sphx_glr_plot_4_contactLoss_007.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_008.png" srcset="../_images/sphx_glr_plot_4_contactLoss_008.png" alt="x = 0 m" class = "sphx-glr-multi-img"/></li>
+</ul>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Setting initial velocity of first segment (Vo=5)
+/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:375: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  ax1 = plt.subplot(nsbp, 1, 1)
+/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:382: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  plt.subplot(nsbp, 1, 2, sharex=ax1)
+/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:389: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  plt.subplot(nsbp, 1, 3, sharex=ax1)
+</pre></div>
+</div>
+</div>
+<div class="section" id="contact-loss-detection">
+<h2>Contact loss detection<a class="headerlink" href="#contact-loss-detection" title="Permalink to this headline">¶</a></h2>
+<p><strong>Why contact loss detection is useless??</strong></p>
+<div class="section" id="second-bar-with-section-increase">
+<h3>Second bar with section increase<a class="headerlink" href="#second-bar-with-section-increase" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bar</span> <span class="o">=</span> <span class="n">Barhete</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">E</span><span class="p">],</span> <span class="p">[</span><span class="n">rho</span><span class="p">,</span> <span class="n">rho</span><span class="p">],</span> <span class="p">[</span><span class="mf">.2</span><span class="o">*</span><span class="n">L</span><span class="p">,</span> <span class="n">L</span><span class="p">],</span> <span class="p">[</span><span class="mf">.8</span><span class="o">*</span><span class="n">d</span><span class="p">,</span> <span class="n">d</span><span class="p">],</span> <span class="n">nmin</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">bar</span><span class="o">.</span><span class="n">changeSection</span><span class="p">(</span><span class="n">iseg</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">L</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>
+<span class="n">bar</span><span class="o">.</span><span class="n">changeSection</span><span class="p">(</span><span class="n">iseg</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>
+<span class="n">bar</span><span class="o">.</span><span class="n">plotProperties</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_plot_4_contactLoss_009.png" srcset="../_images/sphx_glr_plot_4_contactLoss_009.png" alt="plot 4 contactLoss" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Markers and step positions are not precise yet...
+Markers and step positions are not precise yet...
+</pre></div>
+</div>
+</div>
+<div class="section" id="no-contact-loss">
+<h3>No contact loss<a class="headerlink" href="#no-contact-loss" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">testm</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;infinite&#39;</span><span class="p">,</span> <span class="n">Vinit</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">contactLoss</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">testm</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">testm</span><span class="o">.</span><span class="n">plotInterface</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;NoCL&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_010.png" srcset="../_images/sphx_glr_plot_4_contactLoss_010.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_011.png" srcset="../_images/sphx_glr_plot_4_contactLoss_011.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_012.png" srcset="../_images/sphx_glr_plot_4_contactLoss_012.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_013.png" srcset="../_images/sphx_glr_plot_4_contactLoss_013.png" alt="x = 0 m" class = "sphx-glr-multi-img"/></li>
+</ul>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Setting initial velocity of first segment (Vo=5)
+/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:375: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  ax1 = plt.subplot(nsbp, 1, 1)
+/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:382: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  plt.subplot(nsbp, 1, 2, sharex=ax1)
+/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:389: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  plt.subplot(nsbp, 1, 3, sharex=ax1)
+</pre></div>
+</div>
+</div>
+<div class="section" id="contact-loss">
+<h3>Contact loss<a class="headerlink" href="#contact-loss" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">testc</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="o">-</span><span class="n">incw</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;infinite&#39;</span><span class="p">,</span> <span class="n">Vinit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">contactLoss</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+<span class="n">testc</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">testc</span><span class="o">.</span><span class="n">plotInterface</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;CL&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_014.png" srcset="../_images/sphx_glr_plot_4_contactLoss_014.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_015.png" srcset="../_images/sphx_glr_plot_4_contactLoss_015.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_016.png" srcset="../_images/sphx_glr_plot_4_contactLoss_016.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_4_contactLoss_017.png" srcset="../_images/sphx_glr_plot_4_contactLoss_017.png" alt="x = 0 m" class = "sphx-glr-multi-img"/></li>
+</ul>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:375: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  ax1 = plt.subplot(nsbp, 1, 1)
+/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:382: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  plt.subplot(nsbp, 1, 2, sharex=ax1)
+/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:389: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  plt.subplot(nsbp, 1, 3, sharex=ax1)
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  6.145 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-4-contactloss-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/22f705a2329ee8d5dde2bb9ad70e4f3e/plot_4_contactLoss.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_4_contactLoss.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/7a5584dae460c2993f947d0312785322/plot_4_contactLoss.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_4_contactLoss.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ELWA-SPATID</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples of diagrams</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_0_Waveprop.html">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_1_WP2.html">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_2_SHPB.html">Use <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> to simulate SHPB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_3_ElasticImpact.html">Compare <code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticImpact</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Displacement and contact loss</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#small-impedance-against-large-impedance">Small impedance against large impedance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#large-impedance-against-small-impedance">Large impedance against small impedance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contact-loss-detection">Contact loss detection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plot_5_underHood.html">Under the hood</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Examples of diagrams</a><ul>
+      <li>Previous: <a href="plot_3_ElasticImpact.html" title="previous chapter">Compare <code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticImpact</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a></li>
+      <li>Next: <a href="plot_5_underHood.html" title="next chapter">Under the hood</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Denis Brizard.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/auto_examples/plot_4_contactLoss.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
