@@ -19,5 +19,5 @@ The present module requires:
 Testing installation
 --------------------
 
-Run one of the examples.
+Run all the examples.
 
