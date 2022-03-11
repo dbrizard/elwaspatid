@@ -13,11 +13,10 @@ the displacement diagrams of de Saint Venant in:
   et généralement sur le mouvement longitudinal d’un système de deux ou plusieurs 
   prismes élastiques. *Journal de mathématiques pures et appliquées 2e série*, 12, 237‑376. 
   https://gallica.bnf.fr/ark:/12148/bpt6k16411c
-
- 
-
-
 """
+
+# sphinx_gallery_thumbnail_number = 4
+
 
 import numpy as np
 from prop1D import WP2, Barhete

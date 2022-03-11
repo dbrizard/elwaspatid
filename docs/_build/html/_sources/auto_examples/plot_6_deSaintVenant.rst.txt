@@ -31,13 +31,12 @@ the displacement diagrams of de Saint Venant in:
   prismes élastiques. *Journal de mathématiques pures et appliquées 2e série*, 12, 237‑376. 
   https://gallica.bnf.fr/ark:/12148/bpt6k16411c
 
- 
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 21-27
+.. GENERATED FROM PYTHON SOURCE LINES 17-26
 
 .. code-block:: default
+
+
+    # sphinx_gallery_thumbnail_number = 4
 
 
     import numpy as np
@@ -52,11 +51,11 @@ the displacement diagrams of de Saint Venant in:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-29
+.. GENERATED FROM PYTHON SOURCE LINES 27-28
 
 Define a few parameters
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-35
+.. GENERATED FROM PYTHON SOURCE LINES 28-34
 
 .. code-block:: default
 
@@ -73,11 +72,11 @@ Define a few parameters
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-37
+.. GENERATED FROM PYTHON SOURCE LINES 35-36
 
 Create the bar configurations
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-43
+.. GENERATED FROM PYTHON SOURCE LINES 36-42
 
 .. code-block:: default
 
@@ -126,13 +125,13 @@ Create the bar configurations
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-47
+.. GENERATED FROM PYTHON SOURCE LINES 43-46
 
 Plot de Saint Venant displacement diagram and compare it with the orignal one.
 The only difference is that the second bar is at rest, whereas in de Saint Venant
 it has a velocity smaller than the initial velocity of the impactor.
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-49
+.. GENERATED FROM PYTHON SOURCE LINES 46-48
 
 .. code-block:: default
 
@@ -150,7 +149,7 @@ it has a velocity smaller than the initial velocity of the impactor.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-52
+.. GENERATED FROM PYTHON SOURCE LINES 49-51
 
 .. figure:: ../_static/deSaintVenant_img-040.png
 
@@ -159,7 +158,7 @@ it has a velocity smaller than the initial velocity of the impactor.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.991 seconds)
+   **Total running time of the script:** ( 0 minutes  2.041 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_6_deSaintVenant.py:

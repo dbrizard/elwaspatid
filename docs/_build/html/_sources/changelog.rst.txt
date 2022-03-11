@@ -18,9 +18,10 @@ To add
 ~~~~~~
 
 -  plastic wave (may require too large changes).
--  ``fixed`` boundary condition
--  ``friction`` boundary condition
--  ``damped`` boundary condition
+-  ``fixed`` or ``clamped`` boundary condition
+-  ``friction`` and ``damped`` boundary conditions (see DeJuhasz)
+-  ``elastic``, ``mass``, ``dashpot`` end conditions (see Graff)
+-  impacting mass (left end)
 
 To change
 ~~~~~~~~~
@@ -38,6 +39,8 @@ Added
    Barhomo.**
 -  ``Segment.resetImpedance`` to allow impedance variation inside
    ``Segment``
+-  ``WP2.plotDeSaintVenant`` displacement diagram plotting method
+-  ``Waveprop.plotDeSaintVenant`` displacement diagram plotting method
 
 Changed
 ~~~~~~~

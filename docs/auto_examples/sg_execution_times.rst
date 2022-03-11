@@ -5,10 +5,10 @@
 
 Computation times
 =================
-**00:01.991** total execution time for **auto_examples** files:
+**00:02.041** total execution time for **auto_examples** files:
 
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_6_deSaintVenant.py` (``plot_6_deSaintVenant.py``) | 00:01.991 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_6_deSaintVenant.py` (``plot_6_deSaintVenant.py``) | 00:02.041 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr_auto_examples_plot_0_Waveprop.py` (``plot_0_Waveprop.py``)           | 00:00.000 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+

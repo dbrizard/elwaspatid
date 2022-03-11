@@ -48,9 +48,10 @@ format defined at <a class="reference external" href="https://keepachangelog.com
 <h3>To add<a class="headerlink" href="#to-add" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>plastic wave (may require too large changes).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">fixed</span></code> boundary condition</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">friction</span></code> boundary condition</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">damped</span></code> boundary condition</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fixed</span></code> or <code class="docutils literal notranslate"><span class="pre">clamped</span></code> boundary condition</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">friction</span></code> and <code class="docutils literal notranslate"><span class="pre">damped</span></code> boundary conditions (see DeJuhasz)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">elastic</span></code>, <code class="docutils literal notranslate"><span class="pre">mass</span></code>, <code class="docutils literal notranslate"><span class="pre">dashpot</span></code> end conditions (see Graff)</p></li>
+<li><p>impacting mass (left end)</p></li>
 </ul>
 </div>
 <div class="section" id="to-change">
@@ -69,6 +70,8 @@ format defined at <a class="reference external" href="https://keepachangelog.com
 Barhomo.</strong></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Segment.resetImpedance</span></code> to allow impedance variation inside
 <code class="docutils literal notranslate"><span class="pre">Segment</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WP2.plotDeSaintVenant</span></code> displacement diagram plotting method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Waveprop.plotDeSaintVenant</span></code> displacement diagram plotting method</p></li>
 </ul>
 </div>
 <div class="section" id="changed">
