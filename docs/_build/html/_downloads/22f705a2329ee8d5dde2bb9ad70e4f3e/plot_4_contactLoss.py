@@ -66,6 +66,7 @@ bar.plotProperties('Z')
 testm = WP2(bar, nstep=150, left='free', right='infinite', Vinit=5, contactLoss=None)
 testm.plot()
 testm.plotInterface(0, 'NoCL')
+print(testm.contact)
 
 # %% 
 # Contact loss
@@ -74,3 +75,4 @@ testm.plotInterface(0, 'NoCL')
 testc = WP2(bar, -incw, nstep=150, left='free', right='infinite', Vinit=0, contactLoss=1e-9)
 testc.plot()
 testc.plotInterface(0, 'CL')
+print(testc.contact)

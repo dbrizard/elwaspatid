@@ -494,6 +494,10 @@ class Waveprop:
                     #XXX j'ai des doutes sur les Z0 et Z1...
                     Force[it, 0] = (Z[0]*(Force[it-1, 1] + Z[1]*Veloc[it-1, 1]))/(Z[0]+Z[1])
                     Veloc[it, 0] = (Force[it-1, 1] + Z[1]*Veloc[it-1, 1])/(Z[0]+Z[1])
+                elif left in ('fixed', 'clamped'):
+                    print('Not Yet!')
+                    Force[it, 0] = None
+                    Veloc[it, 0] = 0
             
             # RIGHT boundary conditions
             if right=='free':
@@ -502,8 +506,11 @@ class Waveprop:
             elif right=='infinite':
                 Force[it, -1] = (Force[it-1, -2] - Z[-1]*Veloc[it-1, -2])/2
                 Veloc[it, -1] = -Force[it-1, -2]/2/Z[-1] + Veloc[it-1, -2]/2
-                
-                        
+            elif right in ('fixed', 'clamped'):
+                print('Not Yet!')
+                Force[it, 0] = None
+                Veloc[it, 0] = 0
+                   
             # Middle of the bar
             Zi = Z[:-1]  # Z_i
             Zii = Z[1:]  # Z_i+1 # tiens donc, on retombe sur nos pieds ici...
@@ -1128,6 +1135,8 @@ class Segment(object):
             self.Force[it, 0] = 0
             self.Veloc[it, 0] = self.Veloc[it-1, 1] + self.Force[it-1, 1]/self.Z[0]
             #/!\ indices semblent bon. Reste les signes... à vérifier
+        elif left=='fixed':
+            print('Not Yet!')  # XXX
         elif left=='infinite':
             self.Force[it, 0] = (self.Force[it-1, 1] + self.Z[0]*self.Veloc[it-1, 1])/2
             self.Veloc[it, 0] = (self.Force[it-1, 1] + self.Z[0]*self.Veloc[it-1, 1])/(2*self.Z[0])
@@ -1167,6 +1176,8 @@ class Segment(object):
         if right=='free':
             self.Force[it, -1] = 0
             self.Veloc[it, -1] = self.Veloc[it-1, -2] - self.Force[it-1, -2]/self.Z[-1]
+        elif right=='fixed':
+            print('Not Yet!')  # XXX
         elif right=='infinite':
             self.Force[it, -1] = (self.Force[it-1, -2] - self.Z[-1]*self.Veloc[it-1, -2])/2
             self.Veloc[it, -1] = -self.Force[it-1, -2]/2/self.Z[-1] + self.Veloc[it-1, -2]/2

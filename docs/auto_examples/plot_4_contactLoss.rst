@@ -237,13 +237,14 @@ No contact loss
 ^^^^^^^^^^^^^^^
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-70
+.. GENERATED FROM PYTHON SOURCE LINES 66-71
 
 .. code-block:: default
 
     testm = WP2(bar, nstep=150, left='free', right='infinite', Vinit=5, contactLoss=None)
     testm.plot()
     testm.plotInterface(0, 'NoCL')
+    print(testm.contact)
 
 
 
@@ -293,24 +294,25 @@ No contact loss
       plt.subplot(nsbp, 1, 2, sharex=ax1)
     /home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:389: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
       plt.subplot(nsbp, 1, 3, sharex=ax1)
+    {'state': [], 'threshold': None}
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-74
+.. GENERATED FROM PYTHON SOURCE LINES 72-75
 
 Contact loss
 ^^^^^^^^^^^^
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-77
+.. GENERATED FROM PYTHON SOURCE LINES 75-78
 
 .. code-block:: default
 
     testc = WP2(bar, -incw, nstep=150, left='free', right='infinite', Vinit=0, contactLoss=1e-9)
     testc.plot()
     testc.plotInterface(0, 'CL')
-
+    print(testc.contact)
 
 
 .. rst-class:: sphx-glr-horizontal
@@ -357,6 +359,7 @@ Contact loss
       plt.subplot(nsbp, 1, 2, sharex=ax1)
     /home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:389: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
       plt.subplot(nsbp, 1, 3, sharex=ax1)
+    {'state': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'threshold': 1e-09}
 
 
 
@@ -364,7 +367,7 @@ Contact loss
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  6.145 seconds)
+   **Total running time of the script:** ( 0 minutes  7.437 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_4_contactLoss.py:

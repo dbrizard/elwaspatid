@@ -10,9 +10,10 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 ## [Unreleased]
 ### To add
 * plastic wave (may require too large changes).
-* `fixed` boundary condition
+* `fixed` or `clamped` boundary condition
 * `friction` boundary condition
 * `damped` boundary condition
+* `elastic`, `mass`, `dashpot` end conditions (see Graff)
 
 ### To change
 
