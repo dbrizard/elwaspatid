@@ -415,7 +415,41 @@ class WP2:
         
         F1, V1, D1, _ = self.getSignal(nX1-1, iseg1, figname=figname, marker='.')
         F2, V2, D2, _ = self.getSignal(0, iseg2, figname=figname, marker='+')
+    
+    
+    def plotDeSaintVenant(self, scale=100, figname=None, ms=5, lines='0.8'):
+        """Plot x-t displacement diagram.
         
+        :param float scale: scale factor to increase Displ and make it visible
+        :param str figname: name for the figure
+        :param float ms: give marker size to get points plotted (color=Force)
+        :param color lines: give color to get lines plotted
+        """
+        if ms is not None:
+            ZVAL = [ss.Force for ss in self.bar.seg]
+            AMPLI = [getMax(zz) for zz in ZVAL]
+            ampli = np.max(AMPLI)
+        
+        
+        plt.figure(figname)
+        for ii, ss in enumerate(self.bar.seg):
+            if lines is not None:
+                plt.plot(ss.time, ss.x+scale*ss.Displ, 
+                         color=lines, ls='-', zorder=0)
+                plt.xlabel('t [s]')
+                plt.ylabel('x [m]')
+            
+            if ms is not None:
+                time = np.tile(ss.time, (ss.Force.shape[1], 1))
+                plt.scatter(time.T, ss.x+scale*ss.Displ, s=ms, c=ss.Force,
+                            cmap='PiYG', vmin=-ampli, vmax=ampli)
+        if ms is not None:
+            plt.colorbar(label='Force [N]')
+        
+        plt.title('displacement scale factor %g'%scale)
+        plt.xlabel('t [s]')
+        plt.ylabel('x [m]')
+        plt.box(on=False)
 
 class Waveprop:
     '''One-dimensional wave propagation problem for a rod with a piecewise
@@ -663,7 +697,7 @@ class Waveprop:
             self.plotmatrix(self.Displ, 'Displacement [m]',
                             vert=vert, autovert=autovert)
         if 'stress' in typ:
-            self.plotmatrix(self.Stress/1e6, 'Stress [MPa]',
+            self.plotmatrix(self.Stress['strain']/1e6, 'Stress [MPa]',
                             vert=vert, autovert=autovert)
     
     def getcut(self, x=None, t=None, isind=False):
@@ -786,8 +820,44 @@ class Waveprop:
 #            plt.subplot(212)
 #            plt.plot(x+dx*ii/nt, vv, '.-', drawstyle='steps-post')
 
+    
+    def plotDeSaintVenant(self, scale=100, figname=None, ms=5, lines='0.8'):
+        """Plot x-t displacement diagram.
+        
+        :param float scale: scale factor to increase Displ and make it visible
+        :param str figname: name for the figure
+        :param float ms: give marker size to get points plotted (color=Force)
+        :param color lines: give color to get lines plotted
+        """
+        displacement = self.bar_discret.x+scale*self.Displ
+        plt.figure(figname)
+        if lines is not None:
+            plt.plot(self.time, displacement, color=lines, ls='-', zorder=0)
+            plt.xlabel('t [s]')
+            plt.ylabel('x [m]')
+        
+        if ms is not None:
+            time = np.tile(self.time, (self.Force.shape[1], 1))
+            plt.scatter(time.T, displacement, s=ms, c=self.Force, cmap='PuOr')
+            plt.colorbar(label='Force [N]')
+        
+        
+        plt.title('displacement scale factor %g'%scale)
+        plt.xlabel('t [s]')
+        plt.ylabel('x [m]')
+        plt.box(on=False)
+        
+        # ---EXPERIMENTAL PLOT---
+        plt.figure('force')
+        offset = self.bar_discret.dt/2
+        plt.pcolor(time.T-offset, displacement, self.Force, ec='k', shading='nearest')  # ça déforme un peu la grille...
+        plt.plot(self.time, displacement, color='0.8', ls='-')
 
-
+        plt.figure('strain')
+        offset = self.bar_discret.dt/2
+        plt.pcolor(time.T-offset, displacement, self.Strain, ec='k', shading='flat')
+        plt.plot(self.time, displacement, color='0.8', ls='-')
+        
 def scaleTime(time, scale='s'):
     """Return scaled time or index
     
@@ -1554,7 +1624,7 @@ if __name__ == '__main__':
         incw = np.zeros(80)  # incident wave
         incw[0:20] = 1  # /!\ traction pulse
         #%%---TEST WAVEPROP CLASS---
-        if False:
+        if True:
             print('transfered to examples')
             test = Waveprop(bb, -incw*1e5, nstep=2*len(incw), left='free', right='free')
             test.plot()
@@ -1564,9 +1634,10 @@ if __name__ == '__main__':
             test.plotcut(t=bb.dt*len(incw)/2)
             
             test.plot('stress-X')
+            test.plotDeSaintVenant(scale=100, figname='deStVenant')
         
         #%% ---TEST WP2 CLASS---
-        if True:
+        if False:
             L = 1  # [m]
             doubleWave = -np.ones(20)
             #doubleWave[:20] = -1
@@ -1576,6 +1647,7 @@ if __name__ == '__main__':
                         contactLoss=None)
             testk.plot()
             testk.plotInterface(figname='testinterf')
+            testk.plotDeSaintVenant(figname='deStV', ms=10)
 
             testk.getSignal(x=0.5, figname='checkVinit')
                         

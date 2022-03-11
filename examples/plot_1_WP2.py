@@ -44,7 +44,7 @@ test2.plot('2b_free')
 
 
 # %%
-# Two identical bars, clamped-ends
+# Two identical bars, infinite-ends
 # --------------------------------
 
 test2f = WP2(bc, comp, nstep=100, left='infinite', right='infinite')

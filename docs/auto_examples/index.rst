@@ -151,6 +151,27 @@ Here are some useful references:
    :hidden:
 
    /auto_examples/plot_5_underHood
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Define a Barhete bar configuration and use it with WP2 reproduce the displacement diagrams of d...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/images/thumb/sphx_glr_plot_6_deSaintVenant_thumb.png
+     :alt: De Saint Venant displacement diagrams
+
+     :ref:`sphx_glr_auto_examples_plot_6_deSaintVenant.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/plot_6_deSaintVenant
 .. raw:: html
 
     <div class="sphx-glr-clear"></div>

@@ -63,9 +63,9 @@ test.plotcut(t=bb.dt*len(incw)/2)
 
 
 # %%
-# Clamped-clamped uniform bar
+# Infinite-infinite uniform bar
 # ---------------------------
-# Clamped end amounts to anechoic condition: no reflecion of elastic wave.
+# Infinite end amounts to anechoic condition: no reflecion of elastic wave.
 testf = Waveprop(bb, incw, nstep=100, left='infinite', right='infinite')
 testf.plot()
 

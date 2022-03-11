@@ -149,7 +149,7 @@ Two identical bars, free-ends
 
 .. GENERATED FROM PYTHON SOURCE LINES 47-49
 
-Two identical bars, clamped-ends
+Two identical bars, infinite-ends
 --------------------------------
 
 .. GENERATED FROM PYTHON SOURCE LINES 49-53
@@ -453,7 +453,7 @@ Nothing happens, the left bar travels to the left.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  8.131 seconds)
+   **Total running time of the script:** ( 0 minutes  7.929 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_1_WP2.py:

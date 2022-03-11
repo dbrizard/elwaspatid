@@ -233,9 +233,9 @@ or at a given position `x`
 
 .. GENERATED FROM PYTHON SOURCE LINES 66-69
 
-Clamped-clamped uniform bar
+Infinite-infinite uniform bar
 ---------------------------
-Clamped end amounts to anechoic condition: no reflecion of elastic wave.
+Infinite end amounts to anechoic condition: no reflecion of elastic wave.
 
 .. GENERATED FROM PYTHON SOURCE LINES 69-72
 
@@ -502,7 +502,7 @@ And why not a sine pulse?
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  7.816 seconds)
+   **Total running time of the script:** ( 0 minutes  7.736 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_0_Waveprop.py:

@@ -11,9 +11,9 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 ### To add
 * plastic wave (may require too large changes).
 * `fixed` or `clamped` boundary condition
-* `friction` boundary condition
-* `damped` boundary condition
+* `friction` and `damped` boundary conditions (see DeJuhasz)
 * `elastic`, `mass`, `dashpot` end conditions (see Graff)
+* impacting mass (left end)
 
 ### To change
 
@@ -24,6 +24,8 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 ### Added
 * `Segment.Z` must be array and not scalar any more. __CHECK against Barhomo.__
 * `Segment.resetImpedance` to allow impedance variation inside `Segment`
+* `WP2.plotDeSaintVenant` displacement diagram plotting method
+* `Waveprop.plotDeSaintVenant` displacement diagram plotting method
 
 ### Changed
 * `plain` boundary condition is now called `infinite`

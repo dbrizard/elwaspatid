@@ -5,10 +5,10 @@
 
 Computation times
 =================
-**00:07.437** total execution time for **auto_examples** files:
+**00:01.991** total execution time for **auto_examples** files:
 
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_4_contactLoss.py` (``plot_4_contactLoss.py``)     | 00:07.437 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_6_deSaintVenant.py` (``plot_6_deSaintVenant.py``) | 00:01.991 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr_auto_examples_plot_0_Waveprop.py` (``plot_0_Waveprop.py``)           | 00:00.000 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
@@ -17,6 +17,8 @@ Computation times
 | :ref:`sphx_glr_auto_examples_plot_2_SHPB.py` (``plot_2_SHPB.py``)                   | 00:00.000 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr_auto_examples_plot_3_ElasticImpact.py` (``plot_3_ElasticImpact.py``) | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_auto_examples_plot_4_contactLoss.py` (``plot_4_contactLoss.py``)     | 00:00.000 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr_auto_examples_plot_5_underHood.py` (``plot_5_underHood.py``)         | 00:00.000 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
