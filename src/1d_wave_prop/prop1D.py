@@ -529,9 +529,10 @@ class Waveprop:
                     Force[it, 0] = (Z[0]*(Force[it-1, 1] + Z[1]*Veloc[it-1, 1]))/(Z[0]+Z[1])
                     Veloc[it, 0] = (Force[it-1, 1] + Z[1]*Veloc[it-1, 1])/(Z[0]+Z[1])
                 elif left in ('fixed', 'clamped'):
-                    print('Not Yet!')
-                    Force[it, 0] = None
+                    Force[it, 0] = Force[it-1, 1] - Z[0]*Veloc[it-1, 1]  # XXX TOCHECK!!
                     Veloc[it, 0] = 0
+                
+                    
             
             # RIGHT boundary conditions
             if right=='free':
@@ -541,10 +542,26 @@ class Waveprop:
                 Force[it, -1] = (Force[it-1, -2] - Z[-1]*Veloc[it-1, -2])/2
                 Veloc[it, -1] = -Force[it-1, -2]/2/Z[-1] + Veloc[it-1, -2]/2
             elif right in ('fixed', 'clamped'):
-                print('Not Yet!')
-                Force[it, 0] = None
-                Veloc[it, 0] = 0
+                Force[it, -1] = Force[it-1, -2] - Z[-1]*Veloc[it-1, -2]  # XXX TOCHECK!!
+                Veloc[it, -1] = 0
                    
+            if 'damped' in right or False:
+                C = 1e4  # [N.s/m]
+                Force[it, -1] += -C*Veloc[it, -1]  # XXX Formula presumed wrong
+            if 'spring' in right or False:
+                K = 1e8  # [N/m]
+                displ = np.sum(Veloc[:,-1]*bar.dt)
+                print(displ)
+                Force[it, -1] += -K*displ
+            if 'friction' in right:
+                Ff = 1e4  # [N]
+                if Veloc[it, -1] is not 0:
+                    if abs(Force[it, -1])>Ff:
+                        Force[it, -1] -= Ff
+                    else:
+                        print('this is complex')
+
+
             # Middle of the bar
             Zi = Z[:-1]  # Z_i
             Zii = Z[1:]  # Z_i+1 # tiens donc, on retombe sur nos pieds ici...
@@ -661,16 +678,17 @@ class Waveprop:
         if vert is not None:
             for v in vert:
                 plt.axvline(x=v, color='.8')
-        if autovert:
-            try:
-                verts = np.hstack((0, np.cumsum(self.bar_discret.L)))
-                for v in verts:
-                    plt.axvline(x=v, color='.7')
-            except AttributeError:
-                if self.bar_discret.__class__.__name__=='Barhete':
-                    warnings.warn('There is a big BIG problem')
-                else:
-                    print("this may not be a Barhete instance, no vertical lines to plot")
+        # XXX Following is useless, no Barhomo.L attribute. Why did I write it?
+        # if autovert:
+        #     try:
+        #         verts = np.hstack((0, np.cumsum(self.bar_discret.L)))
+        #         for v in verts:
+        #             plt.axvline(x=v, color='.7')
+        #     except AttributeError:
+        #         if self.bar_discret.__class__.__name__=='Barhete':
+        #             warnings.warn('There is a big BIG problem')
+        #         else:
+        #             print("this may not be a Barhete instance, no vertical lines to plot")
         
         
     
@@ -821,13 +839,14 @@ class Waveprop:
 #            plt.plot(x+dx*ii/nt, vv, '.-', drawstyle='steps-post')
 
     
-    def plotDeSaintVenant(self, scale=100, figname=None, ms=5, lines='0.8'):
+    def plotDeSaintVenant(self, scale=100, figname=None, ms=5, lines='0.8', XPplot=False):
         """Plot x-t displacement diagram.
         
         :param float scale: scale factor to increase Displ and make it visible
         :param str figname: name for the figure
         :param float ms: give marker size to get points plotted (color=Force)
         :param color lines: give color to get lines plotted
+        :param bool XPplot: experimental plots with pcolor. Warning: grid is not correctly adjusted yet.
         """
         displacement = self.bar_discret.x+scale*self.Displ
         plt.figure(figname)
@@ -847,16 +866,17 @@ class Waveprop:
         plt.ylabel('x [m]')
         plt.box(on=False)
         
-        # ---EXPERIMENTAL PLOT---
-        plt.figure('force')
-        offset = self.bar_discret.dt/2
-        plt.pcolor(time.T-offset, displacement, self.Force, ec='k', shading='nearest')  # ça déforme un peu la grille...
-        plt.plot(self.time, displacement, color='0.8', ls='-')
-
-        plt.figure('strain')
-        offset = self.bar_discret.dt/2
-        plt.pcolor(time.T-offset, displacement, self.Strain, ec='k', shading='flat')
-        plt.plot(self.time, displacement, color='0.8', ls='-')
+        if XPplot:
+            #---EXPERIMENTAL PLOT---
+            plt.figure('force')
+            offset = self.bar_discret.dt/2
+            plt.pcolor(time.T-offset, displacement, self.Force, ec='k', shading='nearest')  # ça déforme un peu la grille...
+            plt.plot(self.time, displacement, color='0.8', ls='-')
+    
+            plt.figure('strain')
+            offset = self.bar_discret.dt/2
+            plt.pcolor(time.T-offset, displacement, self.Strain, ec='k', shading='flat')
+            plt.plot(self.time, displacement, color='0.8', ls='-')
         
 def scaleTime(time, scale='s'):
     """Return scaled time or index
@@ -1626,7 +1646,7 @@ if __name__ == '__main__':
         #%%---TEST WAVEPROP CLASS---
         if True:
             print('transfered to examples')
-            test = Waveprop(bb, -incw*1e5, nstep=2*len(incw), left='free', right='free')
+            test = Waveprop(bb, -incw*1e5, nstep=3*len(incw), left='free', right='free')
             test.plot()
             
             test.plot(typ='DS') # is this useful ?

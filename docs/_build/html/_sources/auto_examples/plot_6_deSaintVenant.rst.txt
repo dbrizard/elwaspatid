@@ -149,16 +149,16 @@ it has a velocity smaller than the initial velocity of the impactor.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-51
+.. GENERATED FROM PYTHON SOURCE LINES 49-52
 
 .. figure:: ../_static/deSaintVenant_img-040.png
 
-   Daigram 42, page 277, de Saint Venant
+   Diagram 42, page 277, de Saint Venant
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.041 seconds)
+   **Total running time of the script:** ( 0 minutes  1.844 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_6_deSaintVenant.py:

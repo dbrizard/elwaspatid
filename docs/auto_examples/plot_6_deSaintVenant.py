@@ -48,4 +48,4 @@ plt.figure('deStV').set_figwidth(10)
 # %%
 # .. figure:: ../_static/deSaintVenant_img-040.png
 # 
-#    Daigram 42, page 277, de Saint Venant
+#    Diagram 42, page 277, de Saint Venant

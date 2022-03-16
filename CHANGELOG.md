@@ -10,22 +10,31 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 ## [Unreleased]
 ### To add
 * plastic wave (may require too large changes).
-* `fixed` or `clamped` boundary condition
 * `friction` and `damped` boundary conditions (see DeJuhasz)
 * `elastic`, `mass`, `dashpot` end conditions (see Graff)
 * impacting mass (left end)
+* `fixed` or `clamped` boundary condition for `WP2`
+* test and check `indV` argument of `Waveprop` class
 
 ### To change
 
 ### To fix
+* Empty APi reference, see next bullet:
+* https://docs.readthedocs.io/en/stable/tutorial/index.html#making-warnings-more-visible
 
 
-## [1.1.0] -2022-03
+## [1.2.0] - 2022-03-xx
+### Added
+* New boundary conditions available: 
+
+
+## [1.1.0] - 2022-03-15
 ### Added
 * `Segment.Z` must be array and not scalar any more. __CHECK against Barhomo.__
 * `Segment.resetImpedance` to allow impedance variation inside `Segment`
 * `WP2.plotDeSaintVenant` displacement diagram plotting method
 * `Waveprop.plotDeSaintVenant` displacement diagram plotting method
+* `fixed` or `clamped` boundary condition for `Waveprop`
 
 ### Changed
 * `plain` boundary condition is now called `infinite`

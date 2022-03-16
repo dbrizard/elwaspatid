@@ -63,8 +63,22 @@ test.plotcut(t=bb.dt*len(incw)/2)
 
 
 # %%
+# Free-fixed uniform bar
+# ----------------------
+# Left end is free, right end is fixed:
+# 
+# - compression relfects as compression on fixed end;
+# - then, compression reflects as traction on free end;
+# - and finally traction reflects as traction on fixed end.
+
+test = Waveprop(bb, incw, nstep=3*len(incw), left='free', right='fixed')
+test.plot()
+test.plot(typ='X')  #  Displacement (X)
+
+
+# %%
 # Infinite-infinite uniform bar
-# ---------------------------
+# -----------------------------
 # Infinite end amounts to anechoic condition: no reflecion of elastic wave.
 testf = Waveprop(bb, incw, nstep=100, left='infinite', right='infinite')
 testf.plot()
