@@ -20,7 +20,8 @@ Boundary conditions can be:
 
 * two rods in contact;
 * free end (total reflexion of waves);
-* plain end (no reflexion, equivalent to anechoic condition).
+* fixed end;
+* infinite end (no reflexion, equivalent to anechoic condition).
 
 
 .. toctree::

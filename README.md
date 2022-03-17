@@ -9,19 +9,23 @@ Initial conditions can be:
 * a prescribed input force at the left end of the first rod;
 * a prescribed velocity of the left rod, which impacts the next rod.
 
+Boundary conditions can be:
 
-This is a simple example package. You can use
-[Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
-to write your content.
+* free end;
+* fixed end;
+* contact interface with another rod.
+
 
 ## Installation
 
-`pip install wave-space-time-diagrams`
+`pip install ELWA-SPATID`
+
+## Documentation
+
+[ReadTheDocs](https://elwa-spatid.readthedocs.io)
 
 ## Usage
 
-`add_ones(5)`
+See examples in the documentation and in the `examples` folder.
 
-## Credit
 
-LBMC

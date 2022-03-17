@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/1d_wave_prop/__init__.py
+src/1d_wave_prop/prop1D.py
+src/1d_wave_prop/prop1D_old.py
+src/1d_wave_prop/prop1D_oldd.py
+src/ELWA_SPATID.egg-info/PKG-INFO
+src/ELWA_SPATID.egg-info/SOURCES.txt
+src/ELWA_SPATID.egg-info/dependency_links.txt
+src/ELWA_SPATID.egg-info/top_level.txt
