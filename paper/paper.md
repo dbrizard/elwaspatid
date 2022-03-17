@@ -1,9 +1,10 @@
 ---
-title: 'Gala: A Python package for galactic dynamics'
+title: 'ELWA-SPATID: A Python package to compute space-time diagrams for the propagation of elastic waves in 1D rods'
 tags:
   - Python
   - mechanics
   - elastic wave propagation
+  - space-time diagram
 authors:
   - name: Denis Brizard^[First author] # note this makes a footnote saying 'Co-first author'
     orcid: 0000-0003-2264-7131
@@ -14,22 +15,18 @@ affiliations:
 date: March 2022
 bibliography: paper.bib
 
-# Optional fields if submitting to a AAS journal too, see this blog post:
-# https://blog.joss.theoj.org/2018/12/a-new-collaboration-with-aas-publishing
-aas-doi: 10.3847/xxxxx <- update this with the DOI from AAS once you know it.
-aas-journal: Astrophysical Journal <- The name of the AAS journal.
 ---
 
 # Summary
 
-Begin your paper with a summary of the high-level functionality of your software 
-for a non-specialist reader. Avoid jargon in this section.
+*Begin your paper with a summary of the high-level functionality of your software for a non-specialist reader. Avoid jargon in this section.*
 
 
 Space-time diagrams are a way to visualize the propragation of mechanical 
 (traction-compression) waves. Transmission and reflection of waves across section
-changes and contact interfaces can quickly become hard to compute manually or with
-the graphodynamical method when multiple waves are combined because of wave 
+changes and contact interfaces can quickly become hard to compute manually 
+[@johnson_impact_1972] or with the graphodynamical method [@dejuhasz_graphical_1949]
+[@fischer_longitudinal_1959] when multiple waves are combined because of wave 
 superposition. 
 Additionally, we are often limited to simple wave shapes such as the classical
 rectangular pulse and to bars with constant cross-section; deviating from these
@@ -40,42 +37,51 @@ conditions rapidly complicates the calculations.
 `ELWA-SPATID` is a Python package for 1D elastic wave propagation dedicated to 
 the computation of space-time diagrams. 
 
-`Gala` is an Astropy-affiliated Python package for galactic dynamics. Python
-enables wrapping low-level languages (e.g., C) for speed without losing
-flexibility or ease-of-use in the user-interface. The API for `Gala` was
-designed to provide a class-based and user-friendly interface to fast (C or
-Cython-optimized) implementations of common operations such as gravitational
-potential and force evaluation, orbit integration, dynamical transformations,
-and chaos indicators for nonlinear dynamics. `Gala` also relies heavily on and
-interfaces well with the implementations of physical units and astronomical
-coordinate systems in the `Astropy` package [@astropy] (`astropy.units` and
-`astropy.coordinates`).
 
-`Gala` was designed to be used by both astronomical researchers and by
-students in courses on gravitational dynamics or astronomy. It has already been
-used in a number of scientific publications [@Pearson:2017] and has also been
-used in graduate courses on Galactic dynamics to, e.g., provide interactive
-visualizations of textbook material [@Binney:2008]. The combination of speed,
-design, and support for Astropy functionality in `Gala` will enable exciting
-scientific explorations of forthcoming data releases from the *Gaia* mission
-[@gaia] by students and experts alike.
+The package is limited to non dispersive propagation, but this approximation 
+is rather acceptable in numerous cases, when XXX. The material is also supposed
+to stay in the elastic range. 
 
-# Mathematics
 
-Single dollars ($) are required for inline mathematics e.g. $f(x) = e^{\pi/x}$
 
-Double dollars make self-standing equations:
 
-$$\Theta(x) = \left\{\begin{array}{l}
-0\textrm{ if } x < 0\cr
-1\textrm{ else}
-\end{array}\right.$$
+# Functionality
 
-You can also use plain \LaTeX for equations
-\begin{equation}\label{eq:fourier}
-\hat f(\omega) = \int_{-\infty}^{\infty} f(x) e^{i\omega x} dx
-\end{equation}
-and refer to \autoref{eq:fourier} from text.
+The underlying equations are derived from [@bacon_numerical_1993], with a 
+formulation in Force and Velocity. The rods are discretized -between nodes- into segments, each
+segment is supposed to have a constant impedance. The length of each segments is
+chosen so that the transit time of the elastic wave in all the segments is 
+identical, which enables the use of the method of characteristics. 
+
+Force and Velocit are computed at the nodes, the Displacement is then deduced 
+from the Velocity of the nodes. From the Displacement of the nodes, we deduce
+the Strain in the segments from the Displacement at the nodes, and the Stress 
+in the elements from the Strain in the elements.
+
+## Initial conditions
+
+The bars are initially at rest (null velocity). It is also possible to prescribe 
+the intiial velocity of the left bar and therefore model an impactor or stricker.
+Conversly, one can provide the pulse shape arriving at the left end of the bar(s).
+
+## Boundary conditions
+
+The following boundry conditions are available:
+
+* contact interface between two bars. Compression waves can cross the interface,
+  traction waves cannot;
+* free end;
+* fixed end (equivalent to a bar clamped to another bar of infinite impedance);
+* infinite end. Equivalent to anechoic condition, no reflection of wave occur.
+
+## Visualization
+
+Space-time diagrams are pseudocolor plots with space as x-axis, time as y-axis 
+and the wave quantity as color. The wave-related quantity can be:
+
+* force
+* velocity
+* displacement
 
 # Citations
 
@@ -91,7 +97,7 @@ For a quick reference, the following citation commands can be used:
 - `[@author:2001]` -> "(Author et al., 2001)"
 - `[@author1:2001; @author2:2001]` -> "(Author1 et al., 2001; Author2 et al., 2002)"
 
-# Figures
+# Example
 
 Figures can be included like this:
 ![Caption for example figure.\label{fig:example}](figure.png)
