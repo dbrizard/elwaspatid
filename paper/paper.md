@@ -70,7 +70,7 @@ The following boundry conditions are available:
 
 * contact interface between two bars. Compression waves can cross the interface,
   traction waves cannot;
-* free end;
+* free end (traction waves are reflected back as compression waves, and vice verca);
 * fixed end (equivalent to a bar clamped to another bar of infinite impedance);
 * infinite end. Equivalent to anechoic condition, no reflection of wave occur.
 
@@ -83,8 +83,13 @@ and the wave quantity as color. The wave-related quantity can be:
 * velocity
 * displacement
 
-# Citations
+An additional space-time diagram, called "de Saint Venant" after the name of the
+french scientist who introduced it [@de_saint-venant_memoire_1867], is available. 
+It combines the actual position of nodes of the bars plotted with respect to time
+and the visualisation of the waves in the bars (force or velocity). It is the 
+discrete version of the continuous form proposed by de Saint Venant.
 
+# Citations
 Citations to entries in paper.bib should be in
 [rMarkdown](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
 format.
