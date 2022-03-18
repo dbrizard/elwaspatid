@@ -79,11 +79,17 @@ The following boundry conditions are available:
 * fixed end. Equivalent to a bar clamped to another bar of infinite impedance;
 * infinite end. Equivalent to anechoic condition, no reflection of wave occur.
 
+
 ## Visualization
 
 Wave propagation is computed from the bar configuration, the initial conditions 
 and the boundary conditions. Space-time diagram are a convenient way to represent
 the propagation, both in space and in time, of the waves.
+
+Figure \autoref{fig:example} illustrates the following simple case: an stricker
+impacts a bar from the left. Both bars have the same impedance and a rectangular 
+compression pulse is generated from the impact. As the second bar has free ends,
+the compression pulse is reflected on its right end as a traction pulse.
 
 Space-time diagrams are pseudocolor plots with space as x-axis (in the initial
 configuration), time as y-axis and the wave quantity as color. The wave-related 
