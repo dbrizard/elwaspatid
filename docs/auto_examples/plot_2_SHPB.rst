@@ -160,14 +160,14 @@ Plot forces in the sample
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x7f43c7b30588>
+    <matplotlib.legend.Legend object at 0x7fcb2f219b38>
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.835 seconds)
+   **Total running time of the script:** ( 0 minutes  1.800 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_2_SHPB.py:

@@ -453,7 +453,7 @@ Nothing happens, the left bar travels to the left.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  7.929 seconds)
+   **Total running time of the script:** ( 0 minutes  7.856 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_1_WP2.py:

@@ -367,7 +367,7 @@ Contact loss
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  7.437 seconds)
+   **Total running time of the script:** ( 0 minutes  6.176 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_4_contactLoss.py:

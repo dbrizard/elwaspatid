@@ -15,6 +15,7 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 * impacting mass (left end)
 * `fixed` or `clamped` boundary condition for `WP2`
 * test and check `indV` argument of `Waveprop` class
+* compute Stress and Strain in `Segment` for `WP2`
 
 ### To change
 

@@ -114,15 +114,6 @@ All the force values can fill a single matrix, ditto for the velocities.
          :class: sphx-glr-multi-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-    this may not be a Barhete instance, no vertical lines to plot
-    this may not be a Barhete instance, no vertical lines to plot
-
 
 
 
@@ -278,7 +269,7 @@ XXX a word on :class:`Bar`, used in :class:`Barhete`
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.829 seconds)
+   **Total running time of the script:** ( 0 minutes  2.783 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_5_underHood.py:
