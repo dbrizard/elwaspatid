@@ -1,7 +1,14 @@
 Changelog
 =========
 
-<!--- CHANGELOG.md file is the master file. Do not edit changelog.rst file, which is generated with pandoc --->
+<!--- CHANGELOG.md file is the master file. Do not edit changelog.rst file, which is generated with pandoc
+
+_Readthedoc_:
+* il est parfois nécessaire d'attendre après un commit pour pouvoir compiler la doc. 
+* `requirements: docs/RTDrequirements_short.txt` in .readthedocs.yaml does not works
+* requirement was therefore added online in Admin > Advanced Settings
+
+--->
 
 All notable changes to this project will be documented in this file.
 
