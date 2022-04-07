@@ -25,7 +25,7 @@ k = 2.4  # diamters ratio [-]
 # Define the incident wave vector
 
 incw = np.zeros(80)  # incident wave
-incw[0:20] = 1  # >0 means traction pulse
+incw[0:20] = 1e3  # >0 means traction pulse
 
 
 # %%
@@ -51,16 +51,21 @@ b2.plot()  # cross-section and impedance increase
 # Incident pulse reflects on both end of the bar endlessly.
 # The force at both ends of the bar is null. Traction pulse reflects as compression.
 #
-# It is also possible to plot cuts of the space-time diagram, at a given time `t`
-# or at a given position `x`
 
 test = Waveprop(bb, incw, nstep=2*len(incw), left='free', right='free')
 test.plot()
 
-test.plot(typ='DX')  # Wave direction (D) and Displacement (X)
+
+# %% 
+# It is possible to plot cuts of the space-time diagram, at a given time `t`
+# or at a given position `x`
 test.plotcut(x=bb.x[int(n/2)])
 test.plotcut(t=bb.dt*len(incw)/2)
 
+# %% 
+# Additional diagrams are also available
+test.plot(typ='dir-D')  # Wave direction (dir) and Displacement (D)
+test.plot(typ='sig-eps')  # Stress (sig) and Strain (eps)
 
 # %%
 # Free-fixed uniform bar
@@ -69,7 +74,7 @@ test.plotcut(t=bb.dt*len(incw)/2)
 # 
 # - compression relfects as compression on fixed end;
 # - then, compression reflects as traction on free end;
-# - and finally traction reflects as traction on fixed end.
+# - and finally traction reflects as traction on fixed end;
 
 test = Waveprop(bb, incw, nstep=3*len(incw), left='free', right='fixed')
 test.plot()

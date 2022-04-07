@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Changelog" href="changelog.html" />
-    <link rel="prev" title="De Saint Venant displacement diagrams" href="auto_examples/plot_6_deSaintVenant.html" />
+    <link rel="prev" title="Under the hood" href="auto_examples/plot_6_underHood.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -288,17 +288,18 @@ than bar impedance</p>
 
 <dl class="py class">
 <dt id="prop1D.Segment">
-<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">Segment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">Segment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bar segment with constant properties</p>
 <p>For later use in <a class="reference internal" href="#prop1D.WP2" title="prop1D.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a> through <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a></p>
 <dl class="py method">
 <dt id="prop1D.Segment.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>nel</strong> (<em>int</em>) – number of elements in segment</p></li>
 <li><p><strong>z</strong> (<em>float</em>) – segment impedance</p></li>
+<li><p><strong>E</strong> (<em>float</em>) – segment elastic modulus</p></li>
 <li><p><strong>l</strong> (<em>float</em>) – segment length</p></li>
 <li><p><strong>dx</strong> (<em>float</em>) – length of elements in segment</p></li>
 <li><p><strong>dt</strong> (<em>float</em>) – time step</p></li>
@@ -334,7 +335,7 @@ than bar impedance</p>
 <dl class="py method">
 <dt id="prop1D.Segment.compDispl">
 <code class="sig-name descname">compDispl</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">it</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.compDispl" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute displacement of the bar nodes.</p>
+<dd><p>Compute displacement of the bar nodes at given time index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>it</strong> (<em>int</em>) – time index</p>
@@ -385,6 +386,12 @@ impact (impacted end, in which case <strong>incw</strong> must be given).</p>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="prop1D.Segment.computeStressStrain">
+<code class="sig-name descname">computeStressStrain</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.computeStressStrain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute Strain from Displacement and then Stress, in the elements</p>
 </dd></dl>
 
 <dl class="py method">
@@ -551,7 +558,7 @@ in one array.</p>
 
 <dl class="py method">
 <dt id="prop1D.WP2.plot">
-<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">gatherForce</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.plot" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">gatherForce</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'FVD'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot Force and Velocity lagrangian diagrams (time versus space)</p>
 <p>Wrapper of <a class="reference internal" href="#prop1D.WP2.subplot" title="prop1D.WP2.subplot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WP2.subplot()</span></code></a> method</p>
 <dl class="field-list simple">
@@ -559,6 +566,7 @@ in one array.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>figname</strong> (<em>str</em>) – name for the figure</p></li>
 <li><p><strong>gatherForce</strong> (<em>bool</em>) – do not use subplot for Force diagram</p></li>
+<li><p><strong>typ</strong> (<em>str</em>) – choose variables to plot (F: force, V: velocity, D: displacement)</p></li>
 </ul>
 </dd>
 </dl>
@@ -707,10 +715,19 @@ or state of the bar at given time t.</p>
 <dt id="prop1D.Waveprop.plot">
 <code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'VF'</span></em>, <em class="sig-param"><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">autovert</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot lagrange diagram -time versus space- of wave propagation.</p>
+<p>Type of diagram can be:</p>
+<ul class="simple">
+<li><p>‘V’: Velocity;</p></li>
+<li><p>‘F’: Force;</p></li>
+<li><p>‘dir’: wave direction (left or right);</p></li>
+<li><p>‘state’: wave direction (Left (+1) or Right (-1));</p></li>
+<li><p>‘sig’: stress (sigma);</p></li>
+<li><p>‘eps’: strain (epsilon).</p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>typ</strong> (<em>str</em>) – the diagram to plot (‘V’:Velocity, ‘F’:Force, ‘D’:Direction’, ‘S’:State)</p></li>
+<li><p><strong>typ</strong> (<em>str</em>) – the diagram(s) to plot</p></li>
 <li><p><strong>vert</strong> (<em>list</em>) – list of vertical lines to plot on the diagram.</p></li>
 <li><p><strong>autovert</strong> (<em>bool</em>) – automatically plot vertical lines corresponding to bar lengthes.</p></li>
 </ul>
@@ -898,7 +915,7 @@ or state of the bar at given time t.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="auto_examples/plot_6_deSaintVenant.html" title="previous chapter">De Saint Venant displacement diagrams</a></li>
+      <li>Previous: <a href="auto_examples/plot_6_underHood.html" title="previous chapter">Under the hood</a></li>
       <li>Next: <a href="changelog.html" title="next chapter">Changelog</a></li>
   </ul></li>
 </ul>

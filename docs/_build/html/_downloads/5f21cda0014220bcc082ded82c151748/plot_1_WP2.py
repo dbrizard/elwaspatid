@@ -41,7 +41,11 @@ comp[15:] = -1e3
 test2 = WP2(bc, comp, nstep=100, left='free', right='free')
 test2.plot('2b_free')
 
-
+# %%
+# Two identical bars, free and fixed ends
+# ---------------------------------------
+test2 = WP2(bc, comp, nstep=100, left='free', right='fixed')
+test2.plot('2b_freefixed')
 
 # %%
 # Two identical bars, infinite-ends

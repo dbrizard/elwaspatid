@@ -70,35 +70,14 @@ Here are some useful references:
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Use Waveprop to simulate SHPB">
-
-.. only:: html
-
- .. figure:: /auto_examples/images/thumb/sphx_glr_plot_2_SHPB_thumb.png
-     :alt: Use :class:`Waveprop` to simulate SHPB
-
-     :ref:`sphx_glr_auto_examples_plot_2_SHPB.py`
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   /auto_examples/plot_2_SHPB
-
-.. raw:: html
-
     <div class="sphx-glr-thumbcontainer" tooltip="Compare ElasticImpact and WP2">
 
 .. only:: html
 
- .. figure:: /auto_examples/images/thumb/sphx_glr_plot_3_ElasticImpact_thumb.png
+ .. figure:: /auto_examples/images/thumb/sphx_glr_plot_2_ElasticImpact_thumb.png
      :alt: Compare :class:`ElasticImpact` and :class:`WP2`
 
-     :ref:`sphx_glr_auto_examples_plot_3_ElasticImpact.py`
+     :ref:`sphx_glr_auto_examples_plot_2_ElasticImpact.py`
 
 .. raw:: html
 
@@ -108,49 +87,7 @@ Here are some useful references:
 .. toctree::
    :hidden:
 
-   /auto_examples/plot_3_ElasticImpact
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Displacement and contact loss">
-
-.. only:: html
-
- .. figure:: /auto_examples/images/thumb/sphx_glr_plot_4_contactLoss_thumb.png
-     :alt: Displacement and contact loss
-
-     :ref:`sphx_glr_auto_examples_plot_4_contactLoss.py`
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   /auto_examples/plot_4_contactLoss
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Two cases are considered:">
-
-.. only:: html
-
- .. figure:: /auto_examples/images/thumb/sphx_glr_plot_5_underHood_thumb.png
-     :alt: Under the hood
-
-     :ref:`sphx_glr_auto_examples_plot_5_underHood.py`
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   /auto_examples/plot_5_underHood
+   /auto_examples/plot_2_ElasticImpact
 
 .. raw:: html
 
@@ -158,10 +95,10 @@ Here are some useful references:
 
 .. only:: html
 
- .. figure:: /auto_examples/images/thumb/sphx_glr_plot_6_deSaintVenant_thumb.png
+ .. figure:: /auto_examples/images/thumb/sphx_glr_plot_3_deSaintVenant_thumb.png
      :alt: De Saint Venant displacement diagrams
 
-     :ref:`sphx_glr_auto_examples_plot_6_deSaintVenant.py`
+     :ref:`sphx_glr_auto_examples_plot_3_deSaintVenant.py`
 
 .. raw:: html
 
@@ -171,7 +108,70 @@ Here are some useful references:
 .. toctree::
    :hidden:
 
-   /auto_examples/plot_6_deSaintVenant
+   /auto_examples/plot_3_deSaintVenant
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Use Waveprop to simulate SHPB">
+
+.. only:: html
+
+ .. figure:: /auto_examples/images/thumb/sphx_glr_plot_4_SHPB_thumb.png
+     :alt: Use :class:`Waveprop` to simulate SHPB
+
+     :ref:`sphx_glr_auto_examples_plot_4_SHPB.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/plot_4_SHPB
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Displacement and contact loss">
+
+.. only:: html
+
+ .. figure:: /auto_examples/images/thumb/sphx_glr_plot_5_contactLoss_thumb.png
+     :alt: Displacement and contact loss
+
+     :ref:`sphx_glr_auto_examples_plot_5_contactLoss.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/plot_5_contactLoss
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Two cases are considered:">
+
+.. only:: html
+
+ .. figure:: /auto_examples/images/thumb/sphx_glr_plot_6_underHood_thumb.png
+     :alt: Under the hood
+
+     :ref:`sphx_glr_auto_examples_plot_6_underHood.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/plot_6_underHood
 .. raw:: html
 
     <div class="sphx-glr-clear"></div>

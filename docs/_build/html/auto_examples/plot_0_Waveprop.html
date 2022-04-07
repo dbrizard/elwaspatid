@@ -63,7 +63,7 @@ elastic wave propagation in simple test cases.</p>
 </div>
 <p>Define the incident wave vector</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">incw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>  <span class="c1"># incident wave</span>
-<span class="n">incw</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># &gt;0 means traction pulse</span>
+<span class="n">incw</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1e3</span>  <span class="c1"># &gt;0 means traction pulse</span>
 </pre></div>
 </div>
 <p>Create the bars</p>
@@ -93,23 +93,34 @@ elastic wave propagation in simple test cases.</p>
 <h2>Free-free uniform bar<a class="headerlink" href="#free-free-uniform-bar" title="Permalink to this headline">¶</a></h2>
 <p>Incident pulse reflects on both end of the bar endlessly.
 The force at both ends of the bar is null. Traction pulse reflects as compression.</p>
-<p>It is also possible to plot cuts of the space-time diagram, at a given time <cite>t</cite>
-or at a given position <cite>x</cite></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">Waveprop</span><span class="p">(</span><span class="n">bb</span><span class="p">,</span> <span class="n">incw</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">incw</span><span class="p">),</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">)</span>
 <span class="n">test</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-
-<span class="n">test</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">typ</span><span class="o">=</span><span class="s1">&#39;DX&#39;</span><span class="p">)</span>  <span class="c1"># Wave direction (D) and Displacement (X)</span>
-<span class="n">test</span><span class="o">.</span><span class="n">plotcut</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bb</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">)])</span>
-<span class="n">test</span><span class="o">.</span><span class="n">plotcut</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">bb</span><span class="o">.</span><span class="n">dt</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">incw</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
 <li><img src="../_images/sphx_glr_plot_0_Waveprop_005.png" srcset="../_images/sphx_glr_plot_0_Waveprop_005.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
 <li><img src="../_images/sphx_glr_plot_0_Waveprop_006.png" srcset="../_images/sphx_glr_plot_0_Waveprop_006.png" alt="Particule velocity [m/s]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_007.png" srcset="../_images/sphx_glr_plot_0_Waveprop_007.png" alt="Wave direction (left or righ)" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_008.png" srcset="../_images/sphx_glr_plot_0_Waveprop_008.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_009.png" srcset="../_images/sphx_glr_plot_0_Waveprop_009.png" alt="x=0.25 m" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_010.png" srcset="../_images/sphx_glr_plot_0_Waveprop_010.png" alt="t=7.87969e-05 s" class = "sphx-glr-multi-img"/></li>
+</ul>
+<p>It is possible to plot cuts of the space-time diagram, at a given time <cite>t</cite>
+or at a given position <cite>x</cite></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="o">.</span><span class="n">plotcut</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bb</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">)])</span>
+<span class="n">test</span><span class="o">.</span><span class="n">plotcut</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">bb</span><span class="o">.</span><span class="n">dt</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">incw</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_007.png" srcset="../_images/sphx_glr_plot_0_Waveprop_007.png" alt="x=0.25 m" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_008.png" srcset="../_images/sphx_glr_plot_0_Waveprop_008.png" alt="t=7.87969e-05 s" class = "sphx-glr-multi-img"/></li>
+</ul>
+<p>Additional diagrams are also available</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">typ</span><span class="o">=</span><span class="s1">&#39;dir-D&#39;</span><span class="p">)</span>  <span class="c1"># Wave direction (dir) and Displacement (D)</span>
+<span class="n">test</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">typ</span><span class="o">=</span><span class="s1">&#39;sig-eps&#39;</span><span class="p">)</span>  <span class="c1"># Stress (sig) and Strain (eps)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_009.png" srcset="../_images/sphx_glr_plot_0_Waveprop_009.png" alt="Wave direction (left or righ)" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_010.png" srcset="../_images/sphx_glr_plot_0_Waveprop_010.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_011.png" srcset="../_images/sphx_glr_plot_0_Waveprop_011.png" alt="Stress [MPa]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_012.png" srcset="../_images/sphx_glr_plot_0_Waveprop_012.png" alt="Strain [µdef]" class = "sphx-glr-multi-img"/></li>
 </ul>
 </div>
 <div class="section" id="free-fixed-uniform-bar">
@@ -118,7 +129,7 @@ or at a given position <cite>x</cite></p>
 <ul class="simple">
 <li><p>compression relfects as compression on fixed end;</p></li>
 <li><p>then, compression reflects as traction on free end;</p></li>
-<li><p>and finally traction reflects as traction on fixed end.</p></li>
+<li><p>and finally traction reflects as traction on fixed end;</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">Waveprop</span><span class="p">(</span><span class="n">bb</span><span class="p">,</span> <span class="n">incw</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">incw</span><span class="p">),</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;fixed&#39;</span><span class="p">)</span>
 <span class="n">test</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -126,9 +137,8 @@ or at a given position <cite>x</cite></p>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_011.png" srcset="../_images/sphx_glr_plot_0_Waveprop_011.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_012.png" srcset="../_images/sphx_glr_plot_0_Waveprop_012.png" alt="Particule velocity [m/s]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_013.png" srcset="../_images/sphx_glr_plot_0_Waveprop_013.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_013.png" srcset="../_images/sphx_glr_plot_0_Waveprop_013.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_014.png" srcset="../_images/sphx_glr_plot_0_Waveprop_014.png" alt="Particule velocity [m/s]" class = "sphx-glr-multi-img"/></li>
 </ul>
 </div>
 <div class="section" id="infinite-infinite-uniform-bar">
@@ -139,8 +149,8 @@ or at a given position <cite>x</cite></p>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_014.png" srcset="../_images/sphx_glr_plot_0_Waveprop_014.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_015.png" srcset="../_images/sphx_glr_plot_0_Waveprop_015.png" alt="Particule velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_015.png" srcset="../_images/sphx_glr_plot_0_Waveprop_015.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_016.png" srcset="../_images/sphx_glr_plot_0_Waveprop_016.png" alt="Particule velocity [m/s]" class = "sphx-glr-multi-img"/></li>
 </ul>
 </div>
 <div class="section" id="free-free-bar-with-section-increase">
@@ -150,8 +160,8 @@ or at a given position <cite>x</cite></p>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_016.png" srcset="../_images/sphx_glr_plot_0_Waveprop_016.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_017.png" srcset="../_images/sphx_glr_plot_0_Waveprop_017.png" alt="Particule velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_017.png" srcset="../_images/sphx_glr_plot_0_Waveprop_017.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_018.png" srcset="../_images/sphx_glr_plot_0_Waveprop_018.png" alt="Particule velocity [m/s]" class = "sphx-glr-multi-img"/></li>
 </ul>
 </div>
 <div class="section" id="free-free-bar-with-section-reduction">
@@ -161,8 +171,8 @@ or at a given position <cite>x</cite></p>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_018.png" srcset="../_images/sphx_glr_plot_0_Waveprop_018.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_019.png" srcset="../_images/sphx_glr_plot_0_Waveprop_019.png" alt="Particule velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_019.png" srcset="../_images/sphx_glr_plot_0_Waveprop_019.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_020.png" srcset="../_images/sphx_glr_plot_0_Waveprop_020.png" alt="Particule velocity [m/s]" class = "sphx-glr-multi-img"/></li>
 </ul>
 </div>
 <div class="section" id="whatever-pulse-input-is-possible">
@@ -179,9 +189,9 @@ a compression wave. Left end is <code class="docutils literal notranslate"><span
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_020.png" srcset="../_images/sphx_glr_plot_0_Waveprop_020.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_021.png" srcset="../_images/sphx_glr_plot_0_Waveprop_021.png" alt="Particule velocity [m/s]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_022.png" srcset="../_images/sphx_glr_plot_0_Waveprop_022.png" alt="x=0.2 m" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_021.png" srcset="../_images/sphx_glr_plot_0_Waveprop_021.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_022.png" srcset="../_images/sphx_glr_plot_0_Waveprop_022.png" alt="Particule velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_023.png" srcset="../_images/sphx_glr_plot_0_Waveprop_023.png" alt="x=0.2 m" class = "sphx-glr-multi-img"/></li>
 </ul>
 </div>
 <div class="section" id="and-why-not-a-sine-pulse">
@@ -202,12 +212,12 @@ a compression wave. Left end is <code class="docutils literal notranslate"><span
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_023.png" srcset="../_images/sphx_glr_plot_0_Waveprop_023.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_024.png" srcset="../_images/sphx_glr_plot_0_Waveprop_024.png" alt="Particule velocity [m/s]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_025.png" srcset="../_images/sphx_glr_plot_0_Waveprop_025.png" alt="x=0.15 m" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_0_Waveprop_026.png" srcset="../_images/sphx_glr_plot_0_Waveprop_026.png" alt="x=0.2 m" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_024.png" srcset="../_images/sphx_glr_plot_0_Waveprop_024.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_025.png" srcset="../_images/sphx_glr_plot_0_Waveprop_025.png" alt="Particule velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_026.png" srcset="../_images/sphx_glr_plot_0_Waveprop_026.png" alt="x=0.15 m" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_0_Waveprop_027.png" srcset="../_images/sphx_glr_plot_0_Waveprop_027.png" alt="x=0.2 m" class = "sphx-glr-multi-img"/></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  8.828 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  9.732 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-0-waveprop-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/fb1a27279f9b31c637c222ac01e3d35f/plot_0_Waveprop.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_0_Waveprop.py</span></code></a></p>
@@ -252,11 +262,11 @@ a compression wave. Left end is <code class="docutils literal notranslate"><span
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="plot_1_WP2.html">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_2_SHPB.html">Use <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> to simulate SHPB</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_3_ElasticImpact.html">Compare <code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticImpact</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_4_contactLoss.html">Displacement and contact loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_5_underHood.html">Under the hood</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_6_deSaintVenant.html">De Saint Venant displacement diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_2_ElasticImpact.html">Compare <code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticImpact</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_3_deSaintVenant.html">De Saint Venant displacement diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_4_SHPB.html">Use <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> to simulate SHPB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_5_contactLoss.html">Displacement and contact loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_6_underHood.html">Under the hood</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">API reference</a></li>

@@ -13,16 +13,15 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 * `friction` and `damped` boundary conditions (see DeJuhasz)
 * `elastic`, `mass`, `dashpot` end conditions (see Graff)
 * impacting mass (left end)
-* `fixed` or `clamped` boundary condition for `WP2`
 * test and check `indV` argument of `Waveprop` class
-* compute Stress and Strain in `Segment` for `WP2`
+* plot Stress and Strain in `Segment` for `WP2`;
 
 ### To change
 
 ### To fix
 * Empty APi reference, see next bullet:
-* https://docs.readthedocs.io/en/stable/tutorial/index.html#making-warnings-more-visible
-
+  * https://docs.readthedocs.io/en/stable/tutorial/index.html#making-warnings-more-visible
+  * package must be installable with pip
 
 ## [1.2.0] - 2022-03-xx
 ### Added
@@ -32,10 +31,12 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 ## [1.1.0] - 2022-03-15
 ### Added
 * `Segment.Z` must be array and not scalar any more. __CHECK against Barhomo.__
-* `Segment.resetImpedance` to allow impedance variation inside `Segment`
-* `WP2.plotDeSaintVenant` displacement diagram plotting method
-* `Waveprop.plotDeSaintVenant` displacement diagram plotting method
-* `fixed` or `clamped` boundary condition for `Waveprop`
+* `Segment.resetImpedance` to allow impedance variation inside `Segment`;
+* `WP2.plotDeSaintVenant` displacement diagram plotting method;
+* `Waveprop.plotDeSaintVenant` displacement diagram plotting method;
+* `fixed` boundary condition for `Waveprop`;
+* `fixed` boundary condition for `WP2`;
+* compute Stress and Strain in `Segment` for `WP2`;
 
 ### Changed
 * `plain` boundary condition is now called `infinite`

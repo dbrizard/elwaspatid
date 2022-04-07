@@ -107,14 +107,12 @@ Define the incident wave vector
 Two identical bars, free-ends
 -----------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-46
+.. GENERATED FROM PYTHON SOURCE LINES 41-44
 
 .. code-block:: default
 
     test2 = WP2(bc, comp, nstep=100, left='free', right='free')
     test2.plot('2b_free')
-
-
 
 
 
@@ -147,18 +145,17 @@ Two identical bars, free-ends
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-49
+.. GENERATED FROM PYTHON SOURCE LINES 45-47
 
-Two identical bars, infinite-ends
---------------------------------
+Two identical bars, free and fixed ends
+---------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-53
+.. GENERATED FROM PYTHON SOURCE LINES 47-50
 
 .. code-block:: default
 
-
-    test2f = WP2(bc, comp, nstep=100, left='infinite', right='infinite')
-    test2f.plot('2b_anech')
+    test2 = WP2(bc, comp, nstep=100, left='free', right='fixed')
+    test2.plot('2b_freefixed')
 
 
 
@@ -191,17 +188,18 @@ Two identical bars, infinite-ends
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-56
+.. GENERATED FROM PYTHON SOURCE LINES 51-53
 
-Two identical bars with traction pulse
---------------------------------------
+Two identical bars, infinite-ends
+--------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 56-59
+.. GENERATED FROM PYTHON SOURCE LINES 53-57
 
 .. code-block:: default
 
-    test2t = WP2(bc, -comp, nstep=100, left='free', right='free')
-    test2t.plot('2b_trac')
+
+    test2f = WP2(bc, comp, nstep=100, left='infinite', right='infinite')
+    test2f.plot('2b_anech')
 
 
 
@@ -234,19 +232,17 @@ Two identical bars with traction pulse
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-62
+.. GENERATED FROM PYTHON SOURCE LINES 58-60
 
-Two bars, cross-section increase
---------------------------------
+Two identical bars with traction pulse
+--------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-67
+.. GENERATED FROM PYTHON SOURCE LINES 60-63
 
 .. code-block:: default
 
-    test2a = WP2(bc2, comp, nstep=100, left='free', right='free')
-    test2a.plot('2b_incre')
-    # test2av = WP2(bc2, comp, nstep=100, left='free', right='free', Vinit=10)
-    # test2av.plot('2baugmv')
+    test2t = WP2(bc, -comp, nstep=100, left='free', right='free')
+    test2t.plot('2b_trac')
 
 
 
@@ -279,20 +275,19 @@ Two bars, cross-section increase
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-70
+.. GENERATED FROM PYTHON SOURCE LINES 64-66
 
-Two bars, cross-section reduction
-----------------------------------
+Two bars, cross-section increase
+--------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-76
+.. GENERATED FROM PYTHON SOURCE LINES 66-71
 
 .. code-block:: default
 
-    test2d = WP2(bc3, comp, nstep=100, left='free', right='free')
-    test2d.plot('2b_reduc')
-    # test2dv = WP2(bc3, comp, nstep=100, left='free', right='free', Vinit=10)
-    # test2dv.plot('2bdimiv')
-    test2d.plotInterface(figname='interf')
+    test2a = WP2(bc2, comp, nstep=100, left='free', right='free')
+    test2a.plot('2b_incre')
+    # test2av = WP2(bc2, comp, nstep=100, left='free', right='free', Vinit=10)
+    # test2av.plot('2baugmv')
 
 
 
@@ -321,44 +316,24 @@ Two bars, cross-section reduction
          :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_015.png
          :class: sphx-glr-multi-img
 
-    *
-
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_016.png
-         :alt: x = 0 m
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_016.png
-         :class: sphx-glr-multi-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-    /home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:375: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
-      ax1 = plt.subplot(nsbp, 1, 1)
-    /home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:382: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
-      plt.subplot(nsbp, 1, 2, sharex=ax1)
-    /home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:389: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
-      plt.subplot(nsbp, 1, 3, sharex=ax1)
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-82
+.. GENERATED FROM PYTHON SOURCE LINES 72-74
 
-First bar with initial velocity
--------------------------------
-Positive velocity: compression
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Two bars, cross-section reduction
+----------------------------------
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 82-85
+.. GENERATED FROM PYTHON SOURCE LINES 74-80
 
 .. code-block:: default
 
-    test2v = WP2(bc4, comp, nstep=100, left='free', right='free', Vinit=10)
-    test2v.plot('2b_veloc')
+    test2d = WP2(bc3, comp, nstep=100, left='free', right='free')
+    test2d.plot('2b_reduc')
+    # test2dv = WP2(bc3, comp, nstep=100, left='free', right='free', Vinit=10)
+    # test2dv.plot('2bdimiv')
+    test2d.plotInterface(figname='interf')
 
 
 
@@ -368,22 +343,29 @@ Positive velocity: compression
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_017.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_016.png
          :alt: Force [N]
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_016.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_017.png
+         :alt: Velocity [m/s]
          :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_017.png
          :class: sphx-glr-multi-img
 
     *
 
       .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_018.png
-         :alt: Velocity [m/s]
+         :alt: Displacement [m]
          :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_018.png
          :class: sphx-glr-multi-img
 
     *
 
       .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_019.png
-         :alt: Displacement [m]
+         :alt: x = 0 m
          :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_019.png
          :class: sphx-glr-multi-img
 
@@ -394,23 +376,31 @@ Positive velocity: compression
 
  .. code-block:: none
 
-    Setting initial velocity of first segment (Vo=10)
+    /home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:397: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+      ax1 = plt.subplot(nsbp, 1, 1)
+    /home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:404: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+      plt.subplot(nsbp, 1, 2, sharex=ax1)
+    /home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:411: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+      plt.subplot(nsbp, 1, 3, sharex=ax1)
 
 
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 81-86
+
+First bar with initial velocity
+-------------------------------
+Positive velocity: compression
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 86-89
 
-Negative velocity
-^^^^^^^^^^^^^^^^^
-Nothing happens, the left bar travels to the left.
-
-.. GENERATED FROM PYTHON SOURCE LINES 89-91
-
 .. code-block:: default
 
-    test2vn = WP2(bc4, comp, nstep=100, left='free', right='free', Vinit=-10)
-    test2vn.plot('2b_negveloc')
+    test2v = WP2(bc4, comp, nstep=100, left='free', right='free', Vinit=10)
+    test2v.plot('2b_veloc')
+
 
 
 
@@ -445,6 +435,57 @@ Nothing happens, the left bar travels to the left.
 
  .. code-block:: none
 
+    Setting initial velocity of first segment (Vo=10)
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 90-93
+
+Negative velocity
+^^^^^^^^^^^^^^^^^
+Nothing happens, the left bar travels to the left.
+
+.. GENERATED FROM PYTHON SOURCE LINES 93-95
+
+.. code-block:: default
+
+    test2vn = WP2(bc4, comp, nstep=100, left='free', right='free', Vinit=-10)
+    test2vn.plot('2b_negveloc')
+
+
+
+.. rst-class:: sphx-glr-horizontal
+
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_023.png
+         :alt: Force [N]
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_023.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_024.png
+         :alt: Velocity [m/s]
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_024.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_025.png
+         :alt: Displacement [m]
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_025.png
+         :class: sphx-glr-multi-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
     Setting initial velocity of first segment (Vo=-10)
 
 
@@ -453,7 +494,7 @@ Nothing happens, the left bar travels to the left.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  7.856 seconds)
+   **Total running time of the script:** ( 0 minutes  10.026 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_1_WP2.py:

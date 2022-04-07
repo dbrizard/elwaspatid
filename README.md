@@ -2,7 +2,7 @@
 
 ELWA-SPATID is a Python module for the computation of space-time diagrams for
 the propagation of elastic waves in 1D rods. The rods can have impedance variations
-along thepropagation axis, and it is possible to consider several rods in contact.
+along the propagation axis, and it is possible to consider several rods in contact.
 
 Initial conditions can be:
 
@@ -13,7 +13,8 @@ Boundary conditions can be:
 
 * free end;
 * fixed end;
-* contact interface with another rod.
+* contact interface with another rod;
+* infinite end (ie. anechoic condition).
 
 
 ## Installation
@@ -26,6 +27,6 @@ Boundary conditions can be:
 
 ## Usage
 
-See examples in the documentation and in the `examples` folder.
+See the examples in the documentation and in the `examples` folder of the github source.
 
 

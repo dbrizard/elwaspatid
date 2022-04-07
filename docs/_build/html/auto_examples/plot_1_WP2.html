@@ -19,7 +19,7 @@
     <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Use Waveprop to simulate SHPB" href="plot_2_SHPB.html" />
+    <link rel="next" title="Compare ElasticImpact and WP2" href="plot_2_ElasticImpact.html" />
     <link rel="prev" title="Test Waveprop class" href="plot_0_Waveprop.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -84,6 +84,18 @@ elastic wave propagation in simple test cases.</p>
 <li><img src="../_images/sphx_glr_plot_1_WP2_003.png" srcset="../_images/sphx_glr_plot_1_WP2_003.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
 </ul>
 </div>
+<div class="section" id="two-identical-bars-free-and-fixed-ends">
+<h2>Two identical bars, free and fixed ends<a class="headerlink" href="#two-identical-bars-free-and-fixed-ends" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;fixed&#39;</span><span class="p">)</span>
+<span class="n">test2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;2b_freefixed&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img src="../_images/sphx_glr_plot_1_WP2_004.png" srcset="../_images/sphx_glr_plot_1_WP2_004.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_005.png" srcset="../_images/sphx_glr_plot_1_WP2_005.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_006.png" srcset="../_images/sphx_glr_plot_1_WP2_006.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
+</ul>
+</div>
 <div class="section" id="two-identical-bars-infinite-ends">
 <h2>Two identical bars, infinite-ends<a class="headerlink" href="#two-identical-bars-infinite-ends" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2f</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;infinite&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;infinite&#39;</span><span class="p">)</span>
@@ -91,9 +103,9 @@ elastic wave propagation in simple test cases.</p>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img src="../_images/sphx_glr_plot_1_WP2_004.png" srcset="../_images/sphx_glr_plot_1_WP2_004.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_1_WP2_005.png" srcset="../_images/sphx_glr_plot_1_WP2_005.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_1_WP2_006.png" srcset="../_images/sphx_glr_plot_1_WP2_006.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_007.png" srcset="../_images/sphx_glr_plot_1_WP2_007.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_008.png" srcset="../_images/sphx_glr_plot_1_WP2_008.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_009.png" srcset="../_images/sphx_glr_plot_1_WP2_009.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
 </ul>
 </div>
 <div class="section" id="two-identical-bars-with-traction-pulse">
@@ -103,9 +115,9 @@ elastic wave propagation in simple test cases.</p>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img src="../_images/sphx_glr_plot_1_WP2_007.png" srcset="../_images/sphx_glr_plot_1_WP2_007.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_1_WP2_008.png" srcset="../_images/sphx_glr_plot_1_WP2_008.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_1_WP2_009.png" srcset="../_images/sphx_glr_plot_1_WP2_009.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_010.png" srcset="../_images/sphx_glr_plot_1_WP2_010.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_011.png" srcset="../_images/sphx_glr_plot_1_WP2_011.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_012.png" srcset="../_images/sphx_glr_plot_1_WP2_012.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
 </ul>
 </div>
 <div class="section" id="two-bars-cross-section-increase">
@@ -117,9 +129,9 @@ elastic wave propagation in simple test cases.</p>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img src="../_images/sphx_glr_plot_1_WP2_010.png" srcset="../_images/sphx_glr_plot_1_WP2_010.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_1_WP2_011.png" srcset="../_images/sphx_glr_plot_1_WP2_011.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_1_WP2_012.png" srcset="../_images/sphx_glr_plot_1_WP2_012.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_013.png" srcset="../_images/sphx_glr_plot_1_WP2_013.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_014.png" srcset="../_images/sphx_glr_plot_1_WP2_014.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_015.png" srcset="../_images/sphx_glr_plot_1_WP2_015.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
 </ul>
 </div>
 <div class="section" id="two-bars-cross-section-reduction">
@@ -132,17 +144,17 @@ elastic wave propagation in simple test cases.</p>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img src="../_images/sphx_glr_plot_1_WP2_013.png" srcset="../_images/sphx_glr_plot_1_WP2_013.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_1_WP2_014.png" srcset="../_images/sphx_glr_plot_1_WP2_014.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_1_WP2_015.png" srcset="../_images/sphx_glr_plot_1_WP2_015.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_1_WP2_016.png" srcset="../_images/sphx_glr_plot_1_WP2_016.png" alt="x = 0 m" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_016.png" srcset="../_images/sphx_glr_plot_1_WP2_016.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_017.png" srcset="../_images/sphx_glr_plot_1_WP2_017.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_018.png" srcset="../_images/sphx_glr_plot_1_WP2_018.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_019.png" srcset="../_images/sphx_glr_plot_1_WP2_019.png" alt="x = 0 m" class = "sphx-glr-multi-img"/></li>
 </ul>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:375: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:397: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
   ax1 = plt.subplot(nsbp, 1, 1)
-/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:382: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:404: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
   plt.subplot(nsbp, 1, 2, sharex=ax1)
-/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:389: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+/home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:411: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
   plt.subplot(nsbp, 1, 3, sharex=ax1)
 </pre></div>
 </div>
@@ -156,9 +168,9 @@ elastic wave propagation in simple test cases.</p>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img src="../_images/sphx_glr_plot_1_WP2_017.png" srcset="../_images/sphx_glr_plot_1_WP2_017.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_1_WP2_018.png" srcset="../_images/sphx_glr_plot_1_WP2_018.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_1_WP2_019.png" srcset="../_images/sphx_glr_plot_1_WP2_019.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_020.png" srcset="../_images/sphx_glr_plot_1_WP2_020.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_021.png" srcset="../_images/sphx_glr_plot_1_WP2_021.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_022.png" srcset="../_images/sphx_glr_plot_1_WP2_022.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
 </ul>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Setting initial velocity of first segment (Vo=10)
@@ -173,15 +185,15 @@ elastic wave propagation in simple test cases.</p>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
-<li><img src="../_images/sphx_glr_plot_1_WP2_020.png" srcset="../_images/sphx_glr_plot_1_WP2_020.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_1_WP2_021.png" srcset="../_images/sphx_glr_plot_1_WP2_021.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
-<li><img src="../_images/sphx_glr_plot_1_WP2_022.png" srcset="../_images/sphx_glr_plot_1_WP2_022.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_023.png" srcset="../_images/sphx_glr_plot_1_WP2_023.png" alt="Force [N]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_024.png" srcset="../_images/sphx_glr_plot_1_WP2_024.png" alt="Velocity [m/s]" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_1_WP2_025.png" srcset="../_images/sphx_glr_plot_1_WP2_025.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
 </ul>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Setting initial velocity of first segment (Vo=-10)
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  7.856 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  10.026 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-1-wp2-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/5f21cda0014220bcc082ded82c151748/plot_1_WP2.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_1_WP2.py</span></code></a></p>
@@ -219,6 +231,7 @@ elastic wave propagation in simple test cases.</p>
 <li class="toctree-l2"><a class="reference internal" href="plot_0_Waveprop.html">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> class</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> class</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#two-identical-bars-free-ends">Two identical bars, free-ends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#two-identical-bars-free-and-fixed-ends">Two identical bars, free and fixed ends</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#two-identical-bars-infinite-ends">Two identical bars, infinite-ends</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#two-identical-bars-with-traction-pulse">Two identical bars with traction pulse</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#two-bars-cross-section-increase">Two bars, cross-section increase</a></li>
@@ -226,11 +239,11 @@ elastic wave propagation in simple test cases.</p>
 <li class="toctree-l3"><a class="reference internal" href="#first-bar-with-initial-velocity">First bar with initial velocity</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="plot_2_SHPB.html">Use <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> to simulate SHPB</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_3_ElasticImpact.html">Compare <code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticImpact</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_4_contactLoss.html">Displacement and contact loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_5_underHood.html">Under the hood</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_6_deSaintVenant.html">De Saint Venant displacement diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_2_ElasticImpact.html">Compare <code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticImpact</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_3_deSaintVenant.html">De Saint Venant displacement diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_4_SHPB.html">Use <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> to simulate SHPB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_5_contactLoss.html">Displacement and contact loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_6_underHood.html">Under the hood</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">API reference</a></li>
@@ -243,7 +256,7 @@ elastic wave propagation in simple test cases.</p>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="index.html">Examples of diagrams</a><ul>
       <li>Previous: <a href="plot_0_Waveprop.html" title="previous chapter">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> class</a></li>
-      <li>Next: <a href="plot_2_SHPB.html" title="next chapter">Use <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> to simulate SHPB</a></li>
+      <li>Next: <a href="plot_2_ElasticImpact.html" title="next chapter">Compare <code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticImpact</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a></li>
   </ul></li>
   </ul></li>
 </ul>

@@ -126,6 +126,7 @@ class WP2:
         time = np.arange(nT)*bar.dt
         for ss in bar.seg:
             ss.setTime(time) #set :attr:`time` for each :class:`Segment`
+            ss.computeStressStrain()
         
         self.time = time
         self.bar = bar
@@ -155,25 +156,29 @@ class WP2:
         
         self.Force = Force
 
-    def plot(self, figname=None, gatherForce=True):
+    def plot(self, figname=None, gatherForce=True, typ='FVD'):
         """Plot Force and Velocity lagrangian diagrams (time versus space)
         
         Wrapper of :meth:`WP2.subplot` method
         
         :param str figname: name for the figure
         :param bool gatherForce: do not use subplot for Force diagram
+        :param str typ: choose variables to plot (F: force, V: velocity, D: displacement)
         """
-        # ---PLOT FORCE---
-        if gatherForce:
-            self.plotForce(figname=figname)
-        else:
-            self.subplot(figname, 'F')
+        if 'F' in typ:
+            # ---PLOT FORCE---
+            if gatherForce:
+                self.plotForce(figname=figname)
+            else:
+                self.subplot(figname, 'F')
         
-        # ---PLOT VELOCITY---
-        self.subplot(figname, 'Veloc')
+        if 'V' in typ:
+            # ---PLOT VELOCITY---
+            self.subplot(figname, 'Veloc')
         
-        # ---PLOT DISPLACEMENT---
-        self.subplot(figname, 'Displ')
+        if 'D' in typ:
+            # ---PLOT DISPLACEMENT---
+            self.subplot(figname, 'Displ')
 
 
     def plotForce(self, figname=None, vert=None, autovert=True):
@@ -239,6 +244,7 @@ class WP2:
         """
         gs = plt.GridSpec(1, len(self.bar.seg), width_ratios=[ss.l for ss in self.bar.seg])
         
+        shading = 'nearest'
         if typ.lower() in ('veloc', 'velocity', 'v'):
             ZVAL = [ss.Veloc for ss in self.bar.seg]
             title = 'Velocity [m/s]'
@@ -254,6 +260,22 @@ class WP2:
             title = 'Displacement [m]'
             cmap = plt.cm.PiYG
             prefix = '-D'
+        elif typ.lower() in ('stress', 'sig'):
+            ZVAL = [ss.Stress/1e6 for ss in self.bar.seg]
+            title = 'Stress [MPa]'
+            cmap = plt.cm.PiYG
+            prefix = '-sig'
+            shading ='flat'
+            print('NOT POSSIBLE YET')
+        elif typ.lower() in ('strain', 'eps'):
+            ZVAL = [ss.Strain/1e6 for ss in self.bar.seg]
+            title = 'Strain [µdef]'
+            cmap = plt.cm.PRGn
+            prefix = '-eps'
+            shading = 'flat'
+            print('NOT POSSIBLE YET')
+
+
         
         # ---HANDLE FIGURE NAME---
         if figname is not None:
@@ -475,7 +497,7 @@ class Waveprop:
         :param float Vinit: initial bar velocity
         :param int indV: index of end of impact section! LEFT=impactor=speed, RIGHT=bars=static
         '''
-        # gestion du nombre de pas de calcul
+        # Number of calculation steps
         if nstep==0:
             # si la durée n'est pas précisée, on se base sur la durée de l'excitation
             nstep = len(incw)
@@ -580,12 +602,12 @@ class Waveprop:
         self.Displ = np.cumsum(Veloc*bar.dt, axis=0)  # @nodes
         # Store element variables
         self.Strain = (self.Displ[:,1:]-self.Displ[:,:-1])/bar.dx  # @elements
-        self.Stress = {}
+        self._Stress = {}
         # This is not the correct way to compute stress, I believe,
-        self.Stress['left'] = self.Force[:,:-1]/bar.A  # left stress, @elements
-        self.Stress['right'] = self.Force[:,1:]/bar.A  # right stress, @elements
+        self._Stress['left'] = self.Force[:,:-1]/bar.A  # left stress, @elements
+        self._Stress['right'] = self.Force[:,1:]/bar.A  # right stress, @elements
         # This should rather be the way
-        self.Stress['strain'] = self.Strain*bar.E
+        self.Stress = self.Strain*bar.E
         
         # Traction-Compression state
         LR = Force*Veloc
@@ -695,7 +717,16 @@ class Waveprop:
     def plot(self, typ='VF', vert=None, autovert=True):
         '''Plot lagrange diagram -time versus space- of wave propagation.
         
-        :param str typ: the diagram to plot ('V':Velocity, 'F':Force, 'D':Direction', 'S':State)        
+        Type of diagram can be:
+        
+        * 'V': Velocity;
+        * 'F': Force;
+        * 'dir': wave direction (left or right);
+        * 'state': wave direction (Left (+1) or Right (-1));
+        * 'sig': stress (sigma);
+        * 'eps': strain (epsilon).
+        
+        :param str typ: the diagram(s) to plot       
         :param list vert: list of vertical lines to plot on the diagram.
         :param bool autovert: automatically plot vertical lines corresponding to bar lengthes.
         '''
@@ -705,17 +736,20 @@ class Waveprop:
         if 'V' in typ:
             self.plotmatrix(self.Veloc, 'Particule velocity [m/s]', plt.cm.RdBu,
                             vert=vert, autovert=autovert)
-        if 'D' in typ:
+        if 'dir' in typ:
             self.plotmatrix(self.LR, 'Wave direction (left or righ)', plt.cm.BrBG,
                             vert=vert, autovert=autovert)
-        if 'S' in typ:
+        if 'state' in typ:
             self.plotmatrix(self.state, 'Left (+1) or Right (-1)', plt.cm.PuOr,
                             vert=vert, autovert=autovert)
-        if 'X' in typ:
+        if 'D' in typ:
             self.plotmatrix(self.Displ, 'Displacement [m]',
                             vert=vert, autovert=autovert)
-        if 'stress' in typ:
-            self.plotmatrix(self.Stress['strain']/1e6, 'Stress [MPa]',
+        if 'sig' in typ:
+            self.plotmatrix(self.Stress/1e6, 'Stress [MPa]',
+                            vert=vert, autovert=autovert)
+        if 'eps' in typ:
+            self.plotmatrix(self.Strain*1e6, 'Strain [µdef]',
                             vert=vert, autovert=autovert)
     
     def getcut(self, x=None, t=None, isind=False):
@@ -1073,7 +1107,7 @@ class Barhete(Barhomo):
         self.nseg = len(bar.co)
         # define segment list
         s = []
-        for ii, (zz, ll, ddx, nn) in enumerate(zip(bar.Z, Lentier, dx, nelt)):
+        for ii, (zz, ll, ddx, nn, EE) in enumerate(zip(bar.Z, Lentier, dx, nelt, E)):
             if ii==0:
                 le = 'impact'
                 xo = 0
@@ -1084,7 +1118,7 @@ class Barhete(Barhomo):
                 ri = right
             else:
                 ri = 'interf'
-            s.append(Segment(nn, zz, ll, ddx, dt, xo, le, ri))
+            s.append(Segment(nn, zz, EE, ll, ddx, dt, xo, le, ri))
         self.seg = s
 
 
@@ -1132,11 +1166,12 @@ class Segment(object):
     
     For later use in :class:`WP2` through :class:`Barhete`
     """
-    def __init__(self, nel, z, l, dx, dt, xo, left='infinite', right='infinite'):
+    def __init__(self, nel, z, E, l, dx, dt, xo, left='infinite', right='infinite'):
         """
         
         :param int nel:  number of elements in segment
         :param float z:  segment impedance
+        :param float E:  segment elastic modulus
         :param float l:  segment length
         :param float dx: length of elements in segment
         :param float dt: time step
@@ -1153,6 +1188,7 @@ class Segment(object):
         # UN = np.ones(self.nx) # point number = element number +1 !!
         #self.z = z  # 
         self.Z = np.ones(nel)*z
+        self.E = E
         self.l = l
         self.dx = dx
         self.dt = dt
@@ -1226,7 +1262,9 @@ class Segment(object):
             self.Veloc[it, 0] = self.Veloc[it-1, 1] + self.Force[it-1, 1]/self.Z[0]
             #/!\ indices semblent bon. Reste les signes... à vérifier
         elif left=='fixed':
-            print('Not Yet!')  # XXX
+            print('LEft Not Checked Yet!')  # XXX
+            self.Force[it, 0] = self.Force[it-1, 1] - self.Z[0]*self.Veloc[it-1, 1]  # XXX TOCHECK!!
+            self.Veloc[it, 0] = 0            
         elif left=='infinite':
             self.Force[it, 0] = (self.Force[it-1, 1] + self.Z[0]*self.Veloc[it-1, 1])/2
             self.Veloc[it, 0] = (self.Force[it-1, 1] + self.Z[0]*self.Veloc[it-1, 1])/(2*self.Z[0])
@@ -1267,7 +1305,8 @@ class Segment(object):
             self.Force[it, -1] = 0
             self.Veloc[it, -1] = self.Veloc[it-1, -2] - self.Force[it-1, -2]/self.Z[-1]
         elif right=='fixed':
-            print('Not Yet!')  # XXX
+            self.Force[it, -1] = self.Force[it-1, -2] - self.Z[-1]*self.Veloc[it-1, -2]  # XXX TOCHECK!!
+            self.Veloc[it, -1] = 0           
         elif right=='infinite':
             self.Force[it, -1] = (self.Force[it-1, -2] - self.Z[-1]*self.Veloc[it-1, -2])/2
             self.Veloc[it, -1] = -self.Force[it-1, -2]/2/self.Z[-1] + self.Veloc[it-1, -2]/2
@@ -1288,12 +1327,19 @@ class Segment(object):
                 self.Veloc[it, -1] = Vl - Fl/Zi
         
     def compDispl(self, it):
-        """Compute displacement of the bar nodes.
+        """Compute displacement of the bar nodes at given time index.
         
         :param int it: time index
         """
         self.Displ[it,:] = self.Displ[it-1,:] + self.Veloc[it,:]*self.dt
     
+    def computeStressStrain(self):
+        """Compute Strain from Displacement and then Stress, in the elements        
+        
+        """
+        self.Strain = (self.Displ[:,1:]-self.Displ[:,:-1])/self.dx  # @elements
+        self.Stress = self.Strain*self.E  # @elements
+
     
     def plotProperties(self, figname=None, label=None):
         """
