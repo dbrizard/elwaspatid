@@ -35,6 +35,7 @@ cloudpickle==2.0.0
 cma==3.0.3
 colorama==0.4.4
 colorcet==2.0.6
+colormath==3.0.0
 colourmap==0.1.1
 configobj==5.0.6
 contextvars==2.4
@@ -49,10 +50,12 @@ dataclasses==0.8
 dbus-python==1.2.4
 decorator==4.4.2
 defusedxml==0.6.0
+delicolour==1.3.0
 diff-match-patch==20200713
 dill==0.3.3
 docutils==0.16
 DyMat==0.7
+elwaspatid==1.1.2
 empty-files==0.0.3
 entrypoints==0.3
 ethtool==0.14
@@ -113,6 +116,7 @@ nbconvert==6.0.7
 nbformat==5.0.8
 nest-asyncio==1.5.1
 netifaces==0.10.6
+networkx==2.5.1
 nftables==0.1
 notebook==6.4.6
 ntplib==0.3.3
