@@ -25,12 +25,12 @@ sphinx:
 
 # Optionally declare the Python requirements required to build your docs
 # Not working...
-#python:
-#   install:
-#   - requirements: docs/RTDrequirements_short.txt
-
 python:
-  # Install our python package before building the docs
-  install:
-    - method: pip
-      path: .
+   install:
+   - requirements: docs/RTDrequirements_short.txt
+
+#python:
+#  # Install our python package before building the docs
+#  install:
+#    - method: pip
+#      path: .
