@@ -27,7 +27,7 @@ sphinx:
 # Not working...
 python:
    install:
-   - requirements: docs/RTDrequirements.txt
+   - requirements: docs/RTDrequirements_short.txt
 
 #python:
 #  # Install our python package before building the docs
