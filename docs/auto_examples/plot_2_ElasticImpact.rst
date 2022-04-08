@@ -31,7 +31,7 @@ result given by :class:`ElasticImpact` and the numerical result computed with
 
     import numpy as np
     import matplotlib.pyplot as plt
-    from prop1D import WP2, Barhete, ElasticImpact
+    from elwaspatid import WP2, Barhete, ElasticImpact
 
 
 
@@ -246,7 +246,7 @@ Compare analytical and numerical solutions
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.946 seconds)
+   **Total running time of the script:** ( 0 minutes  2.948 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_2_ElasticImpact.py:

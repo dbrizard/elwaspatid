@@ -1,6 +1,6 @@
 API reference
 =============
 
-.. automodule:: prop1D
+.. automodule:: elwaspatid
    :members:
    :special-members:

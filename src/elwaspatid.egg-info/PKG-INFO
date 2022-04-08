@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
-Name: ELWA-SPATID
-Version: 1.1.0
+Name: elwaspatid
+Version: 1.1.2
 Summary: Space-time diagrams for the propagation of elastic waves in 1D rods.
 Home-page: https://github.com/dbrizard/ELWA-SPATID
 Author: Denis Brizard

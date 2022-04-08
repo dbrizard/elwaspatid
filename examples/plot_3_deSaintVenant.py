@@ -19,7 +19,7 @@ the displacement diagrams of de Saint Venant in:
 
 
 import numpy as np
-from prop1D import WP2, Barhete
+from elwaspatid import WP2, Barhete
 import matplotlib.pyplot as plt
 
 

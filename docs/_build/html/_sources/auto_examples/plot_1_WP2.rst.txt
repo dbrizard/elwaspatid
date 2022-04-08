@@ -30,7 +30,7 @@ elastic wave propagation in simple test cases.
 
 
     import numpy as np
-    from prop1D import WP2, Barhete
+    from elwaspatid import WP2, Barhete
 
 
 
@@ -376,11 +376,11 @@ Two bars, cross-section reduction
 
  .. code-block:: none
 
-    /home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:397: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:397: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
       ax1 = plt.subplot(nsbp, 1, 1)
-    /home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:404: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:404: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
       plt.subplot(nsbp, 1, 2, sharex=ax1)
-    /home/dbrizard/Miscellaneous/prop1d/src/1d_wave_prop/prop1D.py:411: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:411: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
       plt.subplot(nsbp, 1, 3, sharex=ax1)
 
 
@@ -494,7 +494,7 @@ Nothing happens, the left bar travels to the left.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  10.026 seconds)
+   **Total running time of the script:** ( 0 minutes  9.649 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_1_WP2.py:

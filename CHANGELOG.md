@@ -7,6 +7,7 @@ _Readthedoc_:
 * il est parfois nécessaire d'attendre après un commit pour pouvoir compiler la doc. 
 * `requirements: docs/RTDrequirements_short.txt` in .readthedocs.yaml does not works
 * requirement was therefore added online in Admin > Advanced Settings
+* API reference still empty...
 
 --->
 

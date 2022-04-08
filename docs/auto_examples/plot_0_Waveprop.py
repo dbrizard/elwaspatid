@@ -11,7 +11,7 @@ elastic wave propagation in simple test cases.
 import matplotlib.pyplot as plt
 import numpy as np
 
-from prop1D import Waveprop, Barhomo, trapezeWave
+from elwaspatid import Waveprop, Barhomo, trapezeWave
 
 
 # %%

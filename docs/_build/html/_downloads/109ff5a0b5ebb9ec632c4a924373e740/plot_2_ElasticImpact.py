@@ -10,7 +10,7 @@ result given by :class:`ElasticImpact` and the numerical result computed with
 
 import numpy as np
 import matplotlib.pyplot as plt
-from prop1D import WP2, Barhete, ElasticImpact
+from elwaspatid import WP2, Barhete, ElasticImpact
 
 
 # %%

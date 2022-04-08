@@ -28,7 +28,7 @@ Use :class:`Waveprop` to simulate SHPB
 
 
     import matplotlib.pyplot as plt
-    from prop1D import WP2, Barhete
+    from elwaspatid import WP2, Barhete
 
 
 
@@ -160,14 +160,14 @@ Plot forces in the sample
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x7f2e60cd6c88>
+    <matplotlib.legend.Legend object at 0x7f50352b4080>
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.013 seconds)
+   **Total running time of the script:** ( 0 minutes  1.946 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_4_SHPB.py:

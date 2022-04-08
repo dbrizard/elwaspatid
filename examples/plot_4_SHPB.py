@@ -7,7 +7,7 @@ Use :class:`Waveprop` to simulate SHPB
 """
 
 import matplotlib.pyplot as plt
-from prop1D import WP2, Barhete
+from elwaspatid import WP2, Barhete
 
 
 # %%

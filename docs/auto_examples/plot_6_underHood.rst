@@ -40,7 +40,7 @@ in the case of :class:`WP2` (see below :class:`Segment`).
 
     import numpy as np
     import matplotlib.pyplot as plt
-    from prop1D import Waveprop, WP2, Barhomo, Barhete 
+    from elwaspatid import Waveprop, WP2, Barhomo, Barhete 
 
     E = 210e9  # [MPa]
     rho = 7800  # [kg/m3]
@@ -271,7 +271,7 @@ XXX a word on :class:`Bar`, used in :class:`Barhete`
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.152 seconds)
+   **Total running time of the script:** ( 0 minutes  2.823 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_6_underHood.py:

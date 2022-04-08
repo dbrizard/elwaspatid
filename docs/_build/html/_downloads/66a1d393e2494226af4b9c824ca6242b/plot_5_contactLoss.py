@@ -10,7 +10,7 @@ have the same impedance.
 
 import numpy as np
 import matplotlib.pyplot as plt
-from prop1D import Waveprop, WP2, Barhomo, Barhete 
+from elwaspatid import Waveprop, WP2, Barhomo, Barhete 
 plt.close('all')
 
 E = 210e9  # [MPa]

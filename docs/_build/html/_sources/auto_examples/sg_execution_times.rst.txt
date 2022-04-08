@@ -5,20 +5,20 @@
 
 Computation times
 =================
-**00:36.867** total execution time for **auto_examples** files:
+**00:35.190** total execution time for **auto_examples** files:
 
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_1_WP2.py` (``plot_1_WP2.py``)                     | 00:10.026 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_1_WP2.py` (``plot_1_WP2.py``)                     | 00:09.649 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_0_Waveprop.py` (``plot_0_Waveprop.py``)           | 00:09.732 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_0_Waveprop.py` (``plot_0_Waveprop.py``)           | 00:09.455 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_5_contactLoss.py` (``plot_5_contactLoss.py``)     | 00:06.956 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_5_contactLoss.py` (``plot_5_contactLoss.py``)     | 00:06.403 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_6_underHood.py` (``plot_6_underHood.py``)         | 00:03.152 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_2_ElasticImpact.py` (``plot_2_ElasticImpact.py``) | 00:02.948 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_2_ElasticImpact.py` (``plot_2_ElasticImpact.py``) | 00:02.946 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_6_underHood.py` (``plot_6_underHood.py``)         | 00:02.823 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_3_deSaintVenant.py` (``plot_3_deSaintVenant.py``) | 00:02.044 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_3_deSaintVenant.py` (``plot_3_deSaintVenant.py``) | 00:01.966 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_4_SHPB.py` (``plot_4_SHPB.py``)                   | 00:02.013 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_4_SHPB.py` (``plot_4_SHPB.py``)                   | 00:01.946 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+

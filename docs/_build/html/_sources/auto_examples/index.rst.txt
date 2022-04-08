@@ -7,7 +7,7 @@
 Examples of diagrams
 ====================
 
-Below are examples of usage of the :mod:`prop1D` module.
+Below are examples of usage of the :mod:`elwaspatid` module.
 
 Interpretation of the space-time diagrams requires some knowledge on elastic wave propagation. 
 Here are some useful references:

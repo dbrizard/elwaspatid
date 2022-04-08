@@ -1,6 +1,6 @@
 # ELastic WAve SPAce-TIme Diagrams
 
-ELWA-SPATID is a Python module for the computation of space-time diagrams for
+`elwaspatid` is a Python module for the computation of space-time diagrams for
 the propagation of elastic waves in 1D rods. The rods can have impedance variations
 along the propagation axis, and it is possible to consider several rods in contact.
 
@@ -19,7 +19,7 @@ Boundary conditions can be:
 
 ## Installation
 
-`pip install ELWA-SPATID`
+`pip install elwaspatid`
 
 ## Documentation
 

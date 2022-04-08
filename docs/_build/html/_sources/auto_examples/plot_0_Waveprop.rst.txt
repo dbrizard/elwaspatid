@@ -34,7 +34,7 @@ elastic wave propagation in simple test cases.
     import matplotlib.pyplot as plt
     import numpy as np
 
-    from prop1D import Waveprop, Barhomo, trapezeWave
+    from elwaspatid import Waveprop, Barhomo, trapezeWave
 
 
 
@@ -541,7 +541,7 @@ And why not a sine pulse?
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.732 seconds)
+   **Total running time of the script:** ( 0 minutes  9.455 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_0_Waveprop.py:

@@ -40,7 +40,7 @@ the displacement diagrams of de Saint Venant in:
 
 
     import numpy as np
-    from prop1D import WP2, Barhete
+    from elwaspatid import WP2, Barhete
     import matplotlib.pyplot as plt
 
 
@@ -158,7 +158,7 @@ it has a velocity smaller than the initial velocity of the impactor.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.044 seconds)
+   **Total running time of the script:** ( 0 minutes  1.966 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_3_deSaintVenant.py:

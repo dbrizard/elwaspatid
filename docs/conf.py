@@ -12,7 +12,7 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../src/1d_wave_prop'))
+sys.path.insert(0, os.path.abspath('../src/elwaspatid'))
 
 
 # -- Project information -----------------------------------------------------

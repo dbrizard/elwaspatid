@@ -37,8 +37,8 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="module-prop1D">
-<span id="api-reference"></span><h1>API reference<a class="headerlink" href="#module-prop1D" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-elwaspatid">
+<span id="api-reference"></span><h1>API reference<a class="headerlink" href="#module-elwaspatid" title="Permalink to this headline">¶</a></h1>
 <p>This module is based on the following paper:</p>
 <p>Bacon, C. (1993). Numerical prediction of the propagation of elastic waves in 
 longitudinally impacted rods : Applications to Hopkinson testing. 
@@ -50,7 +50,7 @@ established which permit prediction of normal force and particle velocity at
 cross-sections of a non-uniform linearly-elastic rod. The initial normal force
 and particle velocity at each cross-section of that rod must be known.</p>
 </div></blockquote>
-<p>First define a bar, then give it to <a class="reference internal" href="#prop1D.WP2" title="prop1D.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a> or <a class="reference internal" href="#prop1D.Waveprop" title="prop1D.Waveprop"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code></a> along 
+<p>First define a bar, then give it to <a class="reference internal" href="#elwaspatid.WP2" title="elwaspatid.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a> or <a class="reference internal" href="#elwaspatid.Waveprop" title="elwaspatid.Waveprop"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code></a> along 
 with an incident wave for propagation computation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bar</span> <span class="o">=</span> <span class="n">Barhete</span><span class="p">(</span><span class="n">E</span><span class="o">=</span><span class="p">[</span><span class="mi">210</span><span class="p">,</span> <span class="mi">78</span><span class="p">],</span> <span class="n">rho</span><span class="o">=</span><span class="p">[</span><span class="mi">7800</span><span class="p">,</span> <span class="mi">2800</span><span class="p">],</span> <span class="n">L</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">],</span> <span class="n">d</span><span class="o">=</span><span class="p">[</span><span class="mf">0.030</span><span class="p">,</span> <span class="mf">0.028</span><span class="p">])</span>
 <span class="n">incw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
@@ -59,19 +59,19 @@ with an incident wave for propagation computation:</p>
 </div>
 <p>Be careful:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#prop1D.WP2" title="prop1D.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a> works only with <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a> bars; traction is not transmitted throught interfaces</p></li>
-<li><p><a class="reference internal" href="#prop1D.Waveprop" title="prop1D.Waveprop"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code></a> works with <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a> and <a class="reference internal" href="#prop1D.Barhomo" title="prop1D.Barhomo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code></a> bars, but does not take interfaces between bars/segments into account (the bars are stuck, traction can cross interfaces)</p></li>
+<li><p><a class="reference internal" href="#elwaspatid.WP2" title="elwaspatid.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a> works only with <a class="reference internal" href="#elwaspatid.Barhete" title="elwaspatid.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a> bars; traction is not transmitted throught interfaces</p></li>
+<li><p><a class="reference internal" href="#elwaspatid.Waveprop" title="elwaspatid.Waveprop"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code></a> works with <a class="reference internal" href="#elwaspatid.Barhete" title="elwaspatid.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a> and <a class="reference internal" href="#elwaspatid.Barhomo" title="elwaspatid.Barhomo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code></a> bars, but does not take interfaces between bars/segments into account (the bars are stuck, traction can cross interfaces)</p></li>
 </ul>
 <p>Created on Fri Aug 22 11:13:37 2014</p>
 <p>&#64;author: dbrizard</p>
 <dl class="py class">
-<dt id="prop1D.Bar">
-<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">Bar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Bar" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Bar">
+<em class="property">class </em><code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">Bar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Bar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Description d’une barre continue par morceaux, avant discrétisation.</p>
-<p>Internally used in <a class="reference internal" href="#prop1D.Barhomo" title="prop1D.Barhomo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code></a> and <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a></p>
+<p>Internally used in <a class="reference internal" href="#elwaspatid.Barhomo" title="elwaspatid.Barhomo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code></a> and <a class="reference internal" href="#elwaspatid.Barhete" title="elwaspatid.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a></p>
 <dl class="py method">
-<dt id="prop1D.Bar.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Bar.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Bar.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Bar.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute area <strong>A</strong>, celerity <strong>c_o</strong> and impedance <strong>Z</strong> of bar segments.</p>
 <p>All imput variables should have the same length and should be lists.</p>
 <dl class="field-list simple">
@@ -87,14 +87,14 @@ with an incident wave for propagation computation:</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="prop1D.Bar.__weakref__">
-<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#prop1D.Bar.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Bar.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#elwaspatid.Bar.__weakref__" title="Permalink to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Bar.plot">
-<code class="sig-name descname">plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Bar.plot" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Bar.plot">
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Bar.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subplot of continuous variables across the bar length:</p>
 <ul class="simple">
 <li><p>diameter d;</p></li>
@@ -107,25 +107,25 @@ with an incident wave for propagation computation:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Bar.printtable">
-<code class="sig-name descname">printtable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Bar.printtable" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Bar.printtable">
+<code class="sig-name descname">printtable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Bar.printtable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Text representation of the bar through a table</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="prop1D.Barhete">
-<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">Barhete</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">dt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">nmin</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhete" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Barhete">
+<em class="property">class </em><code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">Barhete</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">dt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">nmin</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Barhete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Heterogeneous bar with cross-section/modulus/density changes along the
 bar length.</p>
-<p>Sister class of <a class="reference internal" href="#prop1D.Barhomo" title="prop1D.Barhomo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code></a></p>
-<p><code class="xref py py-attr docutils literal notranslate"><span class="pre">seg</span></code> is a list of <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> objects, this is then used in <a class="reference internal" href="#prop1D.WP2" title="prop1D.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a>.</p>
-<p><a class="reference internal" href="#prop1D.Waveprop" title="prop1D.Waveprop"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code></a> uses the other attributes.</p>
+<p>Sister class of <a class="reference internal" href="#elwaspatid.Barhomo" title="elwaspatid.Barhomo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code></a></p>
+<p><code class="xref py py-attr docutils literal notranslate"><span class="pre">seg</span></code> is a list of <a class="reference internal" href="#elwaspatid.Segment" title="elwaspatid.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> objects, this is then used in <a class="reference internal" href="#elwaspatid.WP2" title="elwaspatid.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a>.</p>
+<p><a class="reference internal" href="#elwaspatid.Waveprop" title="elwaspatid.Waveprop"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code></a> uses the other attributes.</p>
 <dl class="py method">
-<dt id="prop1D.Barhete.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">dt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">nmin</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhete.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Define and spatially discretize bar into <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> s of constant properties</p>
+<dt id="elwaspatid.Barhete.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">dt</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">nmin</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Barhete.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define and spatially discretize bar into <a class="reference internal" href="#elwaspatid.Segment" title="elwaspatid.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> s of constant properties</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -141,14 +141,14 @@ bar length.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Barhete.__repr__">
-<code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhete.__repr__" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Barhete.__repr__">
+<code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Barhete.__repr__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instance representation method</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Barhete.changeSection">
-<code class="sig-name descname">changeSection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">iseg</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">l</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">d</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhete.changeSection" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Barhete.changeSection">
+<code class="sig-name descname">changeSection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">iseg</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">l</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">d</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Barhete.changeSection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the section of part of a Segment to model a bar with section 
 change.</p>
 <dl class="field-list simple">
@@ -163,8 +163,8 @@ change.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Barhete.plotProperties">
-<code class="sig-name descname">plotProperties</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhete.plotProperties" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Barhete.plotProperties">
+<code class="sig-name descname">plotProperties</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Barhete.plotProperties" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot evolution of properties of the bar along the length</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -176,16 +176,16 @@ change.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="prop1D.Barhomo">
-<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">Barhomo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhomo" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Barhomo">
+<em class="property">class </em><code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">Barhomo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Barhomo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Homogeneous bar (ie continuous rod) with section changes.</p>
-<p>Mother class of <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a></p>
+<p>Mother class of <a class="reference internal" href="#elwaspatid.Barhete" title="elwaspatid.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a></p>
 <dl class="py method">
-<dt id="prop1D.Barhomo.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhomo.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Barhomo.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Barhomo.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Barre homogème, avec uniquement des variations se section (d)</p>
 <p>Zero impedance should be avoided for calculation step coming next within
-<a class="reference internal" href="#prop1D.Waveprop" title="prop1D.Waveprop"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code></a>.</p>
+<a class="reference internal" href="#elwaspatid.Waveprop" title="elwaspatid.Waveprop"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -199,14 +199,14 @@ change.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="prop1D.Barhomo.__weakref__">
-<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#prop1D.Barhomo.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Barhomo.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#elwaspatid.Barhomo.__weakref__" title="Permalink to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Barhomo.plot">
-<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'DZ'</span></em>, <em class="sig-param"><span class="n">ls</span><span class="o">=</span><span class="default_value">'.-'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Barhomo.plot" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Barhomo.plot">
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'DZ'</span></em>, <em class="sig-param"><span class="n">ls</span><span class="o">=</span><span class="default_value">'.-'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Barhomo.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Graphical representation of discretized bar: geometry and impedance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -218,15 +218,15 @@ change.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="prop1D.ElasticImpact">
-<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">ElasticImpact</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span><span class="o">=</span><span class="default_value">210000000000.0</span></em>, <em class="sig-param"><span class="n">rho</span><span class="o">=</span><span class="default_value">7800</span></em>, <em class="sig-param"><span class="n">d</span><span class="o">=</span><span class="default_value">0.03</span></em>, <em class="sig-param"><span class="n">L</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">V</span><span class="o">=</span><span class="default_value">5.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.ElasticImpact" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.ElasticImpact">
+<em class="property">class </em><code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">ElasticImpact</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span><span class="o">=</span><span class="default_value">210000000000.0</span></em>, <em class="sig-param"><span class="n">rho</span><span class="o">=</span><span class="default_value">7800</span></em>, <em class="sig-param"><span class="n">d</span><span class="o">=</span><span class="default_value">0.03</span></em>, <em class="sig-param"><span class="n">L</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">V</span><span class="o">=</span><span class="default_value">5.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.ElasticImpact" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bussac, M.-N., P. Collet, G. Gary, B. Lundberg, and S. Mousavi. 2008. 
 ‘Viscoelastic Impact between a Cylindrical Striker and a Long Cylindrical Bar’.
 International Journal of Impact Engineering 35 (4): 226–39.
 <a class="reference external" href="https://doi.org/10.1016/j.ijimpeng.2007.02.003">https://doi.org/10.1016/j.ijimpeng.2007.02.003</a>.</p>
 <dl class="py method">
-<dt id="prop1D.ElasticImpact.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span><span class="o">=</span><span class="default_value">210000000000.0</span></em>, <em class="sig-param"><span class="n">rho</span><span class="o">=</span><span class="default_value">7800</span></em>, <em class="sig-param"><span class="n">d</span><span class="o">=</span><span class="default_value">0.03</span></em>, <em class="sig-param"><span class="n">L</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">V</span><span class="o">=</span><span class="default_value">5.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.ElasticImpact.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.ElasticImpact.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span><span class="o">=</span><span class="default_value">210000000000.0</span></em>, <em class="sig-param"><span class="n">rho</span><span class="o">=</span><span class="default_value">7800</span></em>, <em class="sig-param"><span class="n">d</span><span class="o">=</span><span class="default_value">0.03</span></em>, <em class="sig-param"><span class="n">L</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">V</span><span class="o">=</span><span class="default_value">5.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.ElasticImpact.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Striker and bar of the same material. Only cross-section can change</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -242,14 +242,14 @@ International Journal of Impact Engineering 35 (4): 226–39.
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="prop1D.ElasticImpact.__weakref__">
-<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#prop1D.ElasticImpact.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.ElasticImpact.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#elwaspatid.ElasticImpact.__weakref__" title="Permalink to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.ElasticImpact.computeImpact">
-<code class="sig-name descname">computeImpact</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">16</span></em>, <em class="sig-param"><span class="n">y0</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">plot</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.ElasticImpact.computeImpact" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.ElasticImpact.computeImpact">
+<code class="sig-name descname">computeImpact</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">16</span></em>, <em class="sig-param"><span class="n">y0</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">plot</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.ElasticImpact.computeImpact" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute impact of stricker on bar.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -263,8 +263,8 @@ International Journal of Impact Engineering 35 (4): 226–39.
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.ElasticImpact.plotForce">
-<code class="sig-name descname">plotForce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.ElasticImpact.plotForce" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.ElasticImpact.plotForce">
+<code class="sig-name descname">plotForce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.ElasticImpact.plotForce" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>figname</strong> (<em>str</em>) – name for the figure</p>
@@ -273,8 +273,8 @@ International Journal of Impact Engineering 35 (4): 226–39.
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.ElasticImpact.plotRn">
-<code class="sig-name descname">plotRn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.ElasticImpact.plotRn" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.ElasticImpact.plotRn">
+<code class="sig-name descname">plotRn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.ElasticImpact.plotRn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot amplitude of successive steps in case striker impendace is greater
 than bar impedance</p>
 <dl class="field-list simple">
@@ -287,13 +287,13 @@ than bar impedance</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="prop1D.Segment">
-<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">Segment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment">
+<em class="property">class </em><code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">Segment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bar segment with constant properties</p>
-<p>For later use in <a class="reference internal" href="#prop1D.WP2" title="prop1D.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a> through <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a></p>
+<p>For later use in <a class="reference internal" href="#elwaspatid.WP2" title="elwaspatid.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a> through <a class="reference internal" href="#elwaspatid.Barhete" title="elwaspatid.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a></p>
 <dl class="py method">
-<dt id="prop1D.Segment.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -321,20 +321,20 @@ than bar impedance</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Segment.__repr__">
-<code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.__repr__" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment.__repr__">
+<code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.__repr__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instance representation method</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="prop1D.Segment.__weakref__">
-<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#prop1D.Segment.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#elwaspatid.Segment.__weakref__" title="Permalink to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Segment.compDispl">
-<code class="sig-name descname">compDispl</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">it</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.compDispl" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment.compDispl">
+<code class="sig-name descname">compDispl</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">it</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.compDispl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute displacement of the bar nodes at given time index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -344,16 +344,16 @@ than bar impedance</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Segment.compLeft">
-<code class="sig-name descname">compLeft</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">it</span></em>, <em class="sig-param"><span class="n">lseg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">incw</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.compLeft" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment.compLeft">
+<code class="sig-name descname">compLeft</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">it</span></em>, <em class="sig-param"><span class="n">lseg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">incw</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.compLeft" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute state of left bar end.</p>
-<p>Bar end can be: free, infinite, interf (interface with another <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a>),
+<p>Bar end can be: free, infinite, interf (interface with another <a class="reference internal" href="#elwaspatid.Segment" title="elwaspatid.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a>),
 impact (impacted end, in which case <strong>incw</strong> must be given).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>it</strong> (<em>int</em>) – time index</p></li>
-<li><p><strong>lseg</strong> (<em>obj</em>) – left <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a></p></li>
+<li><p><strong>lseg</strong> (<em>obj</em>) – left <a class="reference internal" href="#elwaspatid.Segment" title="elwaspatid.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a></p></li>
 <li><p><strong>incw</strong> (<em>float</em>) – input force (incident wave)</p></li>
 <li><p><strong>left</strong> (<em>str</em>) – left boundary condition (supersedes <code class="xref py py-attr docutils literal notranslate"><span class="pre">Segment.left</span></code>)</p></li>
 </ul>
@@ -362,8 +362,8 @@ impact (impacted end, in which case <strong>incw</strong> must be given).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Segment.compMiddle">
-<code class="sig-name descname">compMiddle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">it</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.compMiddle" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment.compMiddle">
+<code class="sig-name descname">compMiddle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">it</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.compMiddle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute state in the middle of the segment</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -373,15 +373,15 @@ impact (impacted end, in which case <strong>incw</strong> must be given).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Segment.compRight">
-<code class="sig-name descname">compRight</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">it</span></em>, <em class="sig-param"><span class="n">rseg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.compRight" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment.compRight">
+<code class="sig-name descname">compRight</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">it</span></em>, <em class="sig-param"><span class="n">rseg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.compRight" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute state of right bar end.</p>
-<p>Bar end can be: free, infinite, interf (interface with another <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a>).</p>
+<p>Bar end can be: free, infinite, interf (interface with another <a class="reference internal" href="#elwaspatid.Segment" title="elwaspatid.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>it</strong> (<em>int</em>) – time index</p></li>
-<li><p><strong>rseg</strong> (<em>obj</em>) – right <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a></p></li>
+<li><p><strong>rseg</strong> (<em>obj</em>) – right <a class="reference internal" href="#elwaspatid.Segment" title="elwaspatid.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a></p></li>
 <li><p><strong>right</strong> (<em>str</em>) – right boundary condition (supersedes <code class="xref py py-attr docutils literal notranslate"><span class="pre">Segment.right</span></code>)</p></li>
 </ul>
 </dd>
@@ -389,14 +389,14 @@ impact (impacted end, in which case <strong>incw</strong> must be given).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Segment.computeStressStrain">
-<code class="sig-name descname">computeStressStrain</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.computeStressStrain" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment.computeStressStrain">
+<code class="sig-name descname">computeStressStrain</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.computeStressStrain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Strain from Displacement and then Stress, in the elements</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Segment.initCalc">
-<code class="sig-name descname">initCalc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nT</span></em>, <em class="sig-param"><span class="n">Vo</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.initCalc" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment.initCalc">
+<code class="sig-name descname">initCalc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nT</span></em>, <em class="sig-param"><span class="n">Vo</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.initCalc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize before wave propagation computation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -409,10 +409,10 @@ impact (impacted end, in which case <strong>incw</strong> must be given).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Segment.plot">
-<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'VF'</span></em>, <em class="sig-param"><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">autovert</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.plot" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment.plot">
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'VF'</span></em>, <em class="sig-param"><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">autovert</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot lagrange diagram.</p>
-<p>Wrapper for <a class="reference internal" href="#prop1D.Segment.plotmatrix" title="prop1D.Segment.plotmatrix"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Segment.plotmatrix()</span></code></a> allowing to choose the plotted data.</p>
+<p>Wrapper for <a class="reference internal" href="#elwaspatid.Segment.plotmatrix" title="elwaspatid.Segment.plotmatrix"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Segment.plotmatrix()</span></code></a> allowing to choose the plotted data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -425,8 +425,8 @@ impact (impacted end, in which case <strong>incw</strong> must be given).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Segment.plotProperties">
-<code class="sig-name descname">plotProperties</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.plotProperties" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment.plotProperties">
+<code class="sig-name descname">plotProperties</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.plotProperties" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -438,15 +438,15 @@ impact (impacted end, in which case <strong>incw</strong> must be given).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Segment.plotmatrix">
-<code class="sig-name descname">plotmatrix</code><span class="sig-paren">(</span><em class="sig-param">Zvalues</em>, <em class="sig-param">title=None</em>, <em class="sig-param">cmap=&lt;matplotlib.colors.LinearSegmentedColormap object&gt;</em>, <em class="sig-param">vert=None</em>, <em class="sig-param">autovert=True</em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.plotmatrix" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment.plotmatrix">
+<code class="sig-name descname">plotmatrix</code><span class="sig-paren">(</span><em class="sig-param">Zvalues</em>, <em class="sig-param">title=None</em>, <em class="sig-param">cmap=&lt;matplotlib.colors.LinearSegmentedColormap object&gt;</em>, <em class="sig-param">vert=None</em>, <em class="sig-param">autovert=True</em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.plotmatrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot lagrange diagram of matrix <em>Zvalues</em>.</p>
-<p>Mainly used in <a class="reference internal" href="#prop1D.Segment.plot" title="prop1D.Segment.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Segment.plot()</span></code></a> or directly for development.</p>
+<p>Mainly used in <a class="reference internal" href="#elwaspatid.Segment.plot" title="elwaspatid.Segment.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Segment.plot()</span></code></a> or directly for development.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Segment.resetImpedance">
-<code class="sig-name descname">resetImpedance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">z</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.resetImpedance" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment.resetImpedance">
+<code class="sig-name descname">resetImpedance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">z</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.resetImpedance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset impedance of elements after position l along the length</p>
 <p>Be careful, this new impedance MUST NOT change wave speed. Otherwise
 spatial discretization is obsolete. Only section change is permitted.</p>
@@ -461,8 +461,8 @@ spatial discretization is obsolete. Only section change is permitted.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Segment.setTime">
-<code class="sig-name descname">setTime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Segment.setTime" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Segment.setTime">
+<code class="sig-name descname">setTime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.setTime" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set <code class="xref py py-attr docutils literal notranslate"><span class="pre">time</span></code> attribute.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -474,21 +474,21 @@ spatial discretization is obsolete. Only section change is permitted.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="prop1D.WP2">
-<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">WP2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span></em>, <em class="sig-param"><span class="n">incw</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">nstep</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">Vinit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">contactLoss</span><span class="o">=</span><span class="default_value">1e-09</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Second version of wave propagation, using <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> for each bar
+<dt id="elwaspatid.WP2">
+<em class="property">class </em><code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">WP2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span></em>, <em class="sig-param"><span class="n">incw</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">nstep</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">Vinit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">contactLoss</span><span class="o">=</span><span class="default_value">1e-09</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.WP2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Second version of wave propagation, using <a class="reference internal" href="#elwaspatid.Segment" title="elwaspatid.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> for each bar
 of constant section.</p>
 <p>No traction crossing interfaces (=section changes).</p>
 <dl class="py method">
-<dt id="prop1D.WP2.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span></em>, <em class="sig-param"><span class="n">incw</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">nstep</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">Vinit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">contactLoss</span><span class="o">=</span><span class="default_value">1e-09</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.WP2.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span></em>, <em class="sig-param"><span class="n">incw</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">nstep</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">Vinit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">contactLoss</span><span class="o">=</span><span class="default_value">1e-09</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.WP2.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computte wave propagation</p>
 <p>/!Anechoic condition at impact end (left) until the end of the 
 prescribed incident wave <em>incw</em></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bar</strong> (<em>obj</em>) – bar setup (<a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a> object)</p></li>
+<li><p><strong>bar</strong> (<em>obj</em>) – bar setup (<a class="reference internal" href="#elwaspatid.Barhete" title="elwaspatid.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a> object)</p></li>
 <li><p><strong>incw</strong> (<em>array</em>) – incident force wave (input left impact)</p></li>
 <li><p><strong>nstep</strong> (<em>int</em>) – optional number of time step</p></li>
 <li><p><strong>left</strong> (<em>str</em>) – left boundary condition, once incident wave is finished</p></li>
@@ -501,21 +501,21 @@ prescribed incident wave <em>incw</em></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="prop1D.WP2.__weakref__">
-<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#prop1D.WP2.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.WP2.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#elwaspatid.WP2.__weakref__" title="Permalink to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.WP2.gatherForce">
-<code class="sig-name descname">gatherForce</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.gatherForce" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gather all the <code class="xref py py-attr docutils literal notranslate"><span class="pre">Force</span></code> of each <a class="reference internal" href="#prop1D.Segment" title="prop1D.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> in <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a>
+<dt id="elwaspatid.WP2.gatherForce">
+<code class="sig-name descname">gatherForce</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.WP2.gatherForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gather all the <code class="xref py py-attr docutils literal notranslate"><span class="pre">Force</span></code> of each <a class="reference internal" href="#elwaspatid.Segment" title="elwaspatid.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> in <a class="reference internal" href="#elwaspatid.Barhete" title="elwaspatid.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a>
 in one array.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.WP2.getSignal">
-<code class="sig-name descname">getSignal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">iseg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">plot</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">Displ</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">time</span><span class="o">=</span><span class="default_value">'ms'</span></em>, <em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">marker</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.getSignal" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.WP2.getSignal">
+<code class="sig-name descname">getSignal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">iseg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">plot</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">Displ</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">time</span><span class="o">=</span><span class="default_value">'ms'</span></em>, <em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">marker</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.WP2.getSignal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get temporal signal at given position on the bar.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -543,8 +543,8 @@ in one array.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.WP2.getState">
-<code class="sig-name descname">getState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">plot</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.getState" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.WP2.getState">
+<code class="sig-name descname">getState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">plot</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.WP2.getState" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get state of the bars at given time.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -557,10 +557,10 @@ in one array.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.WP2.plot">
-<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">gatherForce</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'FVD'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.plot" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.WP2.plot">
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">gatherForce</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'FVD'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.WP2.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot Force and Velocity lagrangian diagrams (time versus space)</p>
-<p>Wrapper of <a class="reference internal" href="#prop1D.WP2.subplot" title="prop1D.WP2.subplot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WP2.subplot()</span></code></a> method</p>
+<p>Wrapper of <a class="reference internal" href="#elwaspatid.WP2.subplot" title="elwaspatid.WP2.subplot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WP2.subplot()</span></code></a> method</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -573,8 +573,8 @@ in one array.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.WP2.plotDeSaintVenant">
-<code class="sig-name descname">plotDeSaintVenant</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ms</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">lines</span><span class="o">=</span><span class="default_value">'0.8'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.plotDeSaintVenant" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.WP2.plotDeSaintVenant">
+<code class="sig-name descname">plotDeSaintVenant</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ms</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">lines</span><span class="o">=</span><span class="default_value">'0.8'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.WP2.plotDeSaintVenant" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot x-t displacement diagram.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -589,8 +589,8 @@ in one array.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.WP2.plotForce">
-<code class="sig-name descname">plotForce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">autovert</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.plotForce" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.WP2.plotForce">
+<code class="sig-name descname">plotForce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">autovert</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.WP2.plotForce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot Force lagrangian diagram (time versus space)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -604,10 +604,10 @@ in one array.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.WP2.plotInterface">
-<code class="sig-name descname">plotInterface</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">interf</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">markers</span><span class="o">=</span><span class="default_value">'.+'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.plotInterface" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.WP2.plotInterface">
+<code class="sig-name descname">plotInterface</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">interf</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">markers</span><span class="o">=</span><span class="default_value">'.+'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.WP2.plotInterface" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot Force, Velocity and Displacement at interface between Segments</p>
-<p>Basically a wrapper of <a class="reference internal" href="#prop1D.WP2.getSignal" title="prop1D.WP2.getSignal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WP2.getSignal()</span></code></a> which takes care of selecting
+<p>Basically a wrapper of <a class="reference internal" href="#elwaspatid.WP2.getSignal" title="elwaspatid.WP2.getSignal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WP2.getSignal()</span></code></a> which takes care of selecting
 the right indices to get data at the given interface.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -621,8 +621,8 @@ the right indices to get data at the given interface.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.WP2.subplot">
-<code class="sig-name descname">subplot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'Veloc'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.WP2.subplot" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.WP2.subplot">
+<code class="sig-name descname">subplot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'Veloc'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.WP2.subplot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot Force or Velocity lagrangian diagram (time versus space) on a
 subplot for each segment</p>
 <dl class="field-list simple">
@@ -635,22 +635,22 @@ subplot for each segment</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="prop1D.Waveprop">
-<em class="property">class </em><code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">Waveprop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span></em>, <em class="sig-param"><span class="n">incw</span></em>, <em class="sig-param"><span class="n">nstep</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">Vinit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">indV</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Waveprop">
+<em class="property">class </em><code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">Waveprop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span></em>, <em class="sig-param"><span class="n">incw</span></em>, <em class="sig-param"><span class="n">nstep</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">Vinit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">indV</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Waveprop" title="Permalink to this definition">¶</a></dt>
 <dd><p>One-dimensional wave propagation problem for a rod with a piecewise
 constant impedance.</p>
 <p>/!Impedance should not be null.</p>
 <p>Right side of the bar is a free end
 Left side of the bar is infinite bar (anechoic conditions)</p>
 <dl class="py method">
-<dt id="prop1D.Waveprop.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span></em>, <em class="sig-param"><span class="n">incw</span></em>, <em class="sig-param"><span class="n">nstep</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">Vinit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">indV</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Waveprop.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span></em>, <em class="sig-param"><span class="n">incw</span></em>, <em class="sig-param"><span class="n">nstep</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">Vinit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">indV</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Waveprop.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute propagation of incident wave in the given bar.</p>
 <p>First version: traction can cross section changes (ie interfaces)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bar</strong> (<em>obj</em>) – instance of <a class="reference internal" href="#prop1D.Barhomo" title="prop1D.Barhomo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code></a> or <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a></p></li>
+<li><p><strong>bar</strong> (<em>obj</em>) – instance of <a class="reference internal" href="#elwaspatid.Barhomo" title="elwaspatid.Barhomo"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code></a> or <a class="reference internal" href="#elwaspatid.Barhete" title="elwaspatid.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a></p></li>
 <li><p><strong>incw</strong> (<em>array</em>) – incident wave</p></li>
 <li><p><strong>nstep</strong> (<em>int</em>) – number of calculation steps (if 0, length of <strong>incw</strong>)</p></li>
 <li><p><strong>left</strong> (<em>str</em>) – left boundary condition (‘free’ or ‘infinite’) after the end of <strong>incw</strong></p></li>
@@ -663,14 +663,14 @@ Left side of the bar is infinite bar (anechoic conditions)</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="prop1D.Waveprop.__weakref__">
-<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#prop1D.Waveprop.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Waveprop.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#elwaspatid.Waveprop.__weakref__" title="Permalink to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Waveprop.compState">
-<code class="sig-name descname">compState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seuil</span></em>, <em class="sig-param"><span class="n">plot</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.compState" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Waveprop.compState">
+<code class="sig-name descname">compState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seuil</span></em>, <em class="sig-param"><span class="n">plot</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Waveprop.compState" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute again state (left or right propagating waves) based on given <em>seuil</em></p>
 <p>The threshold above which the wave is taken into account is computed 
 as LR.ptp()*seuil</p>
@@ -687,8 +687,8 @@ as LR.ptp()*seuil</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Waveprop.getcut">
-<code class="sig-name descname">getcut</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">t</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">isind</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.getcut" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Waveprop.getcut">
+<code class="sig-name descname">getcut</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">t</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">isind</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Waveprop.getcut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get temporal evolution at given abscissa x,
 or state of the bar at given time t.</p>
 <dl class="field-list simple">
@@ -712,8 +712,8 @@ or state of the bar at given time t.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Waveprop.plot">
-<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'VF'</span></em>, <em class="sig-param"><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">autovert</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.plot" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Waveprop.plot">
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typ</span><span class="o">=</span><span class="default_value">'VF'</span></em>, <em class="sig-param"><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">autovert</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Waveprop.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot lagrange diagram -time versus space- of wave propagation.</p>
 <p>Type of diagram can be:</p>
 <ul class="simple">
@@ -736,8 +736,8 @@ or state of the bar at given time t.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Waveprop.plotDeSaintVenant">
-<code class="sig-name descname">plotDeSaintVenant</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ms</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">lines</span><span class="o">=</span><span class="default_value">'0.8'</span></em>, <em class="sig-param"><span class="n">XPplot</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.plotDeSaintVenant" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Waveprop.plotDeSaintVenant">
+<code class="sig-name descname">plotDeSaintVenant</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ms</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">lines</span><span class="o">=</span><span class="default_value">'0.8'</span></em>, <em class="sig-param"><span class="n">XPplot</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Waveprop.plotDeSaintVenant" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot x-t displacement diagram.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -753,8 +753,8 @@ or state of the bar at given time t.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Waveprop.plotEvol">
-<code class="sig-name descname">plotEvol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indf</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.plotEvol" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Waveprop.plotEvol">
+<code class="sig-name descname">plotEvol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indf</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Waveprop.plotEvol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot evolution of state of the bar as time increases</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -764,8 +764,8 @@ or state of the bar at given time t.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Waveprop.plotFV">
-<code class="sig-name descname">plotFV</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.plotFV" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Waveprop.plotFV">
+<code class="sig-name descname">plotFV</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Waveprop.plotFV" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot wave in Force-Velocity plane.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -775,8 +775,8 @@ or state of the bar at given time t.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Waveprop.plotcut">
-<code class="sig-name descname">plotcut</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">t</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">isind</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">tscale</span><span class="o">=</span><span class="default_value">'ms'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.plotcut" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Waveprop.plotcut">
+<code class="sig-name descname">plotcut</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">t</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">isind</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">tscale</span><span class="o">=</span><span class="default_value">'ms'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Waveprop.plotcut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot temporal evolution at given abscissa x,
 or state of the bar at given time t.</p>
 <p>/!one of x or t arguments MUST be None.</p>
@@ -789,14 +789,14 @@ or state of the bar at given time t.</p>
 </ul>
 </dd>
 </dl>
-<p>See also <a class="reference internal" href="#prop1D.Waveprop.getcut" title="prop1D.Waveprop.getcut"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Waveprop.getcut()</span></code></a></p>
+<p>See also <a class="reference internal" href="#elwaspatid.Waveprop.getcut" title="elwaspatid.Waveprop.getcut"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Waveprop.getcut()</span></code></a></p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="prop1D.Waveprop.plotmatrix">
-<code class="sig-name descname">plotmatrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Zvalues</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cmap</span><span class="o">=</span><span class="default_value">'PRGn'</span></em>, <em class="sig-param"><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">autovert</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">time</span><span class="o">=</span><span class="default_value">'ms'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.Waveprop.plotmatrix" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.Waveprop.plotmatrix">
+<code class="sig-name descname">plotmatrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Zvalues</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cmap</span><span class="o">=</span><span class="default_value">'PRGn'</span></em>, <em class="sig-param"><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">autovert</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">time</span><span class="o">=</span><span class="default_value">'ms'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Waveprop.plotmatrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot lagrange diagram of matrix <em>Zvalues</em>.</p>
-<p>Mainly used in <a class="reference internal" href="#prop1D.Waveprop.plot" title="prop1D.Waveprop.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a> or directly for development.</p>
+<p>Mainly used in <a class="reference internal" href="#elwaspatid.Waveprop.plot" title="elwaspatid.Waveprop.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a> or directly for development.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -814,8 +814,8 @@ or state of the bar at given time t.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="prop1D.getMax">
-<code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">getMax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.getMax" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.getMax">
+<code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">getMax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.getMax" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the maximum absolute extremum.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -825,8 +825,8 @@ or state of the bar at given time t.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="prop1D.getMinMaxQMCoordinates">
-<code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">getMinMaxQMCoordinates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">QM</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.getMinMaxQMCoordinates" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.getMinMaxQMCoordinates">
+<code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">getMinMaxQMCoordinates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">QM</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.getMinMaxQMCoordinates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get min and max for x and y coordinates</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -836,9 +836,9 @@ or state of the bar at given time t.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="prop1D.groovedBar">
-<code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">groovedBar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">interv</span></em>, <em class="sig-param"><span class="n">lg</span><span class="o">=</span><span class="default_value">0.003</span></em>, <em class="sig-param"><span class="n">LL</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">d0</span><span class="o">=</span><span class="default_value">0.03</span></em>, <em class="sig-param"><span class="n">d1</span><span class="o">=</span><span class="default_value">0.0278</span></em>, <em class="sig-param"><span class="n">E</span><span class="o">=</span><span class="default_value">78000000000.0</span></em>, <em class="sig-param"><span class="n">rho</span><span class="o">=</span><span class="default_value">2800</span></em>, <em class="sig-param"><span class="n">pin</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.groovedBar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Construct <a class="reference internal" href="#prop1D.Barhete" title="prop1D.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a> object with grooves</p>
+<dt id="elwaspatid.groovedBar">
+<code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">groovedBar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">interv</span></em>, <em class="sig-param"><span class="n">lg</span><span class="o">=</span><span class="default_value">0.003</span></em>, <em class="sig-param"><span class="n">LL</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">d0</span><span class="o">=</span><span class="default_value">0.03</span></em>, <em class="sig-param"><span class="n">d1</span><span class="o">=</span><span class="default_value">0.0278</span></em>, <em class="sig-param"><span class="n">E</span><span class="o">=</span><span class="default_value">78000000000.0</span></em>, <em class="sig-param"><span class="n">rho</span><span class="o">=</span><span class="default_value">2800</span></em>, <em class="sig-param"><span class="n">pin</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.groovedBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct <a class="reference internal" href="#elwaspatid.Barhete" title="elwaspatid.Barhete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></a> object with grooves</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -855,8 +855,8 @@ or state of the bar at given time t.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="prop1D.scaleTime">
-<code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">scaleTime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">'s'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.scaleTime" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.scaleTime">
+<code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">scaleTime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">'s'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.scaleTime" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return scaled time or index</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -869,8 +869,8 @@ or state of the bar at given time t.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="prop1D.trapezeWave">
-<code class="sig-prename descclassname">prop1D.</code><code class="sig-name descname">trapezeWave</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">plateau</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">rise</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">fall</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">A</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#prop1D.trapezeWave" title="Permalink to this definition">¶</a></dt>
+<dt id="elwaspatid.trapezeWave">
+<code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">trapezeWave</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">plateau</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">rise</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">fall</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">A</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.trapezeWave" title="Permalink to this definition">¶</a></dt>
 <dd><p>Define trapezoidal incident wave</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
