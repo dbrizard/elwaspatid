@@ -31,9 +31,9 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
   * https://docs.readthedocs.io/en/stable/tutorial/index.html#making-warnings-more-visible
   * package must be installable with pip
 
-## [1.2.0] - 2022-03-xx
-### Added
-* New boundary conditions available: 
+## [2.0.0] - 2022-03-08
+### Changed
+* New name for the module (`elwaspatid`), identical to project name, for consitancy
 
 
 ## [1.1.0] - 2022-03-15
