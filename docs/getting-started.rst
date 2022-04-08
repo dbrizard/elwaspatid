@@ -6,14 +6,14 @@ Installation
 
 ::
 
-  pip install wave-space-time-diagrams
+  pip install elwaspatid
 
 
-The present module requires:
+The present module only requires:
 
 * numpy
 * matplotlib
-* warnings
+
 
 
 Testing installation
