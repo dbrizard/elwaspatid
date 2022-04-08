@@ -17,12 +17,12 @@ sys.path.insert(0, os.path.abspath('../src/elwaspatid'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'ELWA-SPATID'
+project = 'ELWASPATID'
 copyright = '2021, Denis Brizard'
 author = 'Denis Brizard'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.2'
+release = '2.0.0'
 
 
 # -- General configuration ---------------------------------------------------
