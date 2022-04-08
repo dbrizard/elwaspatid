@@ -34,7 +34,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import warnings
 
-import figutils as fu
+#import figutils as fu
 
 
 class WP2:
@@ -863,7 +863,7 @@ class Waveprop:
             nt = indf+1
         except TypeError:
             nt = len(self.Force)
-        fu.degrade(ncoul=nt)
+        #fu.degrade(ncoul=nt)
         
         for ii, (ff, vv) in enumerate(zip(self.Force, self.Veloc)):
 #            plt.subplot(211)
