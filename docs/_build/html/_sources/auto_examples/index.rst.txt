@@ -4,6 +4,8 @@
 
 .. _sphx_glr_auto_examples:
 
+.. _ExamplesLabel:
+
 Examples of diagrams
 ====================
 

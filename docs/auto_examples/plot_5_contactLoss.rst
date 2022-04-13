@@ -128,7 +128,7 @@ Large impedance against small impedance
 In that case, the impacting bar stays in contact indefinitly with the right
 bar and a "stair" compression pulse develops in the right bar, with steps of
 decreasing amplitude.
-See also :ref:`sphx_glr_auto_examples_plot_3_ElasticImpact.py`
+See also :ref:`sphx_glr_auto_examples_plot_2_ElasticImpact.py`
 
 .. GENERATED FROM PYTHON SOURCE LINES 44-50
 
@@ -368,7 +368,7 @@ Contact loss
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  6.403 seconds)
+   **Total running time of the script:** ( 0 minutes  6.212 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_5_contactLoss.py:

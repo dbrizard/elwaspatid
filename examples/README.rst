@@ -1,3 +1,5 @@
+.. _ExamplesLabel:
+
 Examples of diagrams
 ====================
 

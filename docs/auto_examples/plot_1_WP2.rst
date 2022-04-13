@@ -19,7 +19,7 @@
 
 
 Test :class:`WP2` class
-============================
+=======================
 
 Define a :class:`Barhete` bar configuration and use it with :class:`WP2` to compute
 elastic wave propagation in simple test cases.
@@ -191,7 +191,7 @@ Two identical bars, free and fixed ends
 .. GENERATED FROM PYTHON SOURCE LINES 51-53
 
 Two identical bars, infinite-ends
---------------------------------
+---------------------------------
 
 .. GENERATED FROM PYTHON SOURCE LINES 53-57
 
@@ -494,7 +494,7 @@ Nothing happens, the left bar travels to the left.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.649 seconds)
+   **Total running time of the script:** ( 0 minutes  9.019 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_1_WP2.py:

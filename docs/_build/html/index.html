@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Elastic waves space-time diagrams &#8212; ELWA-SPATID 0.0.2 documentation</title>
+    <title>ELastic WAves SPace-TIme Diagrams &#8212; elwaspatid 2.0.0 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
@@ -37,21 +37,23 @@
           <div class="body" role="main">
             
   <div class="section" id="elastic-waves-space-time-diagrams">
-<h1>Elastic waves space-time diagrams<a class="headerlink" href="#elastic-waves-space-time-diagrams" title="Permalink to this headline">¶</a></h1>
-<p>ELWA-SPATID is a Python module for the computation of space-time diagrams for
+<h1>ELastic WAves SPace-TIme Diagrams<a class="headerlink" href="#elastic-waves-space-time-diagrams" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://elwaspatid.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/elwaspatid/badge/?version=latest" /></a>
+<a class="reference external image-reference" href="https://badge.fury.io/py/elwaspatid"><img alt="https://badge.fury.io/py/elwaspatid.svg" src="https://badge.fury.io/py/elwaspatid.svg" /></a>
+<p><code class="docutils literal notranslate"><span class="pre">elwaspatid</span></code> is a Python module for the computation of space-time diagrams for
 the propagation of elastic waves in 1D rods. The rods can have impedance variations
 along the propagation axis, and it is possible to consider several rods in contact.</p>
 <p>Initial conditions can be:</p>
 <ul class="simple">
-<li><p>a prescribed input force at the left end of the first rod;</p></li>
+<li><p>a prescribed input force at the left end of the left (first) rod;</p></li>
 <li><p>a prescribed velocity of the left rod, which impacts the next rod.</p></li>
 </ul>
 <p>Boundary conditions can be:</p>
 <ul class="simple">
-<li><p>two rods in contact;</p></li>
-<li><p>free end (total reflexion of waves);</p></li>
+<li><p>free end;</p></li>
 <li><p>fixed end;</p></li>
-<li><p>infinite end (no reflexion, equivalent to anechoic condition).</p></li>
+<li><p>contact interface with another rod;</p></li>
+<li><p>infinite end (ie. anechoic condition).</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
@@ -69,32 +71,35 @@ along the propagation axis, and it is possible to consider several rods in conta
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#unreleased">[Unreleased]</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="changelog.html#to-add">To add</a></li>
 <li class="toctree-l3"><a class="reference internal" href="changelog.html#to-change">To change</a></li>
-<li class="toctree-l3"><a class="reference internal" href="changelog.html#to-fix">To fix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">[1.1.0] -2022-03</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="changelog.html#added">Added</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">[2.0.0] - 2022-03-08</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="changelog.html#changed">Changed</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#section-1">[1.0.2] - 2022-03</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="changelog.html#added-1">Added</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#section-2">[1.0.1] - 2022-02</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="changelog.html#added-2">Added</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#section-3">[1.0.0] - 2021</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="changelog.html#added-3">Added</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#section-1">[1.1.0] - 2022-03-15</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#added">Added</a></li>
 <li class="toctree-l3"><a class="reference internal" href="changelog.html#changed-1">Changed</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#section-4">[0.8.0] - 2016</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#section-2">[1.0.2] - 2022-03</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#added-1">Added</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#section-3">[1.0.1] - 2022-02</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#added-2">Added</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#section-4">[1.0.0] - 2021</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#added-3">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#changed-2">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#section-5">[0.8.0] - 2016</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="changelog.html#added-4">Added</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#section-5">[0.5.0] - 2014</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#section-6">[0.5.0] - 2014</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="changelog.html#added-5">Added</a></li>
 </ul>
 </li>
@@ -118,7 +123,7 @@ along the propagation axis, and it is possible to consider several rods in conta
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="#">ELWA-SPATID</a></h1>
+<h1 class="logo"><a href="#">elwaspatid</a></h1>
 
 
 
@@ -167,7 +172,7 @@ along the propagation axis, and it is possible to consider several rods in conta
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, Denis Brizard.
+      &copy;2022, Denis Brizard.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.0</a>

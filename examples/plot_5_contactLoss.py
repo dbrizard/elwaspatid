@@ -40,7 +40,7 @@ testk.plotInterface(0, 'interface')
 # In that case, the impacting bar stays in contact indefinitly with the right
 # bar and a "stair" compression pulse develops in the right bar, with steps of
 # decreasing amplitude.
-# See also :ref:`sphx_glr_auto_examples_plot_3_ElasticImpact.py`
+# See also :ref:`sphx_glr_auto_examples_plot_2_ElasticImpact.py`
 bar = Barhete([E, E], [rho, rho], [L, L], [d, 0.5*d], nmin=6)
 testl = WP2(bar, nstep=150, left='free', right='infinite', Vinit=5)
 testl.plot()

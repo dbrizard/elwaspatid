@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Test :class:`WP2` class
-============================
+=======================
 
 Define a :class:`Barhete` bar configuration and use it with :class:`WP2` to compute
 elastic wave propagation in simple test cases.
@@ -49,7 +49,7 @@ test2.plot('2b_freefixed')
 
 # %%
 # Two identical bars, infinite-ends
-# --------------------------------
+# ---------------------------------
 
 test2f = WP2(bc, comp, nstep=100, left='infinite', right='infinite')
 test2f.plot('2b_anech')

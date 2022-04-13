@@ -17,7 +17,7 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 ### To add
-* plastic wave (may require too large changes).
+* plastic wave (probably impossible here as it requires too large changes).
 * `friction` and `damped` boundary conditions (see DeJuhasz)
 * `elastic`, `mass`, `dashpot` end conditions (see Graff)
 * impacting mass (left end)
@@ -26,10 +26,6 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 
 ### To change
 
-### To fix
-* Empty APi reference, see next bullet:
-  * https://docs.readthedocs.io/en/stable/tutorial/index.html#making-warnings-more-visible
-  * package must be installable with pip
 
 ## [2.0.0] - 2022-03-08
 ### Changed

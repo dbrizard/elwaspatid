@@ -17,8 +17,8 @@ sys.path.insert(0, os.path.abspath('../src/elwaspatid'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'ELWASPATID'
-copyright = '2021, Denis Brizard'
+project = 'elwaspatid'
+copyright = '2022, Denis Brizard'
 author = 'Denis Brizard'
 
 # The full version, including alpha/beta/rc tags
