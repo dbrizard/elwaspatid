@@ -34,3 +34,21 @@ Boundary conditions can be:
 See the examples in the documentation and in the `examples` folder of the github source.
 
 
+## Community guidelines
+### Contributing
+Contributions are welcome, be it improvements or new functionalities. Either 
+contact directly the author, or use [Pull Requests](https://github.com/dbrizard/elwaspatid/pulls).
+
+
+### Reporting issues or problems
+Use [issues](https://github.com/dbrizard/elwaspatid/issues). Be sure to fully 
+describe your issue or problem. If applicable, provide a minimal working example 
+(MWE).
+
+### Support
+Do not forget to [read the docs!](https://elwa-spatid.readthedocs.io) 
+Several examples are provided, showing all the available functionalities. They
+should be a good starting point.
+
+Also search for [issues](https://github.com/dbrizard/elwaspatid/issues). 
+ 

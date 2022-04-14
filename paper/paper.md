@@ -1,5 +1,5 @@
 ---
-title: 'elwasptaid: A Python package to compute space-time diagrams for the propagation of elastic waves in 1D rods'
+title: 'elwaspatid: A Python package to compute space-time diagrams for the propagation of elastic waves in 1D rods'
 tags:
   - Python
   - mechanics
@@ -113,7 +113,8 @@ discrete version of the continuous form proposed by de Saint Venant.
 
 # Acknowledgements
 
-We acknowledge the support from Pr Eric Jacquelin for his helpful advice on this
-project.
+We acknowledge the support from Pr Eric Jacquelin 
+([ORCID ID](https://orcid.org/0000-0001-8415-6712))
+for his helpful advice on this project.
 
 # References
