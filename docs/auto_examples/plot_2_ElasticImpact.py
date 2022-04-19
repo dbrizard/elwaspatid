@@ -10,7 +10,7 @@ result given by :class:`ElasticImpact` and the numerical result computed with
 
 import numpy as np
 import matplotlib.pyplot as plt
-from elwaspatid import WP2, Barhete, ElasticImpact
+from elwaspatid import WP2, BarSet, ElasticImpact
 
 
 # %%
@@ -53,7 +53,7 @@ EK.plotRn()  # plot amplitude of successive steps
 # Numerical result with :class:`WP2`
 # ----------------------------------
 # Bar configuration: one striker and one bar at rest
-striker = Barhete([E, E], [rho, rho], [L, .2], [d2, d1], nmin=6)
+striker = BarSet([E, E], [rho, rho], [L, .2], [d2, d1], nmin=6)
 testk = WP2(striker, nstep=400, left='free', right='infinite', Vinit=Vo)
 testk.plot('striker')
 

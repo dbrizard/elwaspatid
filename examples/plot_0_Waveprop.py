@@ -2,7 +2,7 @@
 Test :class:`Waveprop` class
 ============================
 
-Define a :class:`Barhomo` bar and use it with :class:`Waveprop` to compute
+Define a :class:`BarSingle` bar and use it with :class:`Waveprop` to compute
 elastic wave propagation in simple test cases.
 """
 
@@ -11,7 +11,7 @@ elastic wave propagation in simple test cases.
 import matplotlib.pyplot as plt
 import numpy as np
 
-from elwaspatid import Waveprop, Barhomo, trapezeWave
+from elwaspatid import Waveprop, BarSingle, trapezeWave
 
 
 # %%
@@ -33,10 +33,10 @@ incw[0:20] = 1e3  # >0 means traction pulse
 dx = 0.01  # length of an elementary Segment [m]
 n = 50  # number of Segments [-]
 D = np.ones(n) * d  # diameters of the Segments
-bb = Barhomo(dx, D, E, rho)  # constant section bar
+bb = BarSingle(dx, D, E, rho)  # constant section bar
 D2 = np.hstack((np.ones(n)*d, np.ones(n)*d*k))  # section change 
-b2 = Barhomo(dx, D2, E, rho)  # cross-section increase
-b3 = Barhomo(dx, D2[::-1], E, rho)  # cross-section reduction
+b2 = BarSingle(dx, D2, E, rho)  # cross-section increase
+b3 = BarSingle(dx, D2[::-1], E, rho)  # cross-section reduction
 
 # Visualize the bar:
 bb.plot()  # constant cross-section and constant impedance
@@ -120,7 +120,7 @@ testt.plotcut(x=0.2)
 # ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 sine = np.sin(2*np.pi*np.linspace(0, 1, num=40))
-bar = Barhomo(dx, np.ones(30)*d, E, rho)
+bar = BarSingle(dx, np.ones(30)*d, E, rho)
 tests = Waveprop(bar, sine, nstep=3*len(sine), left='infinite', right='free')
 tests.plot()
 tests.plotcut(x=0.15)

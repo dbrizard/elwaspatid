@@ -19,7 +19,7 @@ in the case of :class:`WP2` (see below :class:`Segment`).
 
 import numpy as np
 import matplotlib.pyplot as plt
-from elwaspatid import Waveprop, WP2, Barhomo, Barhete 
+from elwaspatid import Waveprop, WP2, BarSingle, BarSet 
 
 E = 210e9  # [MPa]
 rho = 7800  # [kg/m3]
@@ -41,7 +41,7 @@ d = 0.02  # [m]
 # All the force values can fill a single matrix, ditto for the velocities.
 
 D = np.linspace(0.5, 4, 40)*d  # bar with linearly increasing diamter
-bb = Barhomo(dx=0.01, d=D, E=E, rho=rho)
+bb = BarSingle(dx=0.01, d=D, E=E, rho=rho)
 
 incw = np.zeros(80)  # incident wave
 incw[0:20] = 1  # >0 means traction pulse
@@ -73,12 +73,12 @@ bb.plot(typ='DZ')  # plot discretization of the bar and impedance
 # matrices. 
 
 # Bar configuration: one striker with initial velocity and one bar at rest
-bar = Barhete([E, E], [rho, rho], [L, 0.5*L], [d, 0.8*d], nmin=6)
+bar = BarSet([E, E], [rho, rho], [L, 0.5*L], [d, 0.8*d], nmin=6)
 testk = WP2(bar, nstep=200, left='free', right='infinite', Vinit=5)
 testk.plot()
 
 # %%
-# Internally, the bar :class:`Barhete` contains a list of :class:`Segment`, one
+# Internally, the bar :class:`BarSet` contains a list of :class:`Segment`, one
 # for each independant rod. Each :class:`Segment` has been discretized in ``nX``
 # elements along the propagation axis.
 print(bar.seg)
@@ -92,9 +92,9 @@ print(bar.seg)
 # - :meth:`Segment.compRight`
 #
 # These methods are called by :meth:`WP2.__init__` which, while looping over time,
-# iterates on all the :class:`Segment` in the list provided by :class:`Barhete` to
+# iterates on all the :class:`Segment` in the list provided by :class:`BarSet` to
 # compute the state (Force, Velocity) of all the elements of each :class:`Segment`.
 
 # %%
-# XXX a word on :class:`Bar`, used in :class:`Barhete`
+# XXX a word on :class:`Bar`, used in :class:`BarSet`
 bar.bar_continuous.plot()

@@ -4,7 +4,7 @@
 De Saint Venant displacement diagrams
 =====================================
 
-Define a :class:`Barhete` bar configuration and use it with :class:`WP2` reproduce
+Define a :class:`BarSet` bar configuration and use it with :class:`WP2` reproduce
 the displacement diagrams of de Saint Venant in:
 
 * de Saint-Venant, A. J. C. B. (1867). Mémoire sur le choc longitudinal de deux 
@@ -19,7 +19,7 @@ the displacement diagrams of de Saint Venant in:
 
 
 import numpy as np
-from elwaspatid import WP2, Barhete
+from elwaspatid import WP2, BarSet
 import matplotlib.pyplot as plt
 
 
@@ -33,7 +33,7 @@ k = 2.4  # diamters ratio [-]
 
 # %%
 # Create the bar configurations
-bc4 = Barhete([E, E], [rho, rho], [.4, 1.], [d, d], nmin=10)
+bc4 = BarSet([E, E], [rho, rho], [.4, 1.], [d, d], nmin=10)
 
 
 test2v = WP2(bc4, nstep=160, left='free', right='free', Vinit=10)

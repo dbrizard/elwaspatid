@@ -10,7 +10,7 @@ have the same impedance.
 
 import numpy as np
 import matplotlib.pyplot as plt
-from elwaspatid import Waveprop, WP2, Barhomo, Barhete 
+from elwaspatid import Waveprop, WP2, BarSingle, BarSet 
 plt.close('all')
 
 E = 210e9  # [MPa]
@@ -29,7 +29,7 @@ incw[0:20] = 1  # /!\ traction pulse
 # strarts travelling to the left.
 # A Heaviside compression pulse travels down the right bar.
 L = 1  # [m]
-bar = Barhete([E, E], [rho, rho], [L, 0.5*L], [d, 2*d], nmin=6)
+bar = BarSet([E, E], [rho, rho], [L, 0.5*L], [d, 2*d], nmin=6)
 testk = WP2(bar, left='free', right='infinite', Vinit=5)
 testk.plot()
 testk.plotInterface(0, 'interface')
@@ -41,7 +41,7 @@ testk.plotInterface(0, 'interface')
 # bar and a "stair" compression pulse develops in the right bar, with steps of
 # decreasing amplitude.
 # See also :ref:`sphx_glr_auto_examples_plot_2_ElasticImpact.py`
-bar = Barhete([E, E], [rho, rho], [L, L], [d, 0.5*d], nmin=6)
+bar = BarSet([E, E], [rho, rho], [L, L], [d, 0.5*d], nmin=6)
 testl = WP2(bar, nstep=150, left='free', right='infinite', Vinit=5)
 testl.plot()
 
@@ -54,7 +54,7 @@ testl.plotInterface(0, 'interface2')
 #
 # Second bar with section increase
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-bar = Barhete([E, E], [rho, rho], [.2*L, L], [.8*d, d], nmin=12)
+bar = BarSet([E, E], [rho, rho], [.2*L, L], [.8*d, d], nmin=12)
 bar.changeSection(iseg=1, l=L/4, d=2*d)
 bar.changeSection(iseg=1, l=L/2, d=4*d)
 bar.plotProperties('Z')

@@ -31,7 +31,7 @@ result given by :class:`ElasticImpact` and the numerical result computed with
 
     import numpy as np
     import matplotlib.pyplot as plt
-    from elwaspatid import WP2, Barhete, ElasticImpact
+    from elwaspatid import WP2, BarSet, ElasticImpact
 
 
 
@@ -141,7 +141,7 @@ Bar configuration: one striker and one bar at rest
 
 .. code-block:: default
 
-    striker = Barhete([E, E], [rho, rho], [L, .2], [d2, d1], nmin=6)
+    striker = BarSet([E, E], [rho, rho], [L, .2], [d2, d1], nmin=6)
     testk = WP2(striker, nstep=400, left='free', right='infinite', Vinit=Vo)
     testk.plot('striker')
 
@@ -246,7 +246,7 @@ Compare analytical and numerical solutions
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.948 seconds)
+   **Total running time of the script:** ( 0 minutes  2.756 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_2_ElasticImpact.py:

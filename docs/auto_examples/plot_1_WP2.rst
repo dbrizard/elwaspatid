@@ -30,7 +30,7 @@ elastic wave propagation in simple test cases.
 
 
     import numpy as np
-    from elwaspatid import WP2, Barhete
+    from elwaspatid import WP2, BarSet
 
 
 
@@ -70,10 +70,10 @@ Create the bar configurations
 .. code-block:: default
 
     nm = 15
-    bc = Barhete([E, E], [rho, rho], [.1, .13], [d, d], nmin=nm)
-    bc2 = Barhete([E, E], [rho, rho], [.1, .13], [d, k*d], nmin=nm)
-    bc3 = Barhete([E, E], [rho, rho], [.1, .13], [k*d, d], nmin=nm)
-    bc4 = Barhete([E, E], [rho, rho], [.1, .3], [d, d], nmin=nm)
+    bc = BarSet([E, E], [rho, rho], [.1, .13], [d, d], nmin=nm)
+    bc2 = BarSet([E, E], [rho, rho], [.1, .13], [d, k*d], nmin=nm)
+    bc3 = BarSet([E, E], [rho, rho], [.1, .13], [k*d, d], nmin=nm)
+    bc4 = BarSet([E, E], [rho, rho], [.1, .3], [d, d], nmin=nm)
 
 
 
@@ -494,7 +494,7 @@ Nothing happens, the left bar travels to the left.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.019 seconds)
+   **Total running time of the script:** ( 0 minutes  9.243 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_1_WP2.py:

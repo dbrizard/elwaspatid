@@ -7,7 +7,7 @@ Use :class:`Waveprop` to simulate SHPB
 """
 
 import matplotlib.pyplot as plt
-from elwaspatid import WP2, Barhete
+from elwaspatid import WP2, BarSet
 
 
 # %%
@@ -18,7 +18,7 @@ rho = 7800  # Density [kg/m3]
 
 # %%
 # SHPB bar configuration
-b_kolsky = Barhete([E, E, 0.8*E, E], [rho, rho, rho, rho], [.6, 3, .05, 3.1],
+b_kolsky = BarSet([E, E, 0.8*E, E], [rho, rho, rho, rho], [.6, 3, .05, 3.1],
                    [0.028, 0.030, 0.025, 0.030], nmin=4)
 testk = WP2(b_kolsky, nstep=400, left='free', right='free', Vinit=5)
 testk.plot('shpb')

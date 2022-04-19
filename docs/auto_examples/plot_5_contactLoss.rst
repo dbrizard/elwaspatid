@@ -31,7 +31,7 @@ have the same impedance.
 
     import numpy as np
     import matplotlib.pyplot as plt
-    from elwaspatid import Waveprop, WP2, Barhomo, Barhete 
+    from elwaspatid import Waveprop, WP2, BarSingle, BarSet 
     plt.close('all')
 
     E = 210e9  # [MPa]
@@ -63,7 +63,7 @@ A Heaviside compression pulse travels down the right bar.
 .. code-block:: default
 
     L = 1  # [m]
-    bar = Barhete([E, E], [rho, rho], [L, 0.5*L], [d, 2*d], nmin=6)
+    bar = BarSet([E, E], [rho, rho], [L, 0.5*L], [d, 2*d], nmin=6)
     testk = WP2(bar, left='free', right='infinite', Vinit=5)
     testk.plot()
     testk.plotInterface(0, 'interface')
@@ -134,7 +134,7 @@ See also :ref:`sphx_glr_auto_examples_plot_2_ElasticImpact.py`
 
 .. code-block:: default
 
-    bar = Barhete([E, E], [rho, rho], [L, L], [d, 0.5*d], nmin=6)
+    bar = BarSet([E, E], [rho, rho], [L, L], [d, 0.5*d], nmin=6)
     testl = WP2(bar, nstep=150, left='free', right='infinite', Vinit=5)
     testl.plot()
 
@@ -205,7 +205,7 @@ Second bar with section increase
 
 .. code-block:: default
 
-    bar = Barhete([E, E], [rho, rho], [.2*L, L], [.8*d, d], nmin=12)
+    bar = BarSet([E, E], [rho, rho], [.2*L, L], [.8*d, d], nmin=12)
     bar.changeSection(iseg=1, l=L/4, d=2*d)
     bar.changeSection(iseg=1, l=L/2, d=4*d)
     bar.plotProperties('Z')
@@ -368,7 +368,7 @@ Contact loss
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  6.212 seconds)
+   **Total running time of the script:** ( 0 minutes  7.400 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_5_contactLoss.py:

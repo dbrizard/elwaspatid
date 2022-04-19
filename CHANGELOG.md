@@ -7,7 +7,14 @@ _Readthedoc_:
 * il est parfois nécessaire d'attendre après un commit pour pouvoir compiler la doc. 
 * `requirements: docs/RTDrequirements_short.txt` in .readthedocs.yaml does not works
 * requirement was therefore added online in Admin > Advanced Settings
-* API reference still empty...
+
+Types of changes:
+ * `Added` for new features.
+ * `Changed` for changes in existing functionality.
+ * `Deprecated` for soon-to-be removed features.
+ * `Removed` for now removed features.
+ * `Fixed` for any bug fixes.
+ * `Security` in case of vulnerabilities.
 
 --->
 
@@ -26,6 +33,11 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 
 ### To change
 
+
+## [2.0.1] - 2022-04-19
+### Changed
+* `Barhete` is now `BarSet`, which is more meaningfull
+* `Barhomo` is now `BarSingle`, which is more meaningfull too 
 
 ## [2.0.0] - 2022-03-08
 ### Changed

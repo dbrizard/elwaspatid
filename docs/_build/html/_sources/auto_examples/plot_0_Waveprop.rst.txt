@@ -21,7 +21,7 @@
 Test :class:`Waveprop` class
 ============================
 
-Define a :class:`Barhomo` bar and use it with :class:`Waveprop` to compute
+Define a :class:`BarSingle` bar and use it with :class:`Waveprop` to compute
 elastic wave propagation in simple test cases.
 
 .. GENERATED FROM PYTHON SOURCE LINES 8-17
@@ -34,7 +34,7 @@ elastic wave propagation in simple test cases.
     import matplotlib.pyplot as plt
     import numpy as np
 
-    from elwaspatid import Waveprop, Barhomo, trapezeWave
+    from elwaspatid import Waveprop, BarSingle, trapezeWave
 
 
 
@@ -95,10 +95,10 @@ Create the bars
     dx = 0.01  # length of an elementary Segment [m]
     n = 50  # number of Segments [-]
     D = np.ones(n) * d  # diameters of the Segments
-    bb = Barhomo(dx, D, E, rho)  # constant section bar
+    bb = BarSingle(dx, D, E, rho)  # constant section bar
     D2 = np.hstack((np.ones(n)*d, np.ones(n)*d*k))  # section change 
-    b2 = Barhomo(dx, D2, E, rho)  # cross-section increase
-    b3 = Barhomo(dx, D2[::-1], E, rho)  # cross-secction reduction
+    b2 = BarSingle(dx, D2, E, rho)  # cross-section increase
+    b3 = BarSingle(dx, D2[::-1], E, rho)  # cross-section reduction
 
     # Visualize the bar:
     bb.plot()  # constant cross-section and constant impedance
@@ -487,7 +487,7 @@ And why not a sine pulse?
 
 
     sine = np.sin(2*np.pi*np.linspace(0, 1, num=40))
-    bar = Barhomo(dx, np.ones(30)*d, E, rho)
+    bar = BarSingle(dx, np.ones(30)*d, E, rho)
     tests = Waveprop(bar, sine, nstep=3*len(sine), left='infinite', right='free')
     tests.plot()
     tests.plotcut(x=0.15)
@@ -541,7 +541,7 @@ And why not a sine pulse?
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.455 seconds)
+   **Total running time of the script:** ( 0 minutes  10.400 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_0_Waveprop.py:

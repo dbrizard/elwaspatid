@@ -30,7 +30,7 @@ Here are some useful references:
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Define a Barhomo bar and use it with Waveprop to compute elastic wave propagation in simple tes...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Define a BarSingle bar and use it with Waveprop to compute elastic wave propagation in simple t...">
 
 .. only:: html
 

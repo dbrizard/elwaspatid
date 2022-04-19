@@ -16,14 +16,14 @@ https://doi.org/10.1016/0734-743X(93)90084-K
 First define a bar, then give it to :class:`WP2` or :class:`Waveprop` along 
 with an incident wave for propagation computation::
 
-    bar = Barhete(E=[210, 78], rho=[7800, 2800], L=[1, 1.1], d=[0.030, 0.028])
+    bar = BarSet(E=[210, 78], rho=[7800, 2800], L=[1, 1.1], d=[0.030, 0.028])
     incw = np.ones(100)
     prop = WP2(bar, incw)
 
 Be careful:
 
-* :class:`WP2` works only with :class:`Barhete` bars; traction is not transmitted throught interfaces
-* :class:`Waveprop` works with :class:`Barhete` and :class:`Barhomo` bars, but does not take interfaces between bars/segments into account (the bars are stuck, traction can cross interfaces)
+* :class:`WP2` works only with :class:`BarSet` bars; traction is not transmitted throught interfaces
+* :class:`Waveprop` works with :class:`BarSet` and :class:`BarSingle` bars, but does not take interfaces between bars/segments into account (the bars are stuck, traction can cross interfaces)
 
 Created on Fri Aug 22 11:13:37 2014
 
@@ -972,10 +972,10 @@ def trapezeWave(plateau=20, rise=5, fall=None, A=1):
     return trap
     
 
-class Barhomo:
+class BarSingle:
     """Homogeneous bar (ie continuous rod) with section changes.
     
-    Mother class of :class:`Barhete`
+    Mother class of :class:`BarSet`
     """
     def __init__(self, dx, d, E, rho):
         '''Barre homogème, avec uniquement des variations se section (d)
@@ -1036,11 +1036,11 @@ class Barhomo:
 
 
 
-class Barhete(Barhomo):
+class BarSet(BarSingle):
     """Heterogeneous bar with cross-section/modulus/density changes along the
     bar length.
     
-    Sister class of :class:`Barhomo`
+    Sister class of :class:`BarSingle`
     
     :attr:`seg` is a list of :class:`Segment` objects, this is then used in :class:`WP2`.
     
@@ -1509,7 +1509,7 @@ def groovedBar(interv, lg=0.003, LL=2, d0=0.030, d1=0.0278, E=78e9, rho=2800, pi
     Eg = [E for ii in range(len(d))]
     rhog = [rho for ii in range(len(d))]
     
-    bg = Barhete(Eg, rhog, l, d, nmin=1, right='free')
+    bg = BarSet(Eg, rhog, l, d, nmin=1, right='free')
     
     #get index of last impactor element
     indelt = bg.nelt[:-1].sum()
@@ -1662,25 +1662,25 @@ if __name__ == '__main__':
         ## Barre homogène:
         D = np.ones(n) * d # diameters
         D2 = np.hstack((np.ones(n)*d, np.ones(n)*d*k))
-        bb = Barhomo(0.01, D,  E, rho) # only section change is possible
-        b2 = Barhomo(0.01, D2, E, rho)
-        b3 = Barhomo(0.01, D2[::-1], E, rho)
+        bb = BarSingle(0.01, D,  E, rho) # only section change is possible
+        b2 = BarSingle(0.01, D2, E, rho)
+        b3 = BarSingle(0.01, D2[::-1], E, rho)
         if plotBars:
             bb.plot()
         
         ## La même barre avec des coupures
         nm = 15
-        bc = Barhete([E, E], [rho, rho], [.1, .1], [d, d], nmin=nm)
-        bc2 = Barhete([E, E], [rho, rho], [.1, .1], [d, k*d], nmin=nm)
-        bc3 = Barhete([E, E], [rho, rho], [.1, .1], [k*d, d], nmin=nm)
-        bc4 = Barhete([E, E], [rho, rho], [.1, .3], [d, d], nmin=nm)
+        bc = BarSet([E, E], [rho, rho], [.1, .1], [d, d], nmin=nm)
+        bc2 = BarSet([E, E], [rho, rho], [.1, .1], [d, k*d], nmin=nm)
+        bc3 = BarSet([E, E], [rho, rho], [.1, .1], [k*d, d], nmin=nm)
+        bc4 = BarSet([E, E], [rho, rho], [.1, .3], [d, d], nmin=nm)
         
         ## Barres hétérogènes
         Ee = [210e9,210e9, 210e9]  # Young moduli
         Re = [7800, 7800, 7800]  # densities
         Le = [2, 0.020, 2.71]  # Lengths
         De = [0.020, 0.010, 0.020]  # diameters
-        plic = Barhete(Ee, Re, Le, De, nmin=8)
+        plic = BarSet(Ee, Re, Le, De, nmin=8)
         if plotBars:
             plic.plot()
             plic.bar_continuous.plot()

@@ -4,12 +4,12 @@
 Test :class:`WP2` class
 =======================
 
-Define a :class:`Barhete` bar configuration and use it with :class:`WP2` to compute
+Define a :class:`BarSet` bar configuration and use it with :class:`WP2` to compute
 elastic wave propagation in simple test cases.
 """
 
 import numpy as np
-from elwaspatid import WP2, Barhete
+from elwaspatid import WP2, BarSet
 
 
 # %%
@@ -23,10 +23,10 @@ k = 2.4  # diamters ratio [-]
 # %%
 # Create the bar configurations
 nm = 15
-bc = Barhete([E, E], [rho, rho], [.1, .13], [d, d], nmin=nm)
-bc2 = Barhete([E, E], [rho, rho], [.1, .13], [d, k*d], nmin=nm)
-bc3 = Barhete([E, E], [rho, rho], [.1, .13], [k*d, d], nmin=nm)
-bc4 = Barhete([E, E], [rho, rho], [.1, .3], [d, d], nmin=nm)
+bc = BarSet([E, E], [rho, rho], [.1, .13], [d, d], nmin=nm)
+bc2 = BarSet([E, E], [rho, rho], [.1, .13], [d, k*d], nmin=nm)
+bc3 = BarSet([E, E], [rho, rho], [.1, .13], [k*d, d], nmin=nm)
+bc4 = BarSet([E, E], [rho, rho], [.1, .3], [d, d], nmin=nm)
 
 # %%
 # Define the incident wave vector

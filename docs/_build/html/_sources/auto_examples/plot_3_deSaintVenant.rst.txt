@@ -40,7 +40,7 @@ the displacement diagrams of de Saint Venant in:
 
 
     import numpy as np
-    from elwaspatid import WP2, Barhete
+    from elwaspatid import WP2, BarSet
     import matplotlib.pyplot as plt
 
 
@@ -80,7 +80,7 @@ Create the bar configurations
 
 .. code-block:: default
 
-    bc4 = Barhete([E, E], [rho, rho], [.4, 1.], [d, d], nmin=10)
+    bc4 = BarSet([E, E], [rho, rho], [.4, 1.], [d, d], nmin=10)
 
 
     test2v = WP2(bc4, nstep=160, left='free', right='free', Vinit=10)
@@ -158,7 +158,7 @@ it has a velocity smaller than the initial velocity of the impactor.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.966 seconds)
+   **Total running time of the script:** ( 0 minutes  1.978 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_3_deSaintVenant.py:
