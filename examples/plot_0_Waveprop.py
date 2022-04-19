@@ -36,7 +36,7 @@ D = np.ones(n) * d  # diameters of the Segments
 bb = Barhomo(dx, D, E, rho)  # constant section bar
 D2 = np.hstack((np.ones(n)*d, np.ones(n)*d*k))  # section change 
 b2 = Barhomo(dx, D2, E, rho)  # cross-section increase
-b3 = Barhomo(dx, D2[::-1], E, rho)  # cross-secction reduction
+b3 = Barhomo(dx, D2[::-1], E, rho)  # cross-section reduction
 
 # Visualize the bar:
 bb.plot()  # constant cross-section and constant impedance
