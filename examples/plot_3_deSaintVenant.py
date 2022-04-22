@@ -16,8 +16,6 @@ the displacement diagrams of de Saint Venant in:
 """
 
 # sphinx_gallery_thumbnail_number = 4
-
-
 import numpy as np
 from elwaspatid import WP2, BarSet
 import matplotlib.pyplot as plt
@@ -32,9 +30,8 @@ k = 2.4  # diamters ratio [-]
 
 
 # %%
-# Create the bar configurations
+# Create the bar configuration
 bc4 = BarSet([E, E], [rho, rho], [.4, 1.], [d, d], nmin=10)
-
 
 test2v = WP2(bc4, nstep=160, left='free', right='free', Vinit=10)
 test2v.plot('2b_veloc')

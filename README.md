@@ -26,7 +26,7 @@ Boundary conditions can be:
 
 ## Documentation
 
-[ReadTheDocs](https://elwa-spatid.readthedocs.io)
+[ReadTheDocs](https://elwaspatid.readthedocs.io)
 
 ## Usage
 
@@ -56,7 +56,7 @@ describe your issue or problem. If applicable, provide a minimal working example
 (MWE).
 
 ### Support
-Do not forget to [read the docs!](https://elwa-spatid.readthedocs.io) 
+Do not forget to [read the docs!](https://elwaspatid.readthedocs.io) 
 Several examples are provided, showing all the available functionalities. They
 should be a good starting point. Check the references (articles and books) 
 listed in the examples introduction if you need mechanical background.
