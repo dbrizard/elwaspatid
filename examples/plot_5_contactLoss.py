@@ -50,19 +50,25 @@ testl.plotInterface(0, 'interface2')
 # %% 
 # Contact loss detection
 # ----------------------
-# **Why contact loss detection is useless??**
+# *Did not find yet a combination of bar set and initial conditions (or incident
+# wave) showing the usefulness of automatic contact loss detection.*
+# 
+# This example however shows how to:
+#
+# - modify the section of a bar in a :class:`BarSet`.
+# - set contact loss detection;
 #
 # Second bar with section increase
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 bar = BarSet([E, E], [rho, rho], [.2*L, L], [.8*d, d], nmin=12)
-bar.changeSection(iseg=1, l=L/4, d=2*d)
-bar.changeSection(iseg=1, l=L/2, d=4*d)
+bar.changeSection(iseg=1, l=L/4, d=2*d)  # first section change on second bar
+bar.changeSection(iseg=1, l=L/2, d=4*d)  # second section change on second bar
 bar.plotProperties('Z')
 
 # %% 
 # No contact loss
 # ^^^^^^^^^^^^^^^
-#
+# Check that no force cross the interface after separation of the two bars.
 testm = WP2(bar, nstep=150, left='free', right='infinite', Vinit=5, contactLoss=None)
 testm.plot()
 testm.plotInterface(0, 'NoCL')
@@ -71,8 +77,8 @@ print(testm.contact)
 # %% 
 # Contact loss
 # ^^^^^^^^^^^^
-# 
-testc = WP2(bar, -incw, nstep=150, left='free', right='infinite', Vinit=0, contactLoss=1e-9)
+# Again, check that no force cross the interface after separation of the two bars.
+testc = WP2(bar, nstep=150, left='free', right='infinite', Vinit=5, contactLoss=1e-9)
 testc.plot()
 testc.plotInterface(0, 'CL')
 print(testc.contact)

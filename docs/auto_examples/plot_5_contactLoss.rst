@@ -192,22 +192,28 @@ See also :ref:`sphx_glr_auto_examples_plot_2_ElasticImpact.py`
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-57
+.. GENERATED FROM PYTHON SOURCE LINES 51-63
 
 Contact loss detection
 ----------------------
-**Why contact loss detection is useless??**
+*Did not find yet a combination of bar set and initial conditions (or incident
+wave) showing the usefulness of automatic contact loss detection.*
+
+This example however shows how to:
+
+- use contact loss detection;
+- modify the section of a bar in a :class:`BarSet`.
 
 Second bar with section increase
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-62
+.. GENERATED FROM PYTHON SOURCE LINES 63-68
 
 .. code-block:: default
 
     bar = BarSet([E, E], [rho, rho], [.2*L, L], [.8*d, d], nmin=12)
-    bar.changeSection(iseg=1, l=L/4, d=2*d)
-    bar.changeSection(iseg=1, l=L/2, d=4*d)
+    bar.changeSection(iseg=1, l=L/4, d=2*d)  # first section change on second bar
+    bar.changeSection(iseg=1, l=L/2, d=4*d)  # second section change on second bar
     bar.plotProperties('Z')
 
 
@@ -231,13 +237,13 @@ Second bar with section increase
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-66
+.. GENERATED FROM PYTHON SOURCE LINES 69-72
 
 No contact loss
 ^^^^^^^^^^^^^^^
+Check that no force cross the interface after separation of the two bars.
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 66-71
+.. GENERATED FROM PYTHON SOURCE LINES 72-77
 
 .. code-block:: default
 
@@ -299,17 +305,17 @@ No contact loss
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-75
+.. GENERATED FROM PYTHON SOURCE LINES 78-81
 
 Contact loss
 ^^^^^^^^^^^^
+Again, check that no force cross the interface after separation of the two bars.
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 75-79
+.. GENERATED FROM PYTHON SOURCE LINES 81-85
 
 .. code-block:: default
 
-    testc = WP2(bar, -incw, nstep=150, left='free', right='infinite', Vinit=0, contactLoss=1e-9)
+    testc = WP2(bar, nstep=150, left='free', right='infinite', Vinit=5, contactLoss=1e-9)
     testc.plot()
     testc.plotInterface(0, 'CL')
     print(testc.contact)
@@ -354,13 +360,14 @@ Contact loss
 
  .. code-block:: none
 
+    Setting initial velocity of first segment (Vo=5)
     /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:397: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
       ax1 = plt.subplot(nsbp, 1, 1)
     /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:404: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
       plt.subplot(nsbp, 1, 2, sharex=ax1)
     /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:411: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
       plt.subplot(nsbp, 1, 3, sharex=ax1)
-    {'state': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'threshold': 1e-09}
+    {'state': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'threshold': 1e-09}
 
 
 
@@ -368,7 +375,7 @@ Contact loss
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  7.400 seconds)
+   **Total running time of the script:** ( 0 minutes  6.165 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_5_contactLoss.py:

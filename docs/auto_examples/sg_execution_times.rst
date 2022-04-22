@@ -5,20 +5,20 @@
 
 Computation times
 =================
-**00:22.380** total execution time for **auto_examples** files:
+**00:06.165** total execution time for **auto_examples** files:
 
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_1_WP2.py` (``plot_1_WP2.py``)                     | 00:10.492 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_5_contactLoss.py` (``plot_5_contactLoss.py``)     | 00:06.165 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_0_Waveprop.py` (``plot_0_Waveprop.py``)           | 00:09.669 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_0_Waveprop.py` (``plot_0_Waveprop.py``)           | 00:00.000 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_3_deSaintVenant.py` (``plot_3_deSaintVenant.py``) | 00:02.219 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_1_WP2.py` (``plot_1_WP2.py``)                     | 00:00.000 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr_auto_examples_plot_2_ElasticImpact.py` (``plot_2_ElasticImpact.py``) | 00:00.000 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_4_SHPB.py` (``plot_4_SHPB.py``)                   | 00:00.000 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_3_deSaintVenant.py` (``plot_3_deSaintVenant.py``) | 00:00.000 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_5_contactLoss.py` (``plot_5_contactLoss.py``)     | 00:00.000 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_4_SHPB.py` (``plot_4_SHPB.py``)                   | 00:00.000 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr_auto_examples_plot_6_underHood.py` (``plot_6_underHood.py``)         | 00:00.000 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
