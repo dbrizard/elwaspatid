@@ -88,7 +88,7 @@ Define the incident wave vector
 
 Create the bars
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-48
+.. GENERATED FROM PYTHON SOURCE LINES 33-46
 
 .. code-block:: default
 
@@ -104,8 +104,6 @@ Create the bars
     bb.plot()  # constant cross-section and constant impedance
     b2.plot()  # cross-section and impedance increase
 
-    ## Cas test SANS coupures (barhomo)
-    # premier cas test avec une barre uniforme
 
 
 
@@ -145,7 +143,7 @@ Create the bars
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-54
+.. GENERATED FROM PYTHON SOURCE LINES 47-52
 
 Free-free uniform bar
 ---------------------
@@ -153,7 +151,7 @@ Incident pulse reflects on both end of the bar endlessly.
 The force at both ends of the bar is null. Traction pulse reflects as compression.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-59
+.. GENERATED FROM PYTHON SOURCE LINES 52-57
 
 .. code-block:: default
 
@@ -186,12 +184,12 @@ The force at both ends of the bar is null. Traction pulse reflects as compressio
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-62
+.. GENERATED FROM PYTHON SOURCE LINES 58-60
 
 It is possible to plot cuts of the space-time diagram, at a given time `t`
 or at a given position `x`
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-65
+.. GENERATED FROM PYTHON SOURCE LINES 60-63
 
 .. code-block:: default
 
@@ -222,11 +220,11 @@ or at a given position `x`
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-67
+.. GENERATED FROM PYTHON SOURCE LINES 64-65
 
 Additional diagrams are also available
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-70
+.. GENERATED FROM PYTHON SOURCE LINES 65-68
 
 .. code-block:: default
 
@@ -271,7 +269,7 @@ Additional diagrams are also available
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-78
+.. GENERATED FROM PYTHON SOURCE LINES 69-76
 
 Free-fixed uniform bar
 ----------------------
@@ -281,7 +279,7 @@ Left end is free, right end is fixed:
 - then, compression reflects as traction on free end;
 - and finally traction reflects as traction on fixed end;
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-84
+.. GENERATED FROM PYTHON SOURCE LINES 76-82
 
 .. code-block:: default
 
@@ -315,13 +313,13 @@ Left end is free, right end is fixed:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 85-88
+.. GENERATED FROM PYTHON SOURCE LINES 83-86
 
 Infinite-infinite uniform bar
 -----------------------------
 Infinite end amounts to anechoic condition: no reflecion of elastic wave.
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-91
+.. GENERATED FROM PYTHON SOURCE LINES 86-89
 
 .. code-block:: default
 
@@ -352,12 +350,12 @@ Infinite end amounts to anechoic condition: no reflecion of elastic wave.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-94
+.. GENERATED FROM PYTHON SOURCE LINES 90-92
 
 Free-free bar with section increase
 -----------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 94-97
+.. GENERATED FROM PYTHON SOURCE LINES 92-95
 
 .. code-block:: default
 
@@ -388,12 +386,12 @@ Free-free bar with section increase
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-100
+.. GENERATED FROM PYTHON SOURCE LINES 96-98
 
 Free-free bar with section reduction
 ------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 100-104
+.. GENERATED FROM PYTHON SOURCE LINES 98-102
 
 .. code-block:: default
 
@@ -425,7 +423,7 @@ Free-free bar with section reduction
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-112
+.. GENERATED FROM PYTHON SOURCE LINES 103-110
 
 Whatever pulse input is possible
 --------------------------------
@@ -435,7 +433,7 @@ For exemple, define a trapeze pulse shape and propagate it in a bar with
 constant section. Right end is ``free`` so the traction wave is reflected as
 a compression wave. Left end is ``infinite`` so no reflecion occur.
 
-.. GENERATED FROM PYTHON SOURCE LINES 112-118
+.. GENERATED FROM PYTHON SOURCE LINES 110-116
 
 .. code-block:: default
 
@@ -476,12 +474,12 @@ a compression wave. Left end is ``infinite`` so no reflecion occur.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 119-121
+.. GENERATED FROM PYTHON SOURCE LINES 117-119
 
 And why not a sine pulse?
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-136
+.. GENERATED FROM PYTHON SOURCE LINES 119-134
 
 .. code-block:: default
 
@@ -541,7 +539,7 @@ And why not a sine pulse?
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  10.400 seconds)
+   **Total running time of the script:** ( 0 minutes  9.669 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_0_Waveprop.py:

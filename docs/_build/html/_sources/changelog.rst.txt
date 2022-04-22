@@ -9,7 +9,14 @@ Changelog
    * il est parfois nécessaire d'attendre après un commit pour pouvoir compiler la doc. 
    * `requirements: docs/RTDrequirements_short.txt` in .readthedocs.yaml does not works
    * requirement was therefore added online in Admin > Advanced Settings
-   * API reference still empty...
+
+   Types of changes:
+    * `Added` for new features.
+    * `Changed` for changes in existing functionality.
+    * `Deprecated` for soon-to-be removed features.
+    * `Removed` for now removed features.
+    * `Fixed` for any bug fixes.
+    * `Security` in case of vulnerabilities.
 
    --->
 
@@ -36,8 +43,21 @@ To add
 To change
 ~~~~~~~~~
 
+[2.0.1] - 2022-04-19
+--------------------
+
+Changed
+~~~~~~~
+
+-  ``Barhete`` is now ``BarSet``, which is more meaningfull
+-  ``Barhomo`` is now ``BarSingle``, which is more meaningfull too
+
+.. _section-1:
+
 [2.0.0] - 2022-03-08
 --------------------
+
+.. _changed-1:
 
 Changed
 ~~~~~~~
@@ -45,7 +65,7 @@ Changed
 -  New name for the module (``elwaspatid``), identical to project name,
    for consitancy
 
-.. _section-1:
+.. _section-2:
 
 [1.1.0] - 2022-03-15
 --------------------
@@ -63,14 +83,14 @@ Added
 -  ``fixed`` boundary condition for ``WP2``;
 -  compute Stress and Strain in ``Segment`` for ``WP2``;
 
-.. _changed-1:
+.. _changed-2:
 
 Changed
 ~~~~~~~
 
 -  ``plain`` boundary condition is now called ``infinite``
 
-.. _section-2:
+.. _section-3:
 
 [1.0.2] - 2022-03
 -----------------
@@ -84,7 +104,7 @@ Added
 -  update boundary conditions (segment.left, .right) accordingly;
 -  plot impedance of ``Segment``, and of ``Barhete``
 
-.. _section-3:
+.. _section-4:
 
 [1.0.1] - 2022-02
 -----------------
@@ -99,7 +119,7 @@ Added
 -  ``WP2``: compute displacement of nodes (**experimental**)
 -  ``WP2.getSignal``: choice of time scale (s, ms, µs)
 
-.. _section-4:
+.. _section-5:
 
 [1.0.0] - 2021
 --------------
@@ -111,7 +131,7 @@ Added
 
 -  ``ElasticImpact`` class.
 
-.. _changed-2:
+.. _changed-3:
 
 Changed
 ~~~~~~~
@@ -119,7 +139,7 @@ Changed
 -  use of ``plt.pcolormesh`` modified in ``WP2.subplot`` method;
 -  test cases are now external files (removed from bottom of module).
 
-.. _section-5:
+.. _section-6:
 
 [0.8.0] - 2016
 --------------
@@ -131,7 +151,7 @@ Added
 
 -  ``WP2`` class to overcome the limitations of ``Waveprop``.
 
-.. _section-6:
+.. _section-7:
 
 [0.5.0] - 2014
 --------------

@@ -51,7 +51,7 @@ Here are some useful references:
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Define a Barhete bar configuration and use it with WP2 to compute elastic wave propagation in s...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Define a BarSet bar configuration and use it with WP2 to compute elastic wave propagation in si...">
 
 .. only:: html
 
@@ -93,7 +93,7 @@ Here are some useful references:
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Define a Barhete bar configuration and use it with WP2 reproduce the displacement diagrams of d...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Define a BarSet bar configuration and use it with WP2 reproduce the displacement diagrams of de...">
 
 .. only:: html
 

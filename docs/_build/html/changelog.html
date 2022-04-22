@@ -44,7 +44,14 @@ _Readthedoc_:
 * il est parfois nécessaire d'attendre après un commit pour pouvoir compiler la doc.
 * `requirements: docs/RTDrequirements_short.txt` in .readthedocs.yaml does not works
 * requirement was therefore added online in Admin > Advanced Settings
-* API reference still empty...
+
+Types of changes:
+ * `Added` for new features.
+ * `Changed` for changes in existing functionality.
+ * `Deprecated` for soon-to-be removed features.
+ * `Removed` for now removed features.
+ * `Fixed` for any bug fixes.
+ * `Security` in case of vulnerabilities.
 
 ---><p>All notable changes to this project will be documented in this file.</p>
 <p>Trying to comply with <a class="reference external" href="https://semver.org/spec/v2.0.0.html">semantic
@@ -69,17 +76,27 @@ changes).</p></li>
 </div>
 </div>
 <div class="section" id="id1">
-<h2>[2.0.0] - 2022-03-08<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>[2.0.1] - 2022-04-19<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="changed">
 <h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Barhete</span></code> is now <code class="docutils literal notranslate"><span class="pre">BarSet</span></code>, which is more meaningfull</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Barhomo</span></code> is now <code class="docutils literal notranslate"><span class="pre">BarSingle</span></code>, which is more meaningfull too</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="section-1">
+<span id="id2"></span><h2>[2.0.0] - 2022-03-08<a class="headerlink" href="#section-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="changed-1">
+<span id="id3"></span><h3>Changed<a class="headerlink" href="#changed-1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>New name for the module (<code class="docutils literal notranslate"><span class="pre">elwaspatid</span></code>), identical to project name,
 for consitancy</p></li>
 </ul>
 </div>
 </div>
-<div class="section" id="section-1">
-<span id="id2"></span><h2>[1.1.0] - 2022-03-15<a class="headerlink" href="#section-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="section-2">
+<span id="id4"></span><h2>[1.1.0] - 2022-03-15<a class="headerlink" href="#section-2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="added">
 <h3>Added<a class="headerlink" href="#added" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -94,17 +111,17 @@ Barhomo.</strong></p></li>
 <li><p>compute Stress and Strain in <code class="docutils literal notranslate"><span class="pre">Segment</span></code> for <code class="docutils literal notranslate"><span class="pre">WP2</span></code>;</p></li>
 </ul>
 </div>
-<div class="section" id="changed-1">
-<span id="id3"></span><h3>Changed<a class="headerlink" href="#changed-1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="changed-2">
+<span id="id5"></span><h3>Changed<a class="headerlink" href="#changed-2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">plain</span></code> boundary condition is now called <code class="docutils literal notranslate"><span class="pre">infinite</span></code></p></li>
 </ul>
 </div>
 </div>
-<div class="section" id="section-2">
-<span id="id4"></span><h2>[1.0.2] - 2022-03<a class="headerlink" href="#section-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="section-3">
+<span id="id6"></span><h2>[1.0.2] - 2022-03<a class="headerlink" href="#section-3" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="added-1">
-<span id="id5"></span><h3>Added<a class="headerlink" href="#added-1" title="Permalink to this headline">¶</a></h3>
+<span id="id7"></span><h3>Added<a class="headerlink" href="#added-1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>detect end of contact between rod with displacement;</p></li>
 <li><p>update boundary conditions (segment.left, .right) accordingly;</p></li>
@@ -112,10 +129,10 @@ Barhomo.</strong></p></li>
 </ul>
 </div>
 </div>
-<div class="section" id="section-3">
-<span id="id6"></span><h2>[1.0.1] - 2022-02<a class="headerlink" href="#section-3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="section-4">
+<span id="id8"></span><h2>[1.0.1] - 2022-02<a class="headerlink" href="#section-4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="added-2">
-<span id="id7"></span><h3>Added<a class="headerlink" href="#added-2" title="Permalink to this headline">¶</a></h3>
+<span id="id9"></span><h3>Added<a class="headerlink" href="#added-2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Waveprop</span></code>: compute and plot displacement of nodes, stress in
 elements;</p></li>
@@ -124,35 +141,35 @@ elements;</p></li>
 </ul>
 </div>
 </div>
-<div class="section" id="section-4">
-<span id="id8"></span><h2>[1.0.0] - 2021<a class="headerlink" href="#section-4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="section-5">
+<span id="id10"></span><h2>[1.0.0] - 2021<a class="headerlink" href="#section-5" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="added-3">
-<span id="id9"></span><h3>Added<a class="headerlink" href="#added-3" title="Permalink to this headline">¶</a></h3>
+<span id="id11"></span><h3>Added<a class="headerlink" href="#added-3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ElasticImpact</span></code> class.</p></li>
 </ul>
 </div>
-<div class="section" id="changed-2">
-<span id="id10"></span><h3>Changed<a class="headerlink" href="#changed-2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="changed-3">
+<span id="id12"></span><h3>Changed<a class="headerlink" href="#changed-3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>use of <code class="docutils literal notranslate"><span class="pre">plt.pcolormesh</span></code> modified in <code class="docutils literal notranslate"><span class="pre">WP2.subplot</span></code> method;</p></li>
 <li><p>test cases are now external files (removed from bottom of module).</p></li>
 </ul>
 </div>
 </div>
-<div class="section" id="section-5">
-<span id="id11"></span><h2>[0.8.0] - 2016<a class="headerlink" href="#section-5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="section-6">
+<span id="id13"></span><h2>[0.8.0] - 2016<a class="headerlink" href="#section-6" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="added-4">
-<span id="id12"></span><h3>Added<a class="headerlink" href="#added-4" title="Permalink to this headline">¶</a></h3>
+<span id="id14"></span><h3>Added<a class="headerlink" href="#added-4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">WP2</span></code> class to overcome the limitations of <code class="docutils literal notranslate"><span class="pre">Waveprop</span></code>.</p></li>
 </ul>
 </div>
 </div>
-<div class="section" id="section-6">
-<span id="id13"></span><h2>[0.5.0] - 2014<a class="headerlink" href="#section-6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="section-7">
+<span id="id15"></span><h2>[0.5.0] - 2014<a class="headerlink" href="#section-7" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="added-5">
-<span id="id14"></span><h3>Added<a class="headerlink" href="#added-5" title="Permalink to this headline">¶</a></h3>
+<span id="id16"></span><h3>Added<a class="headerlink" href="#added-5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Waveprop</span></code> class.</p></li>
 </ul>
@@ -188,33 +205,37 @@ elements;</p></li>
 <li class="toctree-l3"><a class="reference internal" href="#to-change">To change</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">[2.0.0] - 2022-03-08</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">[2.0.1] - 2022-04-19</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#changed">Changed</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#section-1">[1.1.0] - 2022-03-15</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#added">Added</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#section-1">[2.0.0] - 2022-03-08</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#changed-1">Changed</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#section-2">[1.0.2] - 2022-03</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#added-1">Added</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#section-3">[1.0.1] - 2022-02</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#added-2">Added</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#section-4">[1.0.0] - 2021</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#added-3">Added</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#section-2">[1.1.0] - 2022-03-15</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#added">Added</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changed-2">Changed</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#section-5">[0.8.0] - 2016</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#section-3">[1.0.2] - 2022-03</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#added-1">Added</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#section-4">[1.0.1] - 2022-02</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#added-2">Added</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#section-5">[1.0.0] - 2021</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#added-3">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changed-3">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#section-6">[0.8.0] - 2016</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#added-4">Added</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#section-6">[0.5.0] - 2014</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#section-7">[0.5.0] - 2014</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#added-5">Added</a></li>
 </ul>
 </li>

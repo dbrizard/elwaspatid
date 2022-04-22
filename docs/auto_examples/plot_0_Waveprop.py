@@ -42,8 +42,6 @@ b3 = BarSingle(dx, D2[::-1], E, rho)  # cross-section reduction
 bb.plot()  # constant cross-section and constant impedance
 b2.plot()  # cross-section and impedance increase
 
-## Cas test SANS coupures (barhomo)
-# premier cas test avec une barre uniforme
 
 # %%
 # Free-free uniform bar

@@ -4,7 +4,7 @@
 Test :class:`WP2` class
 =======================
 
-Define a :class:`Barhete` bar configuration and use it with :class:`WP2` to compute
+Define a :class:`BarSet` bar configuration and use it with :class:`WP2` to compute
 elastic wave propagation in simple test cases.
 """
 
