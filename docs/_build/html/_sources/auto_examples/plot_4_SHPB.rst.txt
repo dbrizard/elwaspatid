@@ -18,11 +18,12 @@
 .. _sphx_glr_auto_examples_plot_4_SHPB.py:
 
 
-Use :class:`Waveprop` to simulate SHPB
-======================================
+Use :class:`Waveprop` to simulate SHPB test
+===========================================
+Simulate a test with Split Hopkinson Pressure Bars, assuming the sample has 
+purely elastic behaviour.
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 8-13
+.. GENERATED FROM PYTHON SOURCE LINES 9-14
 
 .. code-block:: default
 
@@ -38,11 +39,11 @@ Use :class:`Waveprop` to simulate SHPB
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-15
+.. GENERATED FROM PYTHON SOURCE LINES 15-16
 
-Define material parameters
+Define material parameters.
 
-.. GENERATED FROM PYTHON SOURCE LINES 15-19
+.. GENERATED FROM PYTHON SOURCE LINES 16-20
 
 .. code-block:: default
 
@@ -57,11 +58,11 @@ Define material parameters
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 20-21
+.. GENERATED FROM PYTHON SOURCE LINES 21-22
 
 SHPB bar configuration
 
-.. GENERATED FROM PYTHON SOURCE LINES 21-28
+.. GENERATED FROM PYTHON SOURCE LINES 22-28
 
 .. code-block:: default
 
@@ -69,7 +70,6 @@ SHPB bar configuration
                        [0.028, 0.030, 0.025, 0.030], nmin=4)
     testk = WP2(b_kolsky, nstep=400, left='free', right='free', Vinit=5)
     testk.plot('shpb')
-
 
 
 
@@ -132,7 +132,7 @@ Get force at both ends of sample (segment index ``iseg=2``)
 
 .. GENERATED FROM PYTHON SOURCE LINES 35-36
 
-Plot forces in the sample
+Plot forces in the sample to see the buildup of equilibrium in the sample.
 
 .. GENERATED FROM PYTHON SOURCE LINES 36-42
 
@@ -160,14 +160,14 @@ Plot forces in the sample
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x7fe85642b748>
+    <matplotlib.legend.Legend object at 0x7f678720ee10>
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.925 seconds)
+   **Total running time of the script:** ( 0 minutes  2.018 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_4_SHPB.py:

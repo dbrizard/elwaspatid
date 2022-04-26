@@ -19,6 +19,15 @@ Boundary conditions can be:
 * contact interface with another rod;
 * infinite end (ie. anechoic condition).
 
+This module is the extention of the work of the following reference:
+
+Bacon, C. (1993). Numerical prediction of the propagation of elastic waves in 
+longitudinally impacted rods : Applications to Hopkinson testing. 
+*International Journal of Impact Engineering*, 13(4), 527‑539. 
+https://doi.org/10.1016/0734-743X(93)90084-K
+
+![Example of force space-time diagram: two successive compression pulses traveling down two bars (with identical cross-section) in contact.](docs/auto_examples/images/sphx_glr_plot_1_WP2_001.png)
+
 
 ## Installation
 
@@ -48,7 +57,7 @@ Contributions are welcome, be it improvements or new functionalities. Either
 contact directly the author, or use [Pull Requests](https://github.com/dbrizard/elwaspatid/pulls).
 
 Refering to the example called [Under the hood](https://elwaspatid.readthedocs.io/en/latest/auto_examples/plot_6_underHood.html) 
-may be a good idea before diving into code.
+may be a good idea before diving into the code.
 
 ### Reporting issues or problems
 Use [issues](https://github.com/dbrizard/elwaspatid/issues). Be sure to fully 

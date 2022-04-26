@@ -10,7 +10,7 @@ https://doi.org/10.1016/0734-743X(93)90084-K
    Summary-- Simple expressions, based on one-dimensional elastic wave theory, are
    established which permit prediction of normal force and particle velocity at 
    cross-sections of a non-uniform linearly-elastic rod. The initial normal force
-   and particle velocity at each cross-section of that rod must be known.
+   and particle velocity at each cross-section of that rod must be known. [...]
 
 
 First define a bar, then give it to :class:`WP2` or :class:`Waveprop` along 
@@ -53,7 +53,7 @@ class WP2:
         /!\ Anechoic condition at impact end (left) until the end of the 
         prescribed incident wave *incw*
         
-        :param obj bar: bar setup (:class:`Barhete` object)
+        :param obj bar: bar setup (:class:`BarSet` object)
         :param array incw: incident force wave (input left impact)
         :param int nstep: optional number of time step
         :param str left: left boundary condition, once incident wave is finished
@@ -135,7 +135,7 @@ class WP2:
 
 
     def gatherForce(self):
-        """Gather all the :attr:`Force` of each :class:`Segment` in :class:`Barhete`
+        """Gather all the :attr:`Force` of each :class:`Segment` in :class:`BarSet`
         in one array.
         """
         # intervals for plotting
@@ -230,7 +230,7 @@ class WP2:
                 for v in verts:
                     plt.axvline(x=v, color='.7')
             except AttributeError:
-                print("This may not be a Barhete instance, no vertical lines to plot...")
+                print("This may not be a BarSet instance, no vertical lines to plot...")
         
         plt.xlim(xmin=self.xplot[0], xmax=self.xplot[-1]) # XXX get rid of xplot?
         plt.ylim(ymax=scale*self.time[-1])
@@ -489,11 +489,11 @@ class Waveprop:
         
         First version: traction can cross section changes (ie interfaces)
         
-        :param obj bar:    instance of :class:`Barhomo` or :class:`Barhete`
+        :param obj bar:    instance of :class:`BarSingle` or :class:`BarSet`
         :param array incw: incident wave
         :param int nstep:  number of calculation steps (if 0, length of **incw**)
-        :param str left:   left boundary condition ('free' or 'infinite') after the end of **incw**
-        :param str right:  right boundary condition ('free' or 'infinite')
+        :param str left:   left boundary condition ('free', 'fixed' or 'infinite') after the end of **incw**
+        :param str right:  right boundary condition ('free', 'fixed' or 'infinite')
         :param float Vinit: initial bar velocity
         :param int indV: index of end of impact section! LEFT=impactor=speed, RIGHT=bars=static
         '''
@@ -700,17 +700,17 @@ class Waveprop:
         if vert is not None:
             for v in vert:
                 plt.axvline(x=v, color='.8')
-        # XXX Following is useless, no Barhomo.L attribute. Why did I write it?
+        # XXX Following is useless, no BarSingle.L attribute. Why did I write it?
         # if autovert:
         #     try:
         #         verts = np.hstack((0, np.cumsum(self.bar_discret.L)))
         #         for v in verts:
         #             plt.axvline(x=v, color='.7')
         #     except AttributeError:
-        #         if self.bar_discret.__class__.__name__=='Barhete':
+        #         if self.bar_discret.__class__.__name__=='BarSet':
         #             warnings.warn('There is a big BIG problem')
         #         else:
-        #             print("this may not be a Barhete instance, no vertical lines to plot")
+        #             print("this may not be a BarSet instance, no vertical lines to plot")
         
         
     
@@ -1164,7 +1164,7 @@ class BarSet(BarSingle):
 class Segment(object):
     """Bar segment with constant properties
     
-    For later use in :class:`WP2` through :class:`Barhete`
+    For later use in :class:`WP2` through :class:`BarSet`
     """
     def __init__(self, nel, z, E, l, dx, dt, xo, left='infinite', right='infinite'):
         """
@@ -1408,7 +1408,7 @@ class Segment(object):
 class Bar:
     '''Description d'une barre continue par morceaux, avant discrétisation.
     
-    Internally used in :class:`Barhomo` and :class:`Barhete`
+    Internally used in :class:`BarSingle` and :class:`BarSet`
     '''
     def __init__(self, E, rho, L, d):
         '''Compute area **A**, celerity **c_o** and impedance **Z** of bar segments.
@@ -1472,7 +1472,7 @@ class Bar:
         
 
 def groovedBar(interv, lg=0.003, LL=2, d0=0.030, d1=0.0278, E=78e9, rho=2800, pin=False):
-    """Construct :class:`Barhete` object with grooves
+    """Construct :class:`BarSet` object with grooves
     
     :param list interv: interval length seperating each groove
     :param float lg: lenght of groove along bar axis
@@ -1649,7 +1649,7 @@ if __name__ == '__main__':
     plt.close('all')
     plotBars = False
     
-    #%% ---TEST BARHOMO, BARHETE, WAVEPROP & WP2 CLASSES---
+    #%% ---TEST BARSINGLE, BARSET, WAVEPROP & WP2 CLASSES---
     if True:
         plt.close('all')
         n = 50 # number of points (spatial)
@@ -1690,7 +1690,7 @@ if __name__ == '__main__':
         incw = np.zeros(80)  # incident wave
         incw[0:20] = 1  # /!\ traction pulse
         #%%---TEST WAVEPROP CLASS---
-        if True:
+        if False:
             print('transfered to examples')
             test = Waveprop(bb, -incw*1e5, nstep=3*len(incw), left='free', right='free')
             test.plot()
@@ -1702,13 +1702,23 @@ if __name__ == '__main__':
             test.plot('stress-X')
             test.plotDeSaintVenant(scale=100, figname='deStVenant')
         
+        #%%---DEV OF DAMPED, SPRING & FRICTION END CONDITIONS---
+        if True:
+            # this is not working yet...
+            ENDC = ('free', 'fixed', 'spring', 'damper', 'friction')
+            for endc in ENDC:
+                test = Waveprop(bb, -incw*1e5, nstep=3*len(incw), left='free', right=endc)
+                test.plot()                
+            
+            
+            
         #%% ---TEST WP2 CLASS---
         if False:
             L = 1  # [m]
             doubleWave = -np.ones(20)
             #doubleWave[:20] = -1
             #doubleWave[50:60] = -2
-            bar = Barhete([E, E], [rho, rho], [L, 2*L], [d, d], nmin=6)
+            bar = BarSet([E, E], [rho, rho], [L, 2*L], [d, d], nmin=6)
             testk = WP2(bar, nstep=100, left='free', right='free', Vinit=5,
                         contactLoss=None)
             testk.plot()
@@ -1717,7 +1727,7 @@ if __name__ == '__main__':
 
             testk.getSignal(x=0.5, figname='checkVinit')
                         
-            bar = Barhete([E, E], [rho, rho], [L, 1.5*L], [d, 1.5*d], nmin=6)
+            bar = BarSet([E, E], [rho, rho], [L, 1.5*L], [d, 1.5*d], nmin=6)
             testl = WP2(bar, incw=-incw, nstep=100, left='free', right='free', Vinit=0)
             testl.plot()
             testl.plotInterface(figname='interf')
@@ -1748,7 +1758,7 @@ if __name__ == '__main__':
         plt.legend(('left', 'right'), title='sample force')
     
         # see what happens in sample (detail)
-        ploc = Barhete(Ee, Re, [0.030, 0.030, 0.030], De, nmin=10)
+        ploc = BarSet(Ee, Re, [0.030, 0.030, 0.030], De, nmin=10)
         exc = np.ones(int(np.rint(100e-6/ploc.dt)))  # 100µs excitation
         prop = WP2(ploc, exc, nstep=600, left='infinite', right='infinite')
         prop.plotForce()
@@ -1770,7 +1780,7 @@ if __name__ == '__main__':
 #        plt.figure('cut2')
 #        fu.degrade(len(nmin))
 #        for nn in nmin:
-#            bh = Barhete(Ee, Re, L2, De, nmin=nn)
+#            bh = BarSet(Ee, Re, L2, De, nmin=nn)
 #            incw = np.ones(int(100e-6/bh.dt))
 #            nstep = int(2e-3/bh.dt)
 #            pp = Waveprop(bh, incw, nstep)
@@ -1790,7 +1800,7 @@ if __name__ == '__main__':
     # %% ---COMPUTE IMPACTOR PULSE---
     if False:
         # ---GIVEN PULSE ON SECTION CHANGE---
-        stricker = Barhete([210e9, 210e9], [7800, 7800], [0.3, 0.9], [0.055, 0.020], nmin=10)
+        stricker = BarSet([210e9, 210e9], [7800, 7800], [0.3, 0.9], [0.055, 0.020], nmin=10)
         contact = np.ones(50)
         impact = Waveprop(stricker, contact, nstep=100, left='infinite', right='free')
         impact.plot()
@@ -1811,7 +1821,7 @@ if __name__ == '__main__':
     
     # %% ---REFLECTION ON FREE END---
     if False:
-        stric = Barhete([210e9], [7800], [0.3], [0.030], nmin=10)
+        stric = BarSet([210e9], [7800], [0.3], [0.030], nmin=10)
         cont = np.ones(15)
         impact = Waveprop(stric, cont, nstep=3*len(cont), left='infinite', right='free')
         impact.plot()

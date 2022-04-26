@@ -114,12 +114,12 @@ Here are some useful references:
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Use Waveprop to simulate SHPB">
+    <div class="sphx-glr-thumbcontainer" tooltip="Use Waveprop to simulate SHPB test">
 
 .. only:: html
 
  .. figure:: /auto_examples/images/thumb/sphx_glr_plot_4_SHPB_thumb.png
-     :alt: Use :class:`Waveprop` to simulate SHPB
+     :alt: Use :class:`Waveprop` to simulate SHPB test
 
      :ref:`sphx_glr_auto_examples_plot_4_SHPB.py`
 

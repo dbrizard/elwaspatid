@@ -48,8 +48,7 @@ to download the full example code</p>
 <p>Two cases are considered:</p>
 <ul class="simple">
 <li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> considers a single rod (with section change);</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> considers several rods in contact (no section change within a rod
-with the actual way the rod is generated).</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> considers several rods in contact.</p></li>
 </ul>
 <p><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> was the first implementation from the work of Bacon 1993.
 It was kept as it allows faster testing of new features since the computation
@@ -68,7 +67,7 @@ in the case of <code class="xref py py-class docutils literal notranslate"><span
 <div class="section" id="wave-propagation-with-waveprop">
 <h2>Wave propagation with <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code><a class="headerlink" href="#wave-propagation-with-waveprop" title="Permalink to this headline">¶</a></h2>
 <p>Bar configuration: one bar at rest with an incident wave.
-Indeed, <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> eats a single <code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code> continuous rod and
+Indeed, <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> eats a single <code class="xref py py-class docutils literal notranslate"><span class="pre">BarSingle</span></code> continuous rod and
 computes internally the propagation of force and velocity along the rod
 and as time increases.</p>
 <p>Since there is no contact interface (single rod), the implementation from
@@ -103,9 +102,6 @@ All the force values can fill a single matrix, ditto for the velocities.</p>
 <p><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> allows several rods in contact, which means compression crosses
 the contact interface whereas traction cannot cross the contact interface and
 is therefore reflected.</p>
-<p><strong>WARNING: rods displacements are not computed, which means rods are considered
-to be stuck all the time. No loss of contact at the interfaces. This may not
-be always correct.</strong></p>
 <p>Since we consider several rods in contact, the velocity is discontinuous along
 the propagation axis. Hence, force and velocity cannot be computed globally
 and must be evaluated for each rod. Each rod stores force and velocity in two
@@ -161,7 +157,7 @@ compute the state (Force, Velocity) of all the elements of each <code class="xre
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bar</span><span class="o">.</span><span class="n">bar_continuous</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_plot_6_underHood_008.png" srcset="../_images/sphx_glr_plot_6_underHood_008.png" alt="plot 6 underHood" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  3.384 seconds)</p>
+<img src="../_images/sphx_glr_plot_6_underHood_008.png" srcset="../_images/sphx_glr_plot_6_underHood_008.png" alt="plot 6 underHood" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.859 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-6-underhood-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/08015f0ef090813f25a2aa5b24386443/plot_6_underHood.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_6_underHood.py</span></code></a></p>
@@ -199,7 +195,7 @@ compute the state (Force, Velocity) of all the elements of each <code class="xre
 <li class="toctree-l2"><a class="reference internal" href="plot_1_WP2.html">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_2_ElasticImpact.html">Compare <code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticImpact</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_3_deSaintVenant.html">De Saint Venant displacement diagrams</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_4_SHPB.html">Use <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> to simulate SHPB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_4_SHPB.html">Use <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> to simulate SHPB test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_5_contactLoss.html">Displacement and contact loss</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Under the hood</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#wave-propagation-with-waveprop">Wave propagation with <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code></a></li>

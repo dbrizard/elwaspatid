@@ -8,7 +8,8 @@ What happens behind the scene to compute the wave propagation in rods.
 Two cases are considered:
 
 * :class:`Waveprop` considers a single rod (with section change);
-* :class:`WP2` considers several rods in contact. 
+* :class:`WP2` considers several rods in contact (no section change within a rod 
+  with the actual way the rod is generated). 
 
 :class:`Waveprop` was the first implementation from the work of Bacon 1993. 
 It was kept as it allows faster testing of new features since the computation
@@ -29,7 +30,7 @@ d = 0.02  # [m]
 # Wave propagation with :class:`Waveprop`
 # ---------------------------------------
 # Bar configuration: one bar at rest with an incident wave.
-# Indeed, :class:`Waveprop` eats a single :class:`BarSingle` continuous rod and
+# Indeed, :class:`Waveprop` eats a single :class:`Barhomo` continuous rod and
 # computes internally the propagation of force and velocity along the rod
 # and as time increases. 
 #
@@ -62,6 +63,10 @@ bb.plot(typ='DZ')  # plot discretization of the bar and impedance
 # the contact interface whereas traction cannot cross the contact interface and 
 # is therefore reflected.
 # 
+# **WARNING: rods displacements are not computed, which means rods are considered
+# to be stuck all the time. No loss of contact at the interfaces. This may not 
+# be always correct.**
+# 
 # Since we consider several rods in contact, the velocity is discontinuous along
 # the propagation axis. Hence, force and velocity cannot be computed globally
 # and must be evaluated for each rod. Each rod stores force and velocity in two
@@ -73,7 +78,7 @@ testk = WP2(bar, nstep=200, left='free', right='infinite', Vinit=5)
 testk.plot()
 
 # %%
-# Internally, the bar :class:`BarSet` contains a list of :class:`Segment`, one
+# Internally, the bar :class:`Barhete` contains a list of :class:`Segment`, one
 # for each independant rod. Each :class:`Segment` has been discretized in ``nX``
 # elements along the propagation axis.
 print(bar.seg)
@@ -87,9 +92,9 @@ print(bar.seg)
 # - :meth:`Segment.compRight`
 #
 # These methods are called by :meth:`WP2.__init__` which, while looping over time,
-# iterates on all the :class:`Segment` in the list provided by :class:`BarSet` to
+# iterates on all the :class:`Segment` in the list provided by :class:`Barhete` to
 # compute the state (Force, Velocity) of all the elements of each :class:`Segment`.
 
 # %%
-# XXX a word on :class:`Bar`, used in :class:`BarSet`
+# XXX a word on :class:`Bar`, used in :class:`Barhete`
 bar.bar_continuous.plot()

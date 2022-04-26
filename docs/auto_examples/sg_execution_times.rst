@@ -5,10 +5,10 @@
 
 Computation times
 =================
-**00:06.165** total execution time for **auto_examples** files:
+**00:02.859** total execution time for **auto_examples** files:
 
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_5_contactLoss.py` (``plot_5_contactLoss.py``)     | 00:06.165 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_6_underHood.py` (``plot_6_underHood.py``)         | 00:02.859 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr_auto_examples_plot_0_Waveprop.py` (``plot_0_Waveprop.py``)           | 00:00.000 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
@@ -20,5 +20,5 @@ Computation times
 +-------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr_auto_examples_plot_4_SHPB.py` (``plot_4_SHPB.py``)                   | 00:00.000 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_6_underHood.py` (``plot_6_underHood.py``)         | 00:00.000 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_5_contactLoss.py` (``plot_5_contactLoss.py``)     | 00:00.000 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+

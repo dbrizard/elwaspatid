@@ -25,15 +25,14 @@ What happens behind the scene to compute the wave propagation in rods.
 Two cases are considered:
 
 * :class:`Waveprop` considers a single rod (with section change);
-* :class:`WP2` considers several rods in contact (no section change within a rod 
-  with the actual way the rod is generated). 
+* :class:`WP2` considers several rods in contact. 
 
 :class:`Waveprop` was the first implementation from the work of Bacon 1993. 
 It was kept as it allows faster testing of new features since the computation
 of the state of the bar is done internally, whereas this is done externally 
 in the case of :class:`WP2` (see below :class:`Segment`).
 
-.. GENERATED FROM PYTHON SOURCE LINES 19-29
+.. GENERATED FROM PYTHON SOURCE LINES 18-28
 
 .. code-block:: default
 
@@ -54,12 +53,12 @@ in the case of :class:`WP2` (see below :class:`Segment`).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-42
+.. GENERATED FROM PYTHON SOURCE LINES 29-41
 
 Wave propagation with :class:`Waveprop`
 ---------------------------------------
 Bar configuration: one bar at rest with an incident wave.
-Indeed, :class:`Waveprop` eats a single :class:`Barhomo` continuous rod and
+Indeed, :class:`Waveprop` eats a single :class:`BarSingle` continuous rod and
 computes internally the propagation of force and velocity along the rod
 and as time increases. 
 
@@ -69,7 +68,7 @@ the work of Bacon 1993 is straightforward. For each time step:
 2. compute the force and velocity in themiddle of the bar  (see :meth:`Waveprop.__init__`).
 All the force values can fill a single matrix, ditto for the velocities.
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-53
+.. GENERATED FROM PYTHON SOURCE LINES 41-52
 
 .. code-block:: default
 
@@ -122,14 +121,14 @@ All the force values can fill a single matrix, ditto for the velocities.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-58
+.. GENERATED FROM PYTHON SOURCE LINES 53-57
 
 .. figure:: ../_static/Bacon1993_Figure2.png
    :scale: 50%
 
    Discretization of the rod in elements (from [Bacon 1993])
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-74
+.. GENERATED FROM PYTHON SOURCE LINES 59-69
 
 Wave propagation with :class:`WP2`
 ----------------------------------
@@ -137,16 +136,12 @@ Wave propagation with :class:`WP2`
 the contact interface whereas traction cannot cross the contact interface and 
 is therefore reflected.
 
-**WARNING: rods displacements are not computed, which means rods are considered
-to be stuck all the time. No loss of contact at the interfaces. This may not 
-be always correct.**
-
 Since we consider several rods in contact, the velocity is discontinuous along
 the propagation axis. Hence, force and velocity cannot be computed globally
 and must be evaluated for each rod. Each rod stores force and velocity in two
 matrices. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-80
+.. GENERATED FROM PYTHON SOURCE LINES 69-75
 
 .. code-block:: default
 
@@ -195,13 +190,13 @@ matrices.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 81-84
+.. GENERATED FROM PYTHON SOURCE LINES 76-79
 
 Internally, the bar :class:`BarSet` contains a list of :class:`Segment`, one
 for each independant rod. Each :class:`Segment` has been discretized in ``nX``
 elements along the propagation axis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-86
+.. GENERATED FROM PYTHON SOURCE LINES 79-81
 
 .. code-block:: default
 
@@ -234,7 +229,7 @@ elements along the propagation axis.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-97
+.. GENERATED FROM PYTHON SOURCE LINES 82-92
 
 :class:`Segment` has the following methods:
 
@@ -247,11 +242,11 @@ These methods are called by :meth:`WP2.__init__` which, while looping over time,
 iterates on all the :class:`Segment` in the list provided by :class:`BarSet` to
 compute the state (Force, Velocity) of all the elements of each :class:`Segment`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-100
+.. GENERATED FROM PYTHON SOURCE LINES 94-95
 
 XXX a word on :class:`Bar`, used in :class:`BarSet`
 
-.. GENERATED FROM PYTHON SOURCE LINES 100-101
+.. GENERATED FROM PYTHON SOURCE LINES 95-96
 
 .. code-block:: default
 
@@ -271,7 +266,7 @@ XXX a word on :class:`Bar`, used in :class:`BarSet`
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.384 seconds)
+   **Total running time of the script:** ( 0 minutes  2.859 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_6_underHood.py:

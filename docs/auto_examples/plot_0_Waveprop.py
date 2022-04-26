@@ -47,8 +47,8 @@ b2.plot()  # cross-section and impedance increase
 # Free-free uniform bar
 # ---------------------
 # Incident pulse reflects on both end of the bar endlessly.
-# The force at both ends of the bar is null. Traction pulse reflects as compression.
-#
+# The force at both ends of the bar is null. Traction reflects as compression.
+# Compression pulse reflects as traction.
 
 test = Waveprop(bb, incw, nstep=2*len(incw), left='free', right='free')
 test.plot()
@@ -72,11 +72,13 @@ test.plot(typ='sig-eps')  # Stress (sig) and Strain (eps)
 # 
 # - compression relfects as compression on fixed end;
 # - then, compression reflects as traction on free end;
-# - and finally traction reflects as traction on fixed end;
+# - and finally traction reflects as traction on fixed end.
+#
+# Note that velocity and displacement of the right end are null.
 
 test = Waveprop(bb, incw, nstep=3*len(incw), left='free', right='fixed')
 test.plot()
-test.plot(typ='X')  #  Displacement (X)
+test.plot(typ='D')  #  Displacement (D)
 
 
 # %%
@@ -89,12 +91,14 @@ testf.plot()
 # %%
 # Free-free bar with section increase
 # -----------------------------------
+# The traction pulse reflects as traction on section increase.
 testa = Waveprop(b2, incw, nstep=170, left='free', right='free')
 testa.plot()
 
 # %%
 # Free-free bar with section reduction
 # ------------------------------------
+# The traction pulse reflects as compression on the section reduction.
 testd = Waveprop(b3, incw, nstep=170, left='free', right='free')
 testd.plot()
 

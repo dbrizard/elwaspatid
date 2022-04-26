@@ -148,8 +148,8 @@ Create the bars
 Free-free uniform bar
 ---------------------
 Incident pulse reflects on both end of the bar endlessly.
-The force at both ends of the bar is null. Traction pulse reflects as compression.
-
+The force at both ends of the bar is null. Traction reflects as compression.
+Compression pulse reflects as traction.
 
 .. GENERATED FROM PYTHON SOURCE LINES 52-57
 
@@ -269,7 +269,7 @@ Additional diagrams are also available
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-76
+.. GENERATED FROM PYTHON SOURCE LINES 69-78
 
 Free-fixed uniform bar
 ----------------------
@@ -277,16 +277,18 @@ Left end is free, right end is fixed:
 
 - compression relfects as compression on fixed end;
 - then, compression reflects as traction on free end;
-- and finally traction reflects as traction on fixed end;
+- and finally traction reflects as traction on fixed end.
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-82
+Note that velocity and displacement of the right end are null.
+
+.. GENERATED FROM PYTHON SOURCE LINES 78-84
 
 .. code-block:: default
 
 
     test = Waveprop(bb, incw, nstep=3*len(incw), left='free', right='fixed')
     test.plot()
-    test.plot(typ='X')  #  Displacement (X)
+    test.plot(typ='D')  #  Displacement (D)
 
 
 
@@ -309,17 +311,24 @@ Left end is free, right end is fixed:
          :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_014.png
          :class: sphx-glr-multi-img
 
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_015.png
+         :alt: Displacement [m]
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_015.png
+         :class: sphx-glr-multi-img
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-86
+
+.. GENERATED FROM PYTHON SOURCE LINES 85-88
 
 Infinite-infinite uniform bar
 -----------------------------
 Infinite end amounts to anechoic condition: no reflecion of elastic wave.
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-89
+.. GENERATED FROM PYTHON SOURCE LINES 88-91
 
 .. code-block:: default
 
@@ -334,28 +343,29 @@ Infinite end amounts to anechoic condition: no reflecion of elastic wave.
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_015.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_016.png
          :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_015.png
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_016.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_016.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_017.png
          :alt: Particule velocity [m/s]
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_016.png
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_017.png
          :class: sphx-glr-multi-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-92
+.. GENERATED FROM PYTHON SOURCE LINES 92-95
 
 Free-free bar with section increase
 -----------------------------------
+The traction pulse reflects as traction on section increase.
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-95
+.. GENERATED FROM PYTHON SOURCE LINES 95-98
 
 .. code-block:: default
 
@@ -370,28 +380,29 @@ Free-free bar with section increase
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_017.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_018.png
          :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_017.png
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_018.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_018.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_019.png
          :alt: Particule velocity [m/s]
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_018.png
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_019.png
          :class: sphx-glr-multi-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 96-98
+.. GENERATED FROM PYTHON SOURCE LINES 99-102
 
 Free-free bar with section reduction
 ------------------------------------
+The traction pulse reflects as compression on the section reduction.
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-102
+.. GENERATED FROM PYTHON SOURCE LINES 102-106
 
 .. code-block:: default
 
@@ -407,23 +418,23 @@ Free-free bar with section reduction
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_019.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_020.png
          :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_019.png
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_020.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_020.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_021.png
          :alt: Particule velocity [m/s]
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_020.png
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_021.png
          :class: sphx-glr-multi-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 103-110
+.. GENERATED FROM PYTHON SOURCE LINES 107-114
 
 Whatever pulse input is possible
 --------------------------------
@@ -433,7 +444,7 @@ For exemple, define a trapeze pulse shape and propagate it in a bar with
 constant section. Right end is ``free`` so the traction wave is reflected as
 a compression wave. Left end is ``infinite`` so no reflecion occur.
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-116
+.. GENERATED FROM PYTHON SOURCE LINES 114-120
 
 .. code-block:: default
 
@@ -451,35 +462,35 @@ a compression wave. Left end is ``infinite`` so no reflecion occur.
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_021.png
-         :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_021.png
-         :class: sphx-glr-multi-img
-
-    *
-
       .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_022.png
-         :alt: Particule velocity [m/s]
+         :alt: Force [N]
          :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_022.png
          :class: sphx-glr-multi-img
 
     *
 
       .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_023.png
-         :alt: x=0.2 m
+         :alt: Particule velocity [m/s]
          :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_023.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_024.png
+         :alt: x=0.2 m
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_024.png
          :class: sphx-glr-multi-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 117-119
+.. GENERATED FROM PYTHON SOURCE LINES 121-123
 
 And why not a sine pulse?
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. GENERATED FROM PYTHON SOURCE LINES 119-134
+.. GENERATED FROM PYTHON SOURCE LINES 123-138
 
 .. code-block:: default
 
@@ -506,30 +517,30 @@ And why not a sine pulse?
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_024.png
-         :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_024.png
-         :class: sphx-glr-multi-img
-
-    *
-
       .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_025.png
-         :alt: Particule velocity [m/s]
+         :alt: Force [N]
          :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_025.png
          :class: sphx-glr-multi-img
 
     *
 
       .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_026.png
-         :alt: x=0.15 m
+         :alt: Particule velocity [m/s]
          :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_026.png
          :class: sphx-glr-multi-img
 
     *
 
       .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_027.png
-         :alt: x=0.2 m
+         :alt: x=0.15 m
          :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_027.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_028.png
+         :alt: x=0.2 m
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_028.png
          :class: sphx-glr-multi-img
 
 
@@ -539,7 +550,7 @@ And why not a sine pulse?
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.669 seconds)
+   **Total running time of the script:** ( 0 minutes  9.521 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_0_Waveprop.py:

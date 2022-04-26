@@ -48,7 +48,7 @@ longitudinally impacted rods : Applications to Hopkinson testing.
 <div><p>Summary– Simple expressions, based on one-dimensional elastic wave theory, are
 established which permit prediction of normal force and particle velocity at 
 cross-sections of a non-uniform linearly-elastic rod. The initial normal force
-and particle velocity at each cross-section of that rod must be known.</p>
+and particle velocity at each cross-section of that rod must be known. […]</p>
 </div></blockquote>
 <p>First define a bar, then give it to <a class="reference internal" href="#elwaspatid.WP2" title="elwaspatid.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a> or <a class="reference internal" href="#elwaspatid.Waveprop" title="elwaspatid.Waveprop"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code></a> along 
 with an incident wave for propagation computation:</p>
@@ -68,7 +68,7 @@ with an incident wave for propagation computation:</p>
 <dt id="elwaspatid.Bar">
 <em class="property">class </em><code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">Bar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Bar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Description d’une barre continue par morceaux, avant discrétisation.</p>
-<p>Internally used in <code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></p>
+<p>Internally used in <a class="reference internal" href="#elwaspatid.BarSingle" title="elwaspatid.BarSingle"><code class="xref py py-class docutils literal notranslate"><span class="pre">BarSingle</span></code></a> and <a class="reference internal" href="#elwaspatid.BarSet" title="elwaspatid.BarSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BarSet</span></code></a></p>
 <dl class="py method">
 <dt id="elwaspatid.Bar.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Bar.__init__" title="Permalink to this definition">¶</a></dt>
@@ -290,7 +290,7 @@ than bar impedance</p>
 <dt id="elwaspatid.Segment">
 <em class="property">class </em><code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">Segment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bar segment with constant properties</p>
-<p>For later use in <a class="reference internal" href="#elwaspatid.WP2" title="elwaspatid.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a> through <code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></p>
+<p>For later use in <a class="reference internal" href="#elwaspatid.WP2" title="elwaspatid.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a> through <a class="reference internal" href="#elwaspatid.BarSet" title="elwaspatid.BarSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BarSet</span></code></a></p>
 <dl class="py method">
 <dt id="elwaspatid.Segment.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.__init__" title="Permalink to this definition">¶</a></dt>
@@ -488,7 +488,7 @@ prescribed incident wave <em>incw</em></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bar</strong> (<em>obj</em>) – bar setup (<code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code> object)</p></li>
+<li><p><strong>bar</strong> (<em>obj</em>) – bar setup (<a class="reference internal" href="#elwaspatid.BarSet" title="elwaspatid.BarSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BarSet</span></code></a> object)</p></li>
 <li><p><strong>incw</strong> (<em>array</em>) – incident force wave (input left impact)</p></li>
 <li><p><strong>nstep</strong> (<em>int</em>) – optional number of time step</p></li>
 <li><p><strong>left</strong> (<em>str</em>) – left boundary condition, once incident wave is finished</p></li>
@@ -509,7 +509,7 @@ prescribed incident wave <em>incw</em></p>
 <dl class="py method">
 <dt id="elwaspatid.WP2.gatherForce">
 <code class="sig-name descname">gatherForce</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.WP2.gatherForce" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gather all the <code class="xref py py-attr docutils literal notranslate"><span class="pre">Force</span></code> of each <a class="reference internal" href="#elwaspatid.Segment" title="elwaspatid.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> in <code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code>
+<dd><p>Gather all the <code class="xref py py-attr docutils literal notranslate"><span class="pre">Force</span></code> of each <a class="reference internal" href="#elwaspatid.Segment" title="elwaspatid.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> in <a class="reference internal" href="#elwaspatid.BarSet" title="elwaspatid.BarSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BarSet</span></code></a>
 in one array.</p>
 </dd></dl>
 
@@ -650,11 +650,11 @@ Left side of the bar is infinite bar (anechoic conditions)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bar</strong> (<em>obj</em>) – instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Barhomo</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code></p></li>
+<li><p><strong>bar</strong> (<em>obj</em>) – instance of <a class="reference internal" href="#elwaspatid.BarSingle" title="elwaspatid.BarSingle"><code class="xref py py-class docutils literal notranslate"><span class="pre">BarSingle</span></code></a> or <a class="reference internal" href="#elwaspatid.BarSet" title="elwaspatid.BarSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BarSet</span></code></a></p></li>
 <li><p><strong>incw</strong> (<em>array</em>) – incident wave</p></li>
 <li><p><strong>nstep</strong> (<em>int</em>) – number of calculation steps (if 0, length of <strong>incw</strong>)</p></li>
-<li><p><strong>left</strong> (<em>str</em>) – left boundary condition (‘free’ or ‘infinite’) after the end of <strong>incw</strong></p></li>
-<li><p><strong>right</strong> (<em>str</em>) – right boundary condition (‘free’ or ‘infinite’)</p></li>
+<li><p><strong>left</strong> (<em>str</em>) – left boundary condition (‘free’, ‘fixed’ or ‘infinite’) after the end of <strong>incw</strong></p></li>
+<li><p><strong>right</strong> (<em>str</em>) – right boundary condition (‘free’, ‘fixed’ or ‘infinite’)</p></li>
 <li><p><strong>Vinit</strong> (<em>float</em>) – initial bar velocity</p></li>
 <li><p><strong>indV</strong> (<em>int</em>) – index of end of impact section! LEFT=impactor=speed, RIGHT=bars=static</p></li>
 </ul>
@@ -838,7 +838,7 @@ or state of the bar at given time t.</p>
 <dl class="py function">
 <dt id="elwaspatid.groovedBar">
 <code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">groovedBar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">interv</span></em>, <em class="sig-param"><span class="n">lg</span><span class="o">=</span><span class="default_value">0.003</span></em>, <em class="sig-param"><span class="n">LL</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">d0</span><span class="o">=</span><span class="default_value">0.03</span></em>, <em class="sig-param"><span class="n">d1</span><span class="o">=</span><span class="default_value">0.0278</span></em>, <em class="sig-param"><span class="n">E</span><span class="o">=</span><span class="default_value">78000000000.0</span></em>, <em class="sig-param"><span class="n">rho</span><span class="o">=</span><span class="default_value">2800</span></em>, <em class="sig-param"><span class="n">pin</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.groovedBar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Construct <code class="xref py py-class docutils literal notranslate"><span class="pre">Barhete</span></code> object with grooves</p>
+<dd><p>Construct <a class="reference internal" href="#elwaspatid.BarSet" title="elwaspatid.BarSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BarSet</span></code></a> object with grooves</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">

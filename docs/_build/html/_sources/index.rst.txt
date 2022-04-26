@@ -30,6 +30,19 @@ Boundary conditions can be:
 * contact interface with another rod;
 * infinite end (ie. anechoic condition).
 
+This module is the extention of the following reference:
+
+Bacon, C. (1993). Numerical prediction of the propagation of elastic waves in 
+longitudinally impacted rods : Applications to Hopkinson testing. 
+*International Journal of Impact Engineering*, 13(4), 527‑539. 
+https://doi.org/10.1016/0734-743X(93)90084-K
+
+
+.. figure:: auto_examples/images/sphx_glr_plot_1_WP2_001.png
+
+   Example of force space-time diagram: two successive compression pulses 
+   traveling down two bars (with identical cross-section) in contact.
+
 
 .. toctree::
    :maxdepth: 3
@@ -48,11 +61,11 @@ Boundary conditions can be:
      - under the hood
 
    * comment WP2 and SHPB
-   * trouver mieux que "plain" condition
 
 .. DONE:
    * Examples:
       - ElasticImpact and comparison with WP
+   * trouver mieux que "plain" condition
 
 
 Indices and tables

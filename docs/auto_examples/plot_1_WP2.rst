@@ -51,7 +51,7 @@ Define a few parameters
     E = 201e9  # Young modulus [Pa]
     rho = 7800  # Density [kg/m3]
     d = 0.020  # diameter [m]
-    k = 2.4  # diamters ratio [-]
+    k = 2.4  # diameters ratio [-]
 
 
 
@@ -63,17 +63,17 @@ Define a few parameters
 
 .. GENERATED FROM PYTHON SOURCE LINES 24-25
 
-Create the bar configurations
+Create the bar configurations: two bars in contact.
 
 .. GENERATED FROM PYTHON SOURCE LINES 25-31
 
 .. code-block:: default
 
     nm = 15
-    bc = BarSet([E, E], [rho, rho], [.1, .13], [d, d], nmin=nm)
-    bc2 = BarSet([E, E], [rho, rho], [.1, .13], [d, k*d], nmin=nm)
-    bc3 = BarSet([E, E], [rho, rho], [.1, .13], [k*d, d], nmin=nm)
-    bc4 = BarSet([E, E], [rho, rho], [.1, .3], [d, d], nmin=nm)
+    bc = BarSet([E, E], [rho, rho], [.1, .13], [d, d], nmin=nm)  # same section
+    bc2 = BarSet([E, E], [rho, rho], [.1, .13], [d, k*d], nmin=nm)  # section increase
+    bc3 = BarSet([E, E], [rho, rho], [.1, .13], [k*d, d], nmin=nm)  # section reduction
+    bc4 = BarSet([E, E], [rho, rho], [.1, .3], [d, d], nmin=nm)  # same section
 
 
 
@@ -102,12 +102,20 @@ Define the incident wave vector
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-41
+.. GENERATED FROM PYTHON SOURCE LINES 39-49
 
 Two identical bars, free-ends
 -----------------------------
+Contact interface between the two bars: 
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-44
+1. compression pulses cross the interface,
+2. are reflected as traction pulses on the free end (right), 
+3. and traction is then reflected as compression on the contact interface,
+   as if this was a free end.
+
+And so on. Which means the pulse is trapped in the second bar.
+
+.. GENERATED FROM PYTHON SOURCE LINES 49-52
 
 .. code-block:: default
 
@@ -145,12 +153,12 @@ Two identical bars, free-ends
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-47
+.. GENERATED FROM PYTHON SOURCE LINES 53-55
 
 Two identical bars, free and fixed ends
 ---------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-50
+.. GENERATED FROM PYTHON SOURCE LINES 55-58
 
 .. code-block:: default
 
@@ -188,17 +196,19 @@ Two identical bars, free and fixed ends
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-53
+.. GENERATED FROM PYTHON SOURCE LINES 59-64
 
-Two identical bars, infinite-ends
+Two different bars, infinite-ends
 ---------------------------------
+Compression pulses cross the interface and are partly reflected because of the 
+difference of impedance between the bars. At both end, no reflection occur 
+since infinite ends amounts to anechoic condition.
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-57
+.. GENERATED FROM PYTHON SOURCE LINES 64-67
 
 .. code-block:: default
 
-
-    test2f = WP2(bc, comp, nstep=100, left='infinite', right='infinite')
+    test2f = WP2(bc3, comp, nstep=100, left='infinite', right='infinite')
     test2f.plot('2b_anech')
 
 
@@ -232,12 +242,14 @@ Two identical bars, infinite-ends
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-60
+.. GENERATED FROM PYTHON SOURCE LINES 68-72
 
 Two identical bars with traction pulse
 --------------------------------------
+The traction pulses do not cross the contact interface. The pulse is trapped 
+in the firt bar.
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-63
+.. GENERATED FROM PYTHON SOURCE LINES 72-75
 
 .. code-block:: default
 
@@ -275,12 +287,14 @@ Two identical bars with traction pulse
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-66
+.. GENERATED FROM PYTHON SOURCE LINES 76-80
 
 Two bars, cross-section increase
 --------------------------------
+Compression is reflected as traction. 
+Recall that the limit case of cross-section increase is the fixed end.
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-71
+.. GENERATED FROM PYTHON SOURCE LINES 80-85
 
 .. code-block:: default
 
@@ -320,12 +334,14 @@ Two bars, cross-section increase
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-74
+.. GENERATED FROM PYTHON SOURCE LINES 86-90
 
 Two bars, cross-section reduction
-----------------------------------
+---------------------------------
+Compression is reflected as compression
+Recall that the limit case of cross-section reduction is the free end.
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-80
+.. GENERATED FROM PYTHON SOURCE LINES 90-96
 
 .. code-block:: default
 
@@ -386,15 +402,20 @@ Two bars, cross-section reduction
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 81-86
+.. GENERATED FROM PYTHON SOURCE LINES 97-107
 
 First bar with initial velocity
 -------------------------------
 Positive velocity: compression
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+As the first bar (=stricker) impacts the second bar, a compression pulse 
+develops in both bars. The stricker being shorter that the second bar, the 
+compression pulse reaches the left end of the stricker and is reflected as 
+traction with the same magnitude as the compression pulse: traction cancels
+compression and the force is null (traction can be considered as an unloading
+wave).
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 86-89
+.. GENERATED FROM PYTHON SOURCE LINES 107-110
 
 .. code-block:: default
 
@@ -440,13 +461,13 @@ Positive velocity: compression
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-93
+.. GENERATED FROM PYTHON SOURCE LINES 111-114
 
 Negative velocity
 ^^^^^^^^^^^^^^^^^
 Nothing happens, the left bar travels to the left.
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-95
+.. GENERATED FROM PYTHON SOURCE LINES 114-116
 
 .. code-block:: default
 
@@ -494,7 +515,7 @@ Nothing happens, the left bar travels to the left.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  10.492 seconds)
+   **Total running time of the script:** ( 0 minutes  9.021 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_1_WP2.py:

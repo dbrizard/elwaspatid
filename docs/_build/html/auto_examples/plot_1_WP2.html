@@ -54,15 +54,15 @@ elastic wave propagation in simple test cases.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">E</span> <span class="o">=</span> <span class="mf">201e9</span>  <span class="c1"># Young modulus [Pa]</span>
 <span class="n">rho</span> <span class="o">=</span> <span class="mi">7800</span>  <span class="c1"># Density [kg/m3]</span>
 <span class="n">d</span> <span class="o">=</span> <span class="mf">0.020</span>  <span class="c1"># diameter [m]</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mf">2.4</span>  <span class="c1"># diamters ratio [-]</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">2.4</span>  <span class="c1"># diameters ratio [-]</span>
 </pre></div>
 </div>
-<p>Create the bar configurations</p>
+<p>Create the bar configurations: two bars in contact.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nm</span> <span class="o">=</span> <span class="mi">15</span>
-<span class="n">bc</span> <span class="o">=</span> <span class="n">BarSet</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">E</span><span class="p">],</span> <span class="p">[</span><span class="n">rho</span><span class="p">,</span> <span class="n">rho</span><span class="p">],</span> <span class="p">[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.13</span><span class="p">],</span> <span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="n">d</span><span class="p">],</span> <span class="n">nmin</span><span class="o">=</span><span class="n">nm</span><span class="p">)</span>
-<span class="n">bc2</span> <span class="o">=</span> <span class="n">BarSet</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">E</span><span class="p">],</span> <span class="p">[</span><span class="n">rho</span><span class="p">,</span> <span class="n">rho</span><span class="p">],</span> <span class="p">[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.13</span><span class="p">],</span> <span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="n">k</span><span class="o">*</span><span class="n">d</span><span class="p">],</span> <span class="n">nmin</span><span class="o">=</span><span class="n">nm</span><span class="p">)</span>
-<span class="n">bc3</span> <span class="o">=</span> <span class="n">BarSet</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">E</span><span class="p">],</span> <span class="p">[</span><span class="n">rho</span><span class="p">,</span> <span class="n">rho</span><span class="p">],</span> <span class="p">[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.13</span><span class="p">],</span> <span class="p">[</span><span class="n">k</span><span class="o">*</span><span class="n">d</span><span class="p">,</span> <span class="n">d</span><span class="p">],</span> <span class="n">nmin</span><span class="o">=</span><span class="n">nm</span><span class="p">)</span>
-<span class="n">bc4</span> <span class="o">=</span> <span class="n">BarSet</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">E</span><span class="p">],</span> <span class="p">[</span><span class="n">rho</span><span class="p">,</span> <span class="n">rho</span><span class="p">],</span> <span class="p">[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.3</span><span class="p">],</span> <span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="n">d</span><span class="p">],</span> <span class="n">nmin</span><span class="o">=</span><span class="n">nm</span><span class="p">)</span>
+<span class="n">bc</span> <span class="o">=</span> <span class="n">BarSet</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">E</span><span class="p">],</span> <span class="p">[</span><span class="n">rho</span><span class="p">,</span> <span class="n">rho</span><span class="p">],</span> <span class="p">[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.13</span><span class="p">],</span> <span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="n">d</span><span class="p">],</span> <span class="n">nmin</span><span class="o">=</span><span class="n">nm</span><span class="p">)</span>  <span class="c1"># same section</span>
+<span class="n">bc2</span> <span class="o">=</span> <span class="n">BarSet</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">E</span><span class="p">],</span> <span class="p">[</span><span class="n">rho</span><span class="p">,</span> <span class="n">rho</span><span class="p">],</span> <span class="p">[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.13</span><span class="p">],</span> <span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="n">k</span><span class="o">*</span><span class="n">d</span><span class="p">],</span> <span class="n">nmin</span><span class="o">=</span><span class="n">nm</span><span class="p">)</span>  <span class="c1"># section increase</span>
+<span class="n">bc3</span> <span class="o">=</span> <span class="n">BarSet</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">E</span><span class="p">],</span> <span class="p">[</span><span class="n">rho</span><span class="p">,</span> <span class="n">rho</span><span class="p">],</span> <span class="p">[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.13</span><span class="p">],</span> <span class="p">[</span><span class="n">k</span><span class="o">*</span><span class="n">d</span><span class="p">,</span> <span class="n">d</span><span class="p">],</span> <span class="n">nmin</span><span class="o">=</span><span class="n">nm</span><span class="p">)</span>  <span class="c1"># section reduction</span>
+<span class="n">bc4</span> <span class="o">=</span> <span class="n">BarSet</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">E</span><span class="p">],</span> <span class="p">[</span><span class="n">rho</span><span class="p">,</span> <span class="n">rho</span><span class="p">],</span> <span class="p">[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.3</span><span class="p">],</span> <span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="n">d</span><span class="p">],</span> <span class="n">nmin</span><span class="o">=</span><span class="n">nm</span><span class="p">)</span>  <span class="c1"># same section</span>
 </pre></div>
 </div>
 <p>Define the incident wave vector</p>
@@ -74,6 +74,14 @@ elastic wave propagation in simple test cases.</p>
 </div>
 <div class="section" id="two-identical-bars-free-ends">
 <h2>Two identical bars, free-ends<a class="headerlink" href="#two-identical-bars-free-ends" title="Permalink to this headline">¶</a></h2>
+<p>Contact interface between the two bars:</p>
+<ol class="arabic simple">
+<li><p>compression pulses cross the interface,</p></li>
+<li><p>are reflected as traction pulses on the free end (right),</p></li>
+<li><p>and traction is then reflected as compression on the contact interface,
+as if this was a free end.</p></li>
+</ol>
+<p>And so on. Which means the pulse is trapped in the second bar.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">)</span>
 <span class="n">test2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;2b_free&#39;</span><span class="p">)</span>
 </pre></div>
@@ -96,9 +104,12 @@ elastic wave propagation in simple test cases.</p>
 <li><img src="../_images/sphx_glr_plot_1_WP2_006.png" srcset="../_images/sphx_glr_plot_1_WP2_006.png" alt="Displacement [m]" class = "sphx-glr-multi-img"/></li>
 </ul>
 </div>
-<div class="section" id="two-identical-bars-infinite-ends">
-<h2>Two identical bars, infinite-ends<a class="headerlink" href="#two-identical-bars-infinite-ends" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2f</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;infinite&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;infinite&#39;</span><span class="p">)</span>
+<div class="section" id="two-different-bars-infinite-ends">
+<h2>Two different bars, infinite-ends<a class="headerlink" href="#two-different-bars-infinite-ends" title="Permalink to this headline">¶</a></h2>
+<p>Compression pulses cross the interface and are partly reflected because of the
+difference of impedance between the bars. At both end, no reflection occur
+since infinite ends amounts to anechoic condition.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2f</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc3</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;infinite&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;infinite&#39;</span><span class="p">)</span>
 <span class="n">test2f</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;2b_anech&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -110,6 +121,8 @@ elastic wave propagation in simple test cases.</p>
 </div>
 <div class="section" id="two-identical-bars-with-traction-pulse">
 <h2>Two identical bars with traction pulse<a class="headerlink" href="#two-identical-bars-with-traction-pulse" title="Permalink to this headline">¶</a></h2>
+<p>The traction pulses do not cross the contact interface. The pulse is trapped
+in the firt bar.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2t</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="o">-</span><span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">)</span>
 <span class="n">test2t</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;2b_trac&#39;</span><span class="p">)</span>
 </pre></div>
@@ -122,6 +135,8 @@ elastic wave propagation in simple test cases.</p>
 </div>
 <div class="section" id="two-bars-cross-section-increase">
 <h2>Two bars, cross-section increase<a class="headerlink" href="#two-bars-cross-section-increase" title="Permalink to this headline">¶</a></h2>
+<p>Compression is reflected as traction.
+Recall that the limit case of cross-section increase is the fixed end.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2a</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc2</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">)</span>
 <span class="n">test2a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;2b_incre&#39;</span><span class="p">)</span>
 <span class="c1"># test2av = WP2(bc2, comp, nstep=100, left=&#39;free&#39;, right=&#39;free&#39;, Vinit=10)</span>
@@ -136,6 +151,8 @@ elastic wave propagation in simple test cases.</p>
 </div>
 <div class="section" id="two-bars-cross-section-reduction">
 <h2>Two bars, cross-section reduction<a class="headerlink" href="#two-bars-cross-section-reduction" title="Permalink to this headline">¶</a></h2>
+<p>Compression is reflected as compression
+Recall that the limit case of cross-section reduction is the free end.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2d</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc3</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">)</span>
 <span class="n">test2d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;2b_reduc&#39;</span><span class="p">)</span>
 <span class="c1"># test2dv = WP2(bc3, comp, nstep=100, left=&#39;free&#39;, right=&#39;free&#39;, Vinit=10)</span>
@@ -163,6 +180,12 @@ elastic wave propagation in simple test cases.</p>
 <h2>First bar with initial velocity<a class="headerlink" href="#first-bar-with-initial-velocity" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="positive-velocity-compression">
 <h3>Positive velocity: compression<a class="headerlink" href="#positive-velocity-compression" title="Permalink to this headline">¶</a></h3>
+<p>As the first bar (=stricker) impacts the second bar, a compression pulse
+develops in both bars. The stricker being shorter that the second bar, the
+compression pulse reaches the left end of the stricker and is reflected as
+traction with the same magnitude as the compression pulse: traction cancels
+compression and the force is null (traction can be considered as an unloading
+wave).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2v</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc4</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">Vinit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">test2v</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;2b_veloc&#39;</span><span class="p">)</span>
 </pre></div>
@@ -193,7 +216,7 @@ elastic wave propagation in simple test cases.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Setting initial velocity of first segment (Vo=-10)
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  10.492 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  9.021 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-1-wp2-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/5f21cda0014220bcc082ded82c151748/plot_1_WP2.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_1_WP2.py</span></code></a></p>
@@ -232,7 +255,7 @@ elastic wave propagation in simple test cases.</p>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> class</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#two-identical-bars-free-ends">Two identical bars, free-ends</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#two-identical-bars-free-and-fixed-ends">Two identical bars, free and fixed ends</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#two-identical-bars-infinite-ends">Two identical bars, infinite-ends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#two-different-bars-infinite-ends">Two different bars, infinite-ends</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#two-identical-bars-with-traction-pulse">Two identical bars with traction pulse</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#two-bars-cross-section-increase">Two bars, cross-section increase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#two-bars-cross-section-reduction">Two bars, cross-section reduction</a></li>

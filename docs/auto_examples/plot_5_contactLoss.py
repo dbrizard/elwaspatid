@@ -55,8 +55,8 @@ testl.plotInterface(0, 'interface2')
 # 
 # This example however shows how to:
 #
-# - use contact loss detection;
 # - modify the section of a bar in a :class:`BarSet`.
+# - set contact loss detection;
 #
 # Second bar with section increase
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

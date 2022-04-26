@@ -201,8 +201,8 @@ wave) showing the usefulness of automatic contact loss detection.*
 
 This example however shows how to:
 
-- use contact loss detection;
 - modify the section of a bar in a :class:`BarSet`.
+- set contact loss detection;
 
 Second bar with section increase
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -375,7 +375,7 @@ Again, check that no force cross the interface after separation of the two bars.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  6.165 seconds)
+   **Total running time of the script:** ( 0 minutes  6.066 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_5_contactLoss.py:
