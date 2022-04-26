@@ -8,8 +8,7 @@ What happens behind the scene to compute the wave propagation in rods.
 Two cases are considered:
 
 * :class:`Waveprop` considers a single rod (with section change);
-* :class:`WP2` considers several rods in contact (no section change within a rod 
-  with the actual way the rod is generated). 
+* :class:`WP2` considers several rods in contact. 
 
 :class:`Waveprop` was the first implementation from the work of Bacon 1993. 
 It was kept as it allows faster testing of new features since the computation
@@ -30,7 +29,7 @@ d = 0.02  # [m]
 # Wave propagation with :class:`Waveprop`
 # ---------------------------------------
 # Bar configuration: one bar at rest with an incident wave.
-# Indeed, :class:`Waveprop` eats a single :class:`Barhomo` continuous rod and
+# Indeed, :class:`Waveprop` eats a single :class:`BarSingle` continuous rod and
 # computes internally the propagation of force and velocity along the rod
 # and as time increases. 
 #
@@ -62,10 +61,6 @@ bb.plot(typ='DZ')  # plot discretization of the bar and impedance
 # :class:`WP2` allows several rods in contact, which means compression crosses
 # the contact interface whereas traction cannot cross the contact interface and 
 # is therefore reflected.
-# 
-# **WARNING: rods displacements are not computed, which means rods are considered
-# to be stuck all the time. No loss of contact at the interfaces. This may not 
-# be always correct.**
 # 
 # Since we consider several rods in contact, the velocity is discontinuous along
 # the propagation axis. Hence, force and velocity cannot be computed globally
