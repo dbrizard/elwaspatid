@@ -33,12 +33,14 @@ To add
 ~~~~~~
 
 -  plastic wave (probably impossible here as it requires too large
-   changes).
--  ``friction`` and ``damped`` boundary conditions (see DeJuhasz)
--  ``elastic``, ``mass``, ``dashpot`` end conditions (see Graff)
--  impacting mass (left end)
--  test and check ``indV`` argument of ``Waveprop`` class
--  plot Stress and Strain in ``Segment`` for ``WP2``;
+   changes);
+-  ``friction`` and ``damped`` boundary conditions (see DeJuhasz
+   reference);
+-  ``elastic``, ``mass``, ``dashpot`` end conditions (see Graff
+   reference);
+-  impacting mass (left end);
+-  test and check ``indV`` argument of ``Waveprop`` class;
+-  plot Stress and Strain in ``Segment`` for ``WP2``.
 
 To change
 ~~~~~~~~~
@@ -46,11 +48,17 @@ To change
 [2.0.1] - 2022-04-19
 --------------------
 
+Added
+~~~~~
+
+-  more comments on the interpretation of space-time diagrams of the
+   examples.
+
 Changed
 ~~~~~~~
 
--  ``Barhete`` is now ``BarSet``, which is more meaningfull
--  ``Barhomo`` is now ``BarSingle``, which is more meaningfull too
+-  ``Barhete`` is now ``BarSet``, which is more meaningfull;
+-  ``Barhomo`` is now ``BarSingle``, which is more meaningfull too.
 
 .. _section-1:
 
@@ -63,18 +71,19 @@ Changed
 ~~~~~~~
 
 -  New name for the module (``elwaspatid``), identical to project name,
-   for consitancy
+   for consitancy.
 
 .. _section-2:
 
 [1.1.0] - 2022-03-15
 --------------------
 
+.. _added-1:
+
 Added
 ~~~~~
 
--  ``Segment.Z`` must be array and not scalar any more. **CHECK against
-   Barhomo.**
+-  ``Segment.Z`` must be array and not scalar any more;
 -  ``Segment.resetImpedance`` to allow impedance variation inside
    ``Segment``;
 -  ``WP2.plotDeSaintVenant`` displacement diagram plotting method;
@@ -88,25 +97,11 @@ Added
 Changed
 ~~~~~~~
 
--  ``plain`` boundary condition is now called ``infinite``
+-  ``plain`` boundary condition is now called ``infinite`` (meaningful).
 
 .. _section-3:
 
 [1.0.2] - 2022-03
------------------
-
-.. _added-1:
-
-Added
-~~~~~
-
--  detect end of contact between rod with displacement;
--  update boundary conditions (segment.left, .right) accordingly;
--  plot impedance of ``Segment``, and of ``Barhete``
-
-.. _section-4:
-
-[1.0.1] - 2022-02
 -----------------
 
 .. _added-2:
@@ -114,17 +109,31 @@ Added
 Added
 ~~~~~
 
+-  detect end of contact between rod with displacement;
+-  update boundary conditions (segment.left, .right) accordingly;
+-  plot impedance of ``Segment``, and of ``Barhete``.
+
+.. _section-4:
+
+[1.0.1] - 2022-02
+-----------------
+
+.. _added-3:
+
+Added
+~~~~~
+
 -  ``Waveprop``: compute and plot displacement of nodes, stress in
    elements;
--  ``WP2``: compute displacement of nodes (**experimental**)
--  ``WP2.getSignal``: choice of time scale (s, ms, µs)
+-  ``WP2``: compute displacement of nodes (**experimental**);
+-  ``WP2.getSignal``: choice of time scale (s, ms, µs).
 
 .. _section-5:
 
 [1.0.0] - 2021
 --------------
 
-.. _added-3:
+.. _added-4:
 
 Added
 ~~~~~
@@ -144,7 +153,7 @@ Changed
 [0.8.0] - 2016
 --------------
 
-.. _added-4:
+.. _added-5:
 
 Added
 ~~~~~
@@ -156,7 +165,7 @@ Added
 [0.5.0] - 2014
 --------------
 
-.. _added-5:
+.. _added-6:
 
 Added
 ~~~~~
