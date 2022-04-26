@@ -24,29 +24,33 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 ### To add
-* plastic wave (probably impossible here as it requires too large changes).
-* `friction` and `damped` boundary conditions (see DeJuhasz)
-* `elastic`, `mass`, `dashpot` end conditions (see Graff)
-* impacting mass (left end)
-* test and check `indV` argument of `Waveprop` class
-* plot Stress and Strain in `Segment` for `WP2`;
+* plastic wave (probably impossible here as it requires too large changes);
+* `friction` and `damped` boundary conditions (see DeJuhasz reference);
+* `elastic`, `mass`, `dashpot` end conditions (see Graff reference);
+* impacting mass (left end);
+* test and check `indV` argument of `Waveprop` class;
+* plot Stress and Strain in `Segment` for `WP2`.
 
 ### To change
 
 
 ## [2.0.1] - 2022-04-19
+### Added
+* more comments on the interpretation of space-time diagrams of the examples.
+
 ### Changed
-* `Barhete` is now `BarSet`, which is more meaningfull
-* `Barhomo` is now `BarSingle`, which is more meaningfull too 
+* `Barhete` is now `BarSet`, which is more meaningfull;
+* `Barhomo` is now `BarSingle`, which is more meaningfull too.
+
 
 ## [2.0.0] - 2022-03-08
 ### Changed
-* New name for the module (`elwaspatid`), identical to project name, for consitancy
+* New name for the module (`elwaspatid`), identical to project name, for consitancy.
 
 
 ## [1.1.0] - 2022-03-15
 ### Added
-* `Segment.Z` must be array and not scalar any more. __CHECK against Barhomo.__
+* `Segment.Z` must be array and not scalar any more;
 * `Segment.resetImpedance` to allow impedance variation inside `Segment`;
 * `WP2.plotDeSaintVenant` displacement diagram plotting method;
 * `Waveprop.plotDeSaintVenant` displacement diagram plotting method;
@@ -55,19 +59,21 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 * compute Stress and Strain in `Segment` for `WP2`;
 
 ### Changed
-* `plain` boundary condition is now called `infinite`
+* `plain` boundary condition is now called `infinite` (meaningful).
+
 
 ## [1.0.2] - 2022-03
 ### Added
 * detect end of contact between rod with displacement;
 * update boundary conditions (segment.left, .right) accordingly;
-* plot impedance of `Segment`, and of `Barhete`
+* plot impedance of `Segment`, and of `Barhete`.
+
 
 ## [1.0.1] - 2022-02
 ### Added
 * `Waveprop`: compute and plot displacement of nodes, stress in elements;
-* `WP2`: compute displacement of nodes (__experimental__)
-* `WP2.getSignal`: choice of time scale (s, ms, µs)
+* `WP2`: compute displacement of nodes (__experimental__);
+* `WP2.getSignal`: choice of time scale (s, ms, µs).
 
 
 ## [1.0.0] - 2021
@@ -82,6 +88,7 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 ## [0.8.0] - 2016
 ### Added
 * `WP2` class to overcome the limitations of `Waveprop`.
+
 
 ## [0.5.0] - 2014
 ### Added
