@@ -41,9 +41,7 @@ class WP2:
     """Second version of wave propagation, using :class:`Segment` for each bar
     of constant section.
     
-    No traction crossing interfaces (=section changes).
-
-    
+    Traction cannot cross the contact interface between bars.
     """
     
     def __init__(self, bar, incw=None, nstep=0, left='free', right='free', 

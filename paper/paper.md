@@ -10,7 +10,7 @@ authors:
     orcid: 0000-0003-2264-7131
     affiliation: 1 # (Multiple affiliations must be quoted)
 affiliations:
- - name: Univ Lyon, Université Claude Bernard Lyon 1, Univ Gustave Eiffel, LBMC UMR_T 9406, F-69622, Lyon, France
+ - name: Univ Lyon, Univ Gustave Eiffel, Univ Claude Bernard Lyon 1, LBMC UMR_T 9406, F-69622 Lyon, France
    index: 1
 date: March 2022
 bibliography: paper.bib

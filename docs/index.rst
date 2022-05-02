@@ -14,9 +14,10 @@ ELastic WAves SPace-TIme Diagrams
 .. image:: https://badge.fury.io/py/elwaspatid.svg
    :target: https://badge.fury.io/py/elwaspatid
 
-``elwaspatid`` is a Python module for the computation of space-time diagrams for
-the propagation of elastic waves in 1D rods. The rods can have impedance variations
-along the propagation axis, and it is possible to consider several rods in contact.
+``elwaspatid`` is a Python module for the computation of space-time diagrams 
+(also called Lagrangian *x-t* diagram) for the propagation of elastic waves in 
+1D rods. The rods can have impedance variations along the propagation axis, 
+and it is possible to consider several rods in contact.
 
 Initial conditions can be:
 

@@ -24,12 +24,17 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 ### To add
+#### Long term
 * plastic wave (probably impossible here as it requires too large changes);
+#### Middle term
 * `friction` and `damped` boundary conditions (see DeJuhasz reference);
 * `elastic`, `mass`, `dashpot` end conditions (see Graff reference);
 * impacting mass (left end);
+#### Short term
 * test and check `indV` argument of `Waveprop` class;
-* plot Stress and Strain in `Segment` for `WP2`.
+* plot Stress and Strain in `Segment` for `WP2`;
+* ~~_Lagrangian x-t diagram_ keyword should appear and be in description~~ and in JOSS paper;
+* modeling of impact on transfer flange (for tension testing simulation).
 
 ### To change
 

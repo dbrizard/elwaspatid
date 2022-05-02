@@ -32,15 +32,21 @@ format defined at https://keepachangelog.com/en/1.1.0/.
 To add
 ~~~~~~
 
+Long term
+^^^^^^^^^
+
 -  plastic wave (probably impossible here as it requires too large
-   changes);
+   changes); #### Middle term
 -  ``friction`` and ``damped`` boundary conditions (see DeJuhasz
    reference);
 -  ``elastic``, ``mass``, ``dashpot`` end conditions (see Graff
    reference);
--  impacting mass (left end);
+-  impacting mass (left end); #### Short term
 -  test and check ``indV`` argument of ``Waveprop`` class;
 -  plot Stress and Strain in ``Segment`` for ``WP2``.
+-  *Lagrangian x-t diagram* keyword should appear and be in description
+-  modeling of impact on transfer flange (for tension testing
+   simulation)
 
 To change
 ~~~~~~~~~
