@@ -125,6 +125,7 @@ class WP2:
         for ss in bar.seg:
             ss.setTime(time) #set :attr:`time` for each :class:`Segment`
             ss.computeStressStrain()
+            ss.computeEnergy()
         
         self.time = time
         self.bar = bar
@@ -470,7 +471,31 @@ class WP2:
         plt.xlabel('t [s]')
         plt.ylabel('x [m]')
         plt.box(on=False)
+    
+    def plotEnergy(self, figname=None, ls='.-'):
+        """
 
+        :param str figname: name for the figure
+        :param str ls: linestyle
+        """
+        plt.figure(figname)
+        for ii, ss in enumerate(self.bar.seg):
+            if ii==0:
+                ax = plt.subplot(self.bar.nseg, 1, ii+1)
+            else:
+                plt.subplot(self.bar.nseg, 1, ii+1, sharex=ax)
+                
+            for kk in ss.energy:
+                plt.plot(ss.time, ss.energy[kk], ls, label=kk)
+            # plt.plot(ss.time, ss.energy['kinetic'], '.--', label=ii)
+            # plt.plot(ss.time, ss.energy['potential'], '.:', label=ii)
+            # plt.plot(ss.time, ss.energy['total'], '.-', label=ii)
+            if ii==0:
+                plt.legend()
+        plt.xlabel('time [s]')
+        plt.ylabel('energy [J]')
+        
+        
 class Waveprop:
     '''One-dimensional wave propagation problem for a rod with a piecewise
     constant impedance.
@@ -606,6 +631,13 @@ class Waveprop:
         self._Stress['right'] = self.Force[:,1:]/bar.A  # right stress, @elements
         # This should rather be the way
         self.Stress = self.Strain*bar.E
+        
+        # Kinetic and potential energy
+        # Ec = 0.5*np.sum(self.Veloc[:,:-1]**2*bar.A*bar.rho*np.diff(bar.x) , axis=1) # wrong!
+        # Ep = 0.5*np.sum(self.Force[:,:-1]**2/bar.E/bar.A*np.diff(bar.x), axis=1) # wring!
+        Ecm = 0.5*np.sum(self.Veloc[:,:-1]*self.Veloc[:,1:]*bar.A*bar.rho*np.diff(bar.x) , axis=1)
+        Epm = 0.5*np.sum(self.Force[:,:-1]*self.Force[:,1:]/bar.E/bar.A*np.diff(bar.x), axis=1)
+        self.energy = {'kinetic':Ecm, 'potential':Epm, 'total':Ecm+Epm}
         
         # Traction-Compression state
         LR = Force*Veloc
@@ -826,6 +858,23 @@ class Waveprop:
         plt.plot(ab, displ, 'g.-', drawstyle='steps-post')
         plt.ylabel('Displacement')
         plt.xlabel(xlab)
+    
+    
+    def plotEnergy(self, figname=None, ls='.-'):
+        """
+        
+        :param str figname: name for the figure
+        :param str ls: linestyle
+        """
+        plt.figure(figname)
+        # plt.plot(self.time, self.energy['kin'], ls, label='kinetic')
+        # plt.plot(self.time, self.energy['pot'], ls, label='potential')
+        # plt.plot(self.time, self.energy['kin']+self.energy['pot'], ls, label='total')
+        for kk in self.energy:
+            plt.plot(self.time, self.energy[kk], ls, label=kk)
+        plt.legend()
+        plt.xlabel('time [s]')
+        plt.ylabel('energy [J]')
         
     
     def plotFV(self, x, figname=None):
@@ -1105,7 +1154,7 @@ class BarSet(BarSingle):
         self.nseg = len(bar.co)
         # define segment list
         s = []
-        for ii, (zz, ll, ddx, nn, EE) in enumerate(zip(bar.Z, Lentier, dx, nelt, E)):
+        for ii, (zz, ll, ddx, nn, EE, dd, rrho) in enumerate(zip(bar.Z, Lentier, dx, nelt, E, d, rho)):
             if ii==0:
                 le = 'impact'
                 xo = 0
@@ -1116,7 +1165,7 @@ class BarSet(BarSingle):
                 ri = right
             else:
                 ri = 'interf'
-            s.append(Segment(nn, zz, EE, ll, ddx, dt, xo, le, ri))
+            s.append(Segment(nn, zz, EE, dd, rrho, ll, ddx, dt, xo, le, ri))
         self.seg = s
 
 
@@ -1130,7 +1179,7 @@ class BarSet(BarSingle):
         """
         # z = rho*A*co
         z = np.pi*d**2/4*self.bar_continuous.rho[iseg]*self.bar_continuous.co[iseg]
-        self.seg[iseg].resetImpedance(l, z)
+        self.seg[iseg].resetImpedance(l, z, d)
 
     def plotProperties(self, figname=None):
         """Plot evolution of properties of the bar along the length
@@ -1164,12 +1213,14 @@ class Segment(object):
     
     For later use in :class:`WP2` through :class:`BarSet`
     """
-    def __init__(self, nel, z, E, l, dx, dt, xo, left='infinite', right='infinite'):
+    def __init__(self, nel, z, E, d, rho, l, dx, dt, xo, left='infinite', right='infinite'):
         """
         
         :param int nel:  number of elements in segment
         :param float z:  segment impedance
         :param float E:  segment elastic modulus
+        :param float d: diameter
+        :param float rho: density
         :param float l:  segment length
         :param float dx: length of elements in segment
         :param float dt: time step
@@ -1186,6 +1237,8 @@ class Segment(object):
         # UN = np.ones(self.nx) # point number = element number +1 !!
         #self.z = z  # 
         self.Z = np.ones(nel)*z
+        self.A = np.ones(nel)*np.pi*d**2/4
+        self.rho = rho
         self.E = E
         self.l = l
         self.dx = dx
@@ -1196,17 +1249,19 @@ class Segment(object):
         self.left = left
         self.right = right
     
-    def resetImpedance(self, l, z):
+    def resetImpedance(self, l, z, d):
         """Reset impedance of elements after position l along the length
         
         Be careful, this new impedance MUST NOT change wave speed. Otherwise
         spatial discretization is obsolete. Only section change is permitted.
         
         :param float l: beginning position of new impedance
-        :param float z: new impedance        
+        :param float z: new impedance
+        :param float d: new diameter
         """
         ind = np.where(l>self.xloc)[0][-1]
         self.Z[ind:] = z
+        self.A[ind:] = np.pi*d**2/4
     
     def initCalc(self, nT, Vo=0):
         """Initialize before wave propagation computation
@@ -1332,12 +1387,21 @@ class Segment(object):
         self.Displ[it,:] = self.Displ[it-1,:] + self.Veloc[it,:]*self.dt
     
     def computeStressStrain(self):
-        """Compute Strain from Displacement and then Stress, in the elements        
+        """Compute Strain from Displacement and then Stress, in the elements
         
+        Should be used after the wave propagation.
         """
         self.Strain = (self.Displ[:,1:]-self.Displ[:,:-1])/self.dx  # @elements
         self.Stress = self.Strain*self.E  # @elements
 
+    def computeEnergy(self):
+        """Compute kinetic and potential energy
+
+        Should be used after the wave propagation.
+        """
+        Ec = 0.5*np.sum(self.Veloc[:,:-1]*self.Veloc[:,1:]*self.A*self.rho*np.diff(self.x), axis=1)
+        Ep = 0.5*np.sum(self.Force[:,:-1]*self.Force[:,1:]/self.A/self.E  *np.diff(self.x), axis=1)
+        self.energy = {'kinetic':Ec, 'potential':Ep, 'total':Ec+Ep}
     
     def plotProperties(self, figname=None, label=None):
         """
@@ -1688,7 +1752,7 @@ if __name__ == '__main__':
         incw = np.zeros(80)  # incident wave
         incw[0:20] = 1  # /!\ traction pulse
         #%%---TEST WAVEPROP CLASS---
-        if False:
+        if True:
             print('transfered to examples')
             test = Waveprop(bb, -incw*1e5, nstep=3*len(incw), left='free', right='free')
             test.plot()
@@ -1699,9 +1763,10 @@ if __name__ == '__main__':
             
             test.plot('stress-X')
             test.plotDeSaintVenant(scale=100, figname='deStVenant')
+            test.plotEnergy()
         
         #%%---DEV OF DAMPED, SPRING & FRICTION END CONDITIONS---
-        if True:
+        if False:
             # this is not working yet...
             ENDC = ('free', 'fixed', 'spring', 'damper', 'friction')
             for endc in ENDC:
@@ -1711,7 +1776,7 @@ if __name__ == '__main__':
             
             
         #%% ---TEST WP2 CLASS---
-        if False:
+        if True:
             L = 1  # [m]
             doubleWave = -np.ones(20)
             #doubleWave[:20] = -1
@@ -1722,6 +1787,7 @@ if __name__ == '__main__':
             testk.plot()
             testk.plotInterface(figname='testinterf')
             testk.plotDeSaintVenant(figname='deStV', ms=10)
+            testk.plotEnergy('energy')
 
             testk.getSignal(x=0.5, figname='checkVinit')
                         
