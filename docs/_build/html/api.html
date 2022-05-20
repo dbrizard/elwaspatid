@@ -288,18 +288,20 @@ than bar impedance</p>
 
 <dl class="py class">
 <dt id="elwaspatid.Segment">
-<em class="property">class </em><code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">Segment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">Segment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bar segment with constant properties</p>
 <p>For later use in <a class="reference internal" href="#elwaspatid.WP2" title="elwaspatid.WP2"><code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a> through <a class="reference internal" href="#elwaspatid.BarSet" title="elwaspatid.BarSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BarSet</span></code></a></p>
 <dl class="py method">
 <dt id="elwaspatid.Segment.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nel</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">E</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">xo</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'infinite'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'infinite'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>nel</strong> (<em>int</em>) – number of elements in segment</p></li>
 <li><p><strong>z</strong> (<em>float</em>) – segment impedance</p></li>
 <li><p><strong>E</strong> (<em>float</em>) – segment elastic modulus</p></li>
+<li><p><strong>d</strong> (<em>float</em>) – diameter</p></li>
+<li><p><strong>rho</strong> (<em>float</em>) – density</p></li>
 <li><p><strong>l</strong> (<em>float</em>) – segment length</p></li>
 <li><p><strong>dx</strong> (<em>float</em>) – length of elements in segment</p></li>
 <li><p><strong>dt</strong> (<em>float</em>) – time step</p></li>
@@ -389,9 +391,17 @@ impact (impacted end, in which case <strong>incw</strong> must be given).</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="elwaspatid.Segment.computeEnergy">
+<code class="sig-name descname">computeEnergy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.computeEnergy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute kinetic and potential energy</p>
+<p>Should be used after the wave propagation.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="elwaspatid.Segment.computeStressStrain">
 <code class="sig-name descname">computeStressStrain</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.computeStressStrain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Strain from Displacement and then Stress, in the elements</p>
+<p>Should be used after the wave propagation.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -446,7 +456,7 @@ impact (impacted end, in which case <strong>incw</strong> must be given).</p>
 
 <dl class="py method">
 <dt id="elwaspatid.Segment.resetImpedance">
-<code class="sig-name descname">resetImpedance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">z</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.resetImpedance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">resetImpedance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Segment.resetImpedance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset impedance of elements after position l along the length</p>
 <p>Be careful, this new impedance MUST NOT change wave speed. Otherwise
 spatial discretization is obsolete. Only section change is permitted.</p>
@@ -455,6 +465,7 @@ spatial discretization is obsolete. Only section change is permitted.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>l</strong> (<em>float</em>) – beginning position of new impedance</p></li>
 <li><p><strong>z</strong> (<em>float</em>) – new impedance</p></li>
+<li><p><strong>d</strong> (<em>float</em>) – new diameter</p></li>
 </ul>
 </dd>
 </dl>
@@ -478,7 +489,7 @@ spatial discretization is obsolete. Only section change is permitted.</p>
 <em class="property">class </em><code class="sig-prename descclassname">elwaspatid.</code><code class="sig-name descname">WP2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span></em>, <em class="sig-param"><span class="n">incw</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">nstep</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">Vinit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">contactLoss</span><span class="o">=</span><span class="default_value">1e-09</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.WP2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Second version of wave propagation, using <a class="reference internal" href="#elwaspatid.Segment" title="elwaspatid.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> for each bar
 of constant section.</p>
-<p>No traction crossing interfaces (=section changes).</p>
+<p>Traction cannot cross the contact interface between bars.</p>
 <dl class="py method">
 <dt id="elwaspatid.WP2.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span></em>, <em class="sig-param"><span class="n">incw</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">nstep</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">right</span><span class="o">=</span><span class="default_value">'free'</span></em>, <em class="sig-param"><span class="n">Vinit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">contactLoss</span><span class="o">=</span><span class="default_value">1e-09</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.WP2.__init__" title="Permalink to this definition">¶</a></dt>
@@ -583,6 +594,21 @@ in one array.</p>
 <li><p><strong>figname</strong> (<em>str</em>) – name for the figure</p></li>
 <li><p><strong>ms</strong> (<em>float</em>) – give marker size to get points plotted (color=Force)</p></li>
 <li><p><strong>lines</strong> (<em>color</em>) – give color to get lines plotted</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elwaspatid.WP2.plotEnergy">
+<code class="sig-name descname">plotEnergy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ls</span><span class="o">=</span><span class="default_value">'.-'</span></em>, <em class="sig-param"><span class="n">gather</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.WP2.plotEnergy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot evolution of kinetic, potential and total energy in segments</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>figname</strong> (<em>str</em>) – name for the figure</p></li>
+<li><p><strong>ls</strong> (<em>str</em>) – linestyle</p></li>
+<li><p><strong>gather</strong> (<em>bool</em>) – plot also the kin., pot., tot. energies of the whole system</p></li>
 </ul>
 </dd>
 </dl>
@@ -747,6 +773,19 @@ or state of the bar at given time t.</p>
 <li><p><strong>ms</strong> (<em>float</em>) – give marker size to get points plotted (color=Force)</p></li>
 <li><p><strong>lines</strong> (<em>color</em>) – give color to get lines plotted</p></li>
 <li><p><strong>XPplot</strong> (<em>bool</em>) – experimental plots with pcolor. Warning: grid is not correctly adjusted yet.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elwaspatid.Waveprop.plotEnergy">
+<code class="sig-name descname">plotEnergy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ls</span><span class="o">=</span><span class="default_value">'.-'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#elwaspatid.Waveprop.plotEnergy" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>figname</strong> (<em>str</em>) – name for the figure</p></li>
+<li><p><strong>ls</strong> (<em>str</em>) – linestyle</p></li>
 </ul>
 </dd>
 </dl>

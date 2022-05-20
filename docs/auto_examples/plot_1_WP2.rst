@@ -115,12 +115,13 @@ Contact interface between the two bars:
 
 And so on. Which means the pulse is trapped in the second bar.
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-52
+.. GENERATED FROM PYTHON SOURCE LINES 49-53
 
 .. code-block:: default
 
     test2 = WP2(bc, comp, nstep=100, left='free', right='free')
     test2.plot('2b_free')
+    test2.plotEnergy()
 
 
 
@@ -149,21 +150,36 @@ And so on. Which means the pulse is trapped in the second bar.
          :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_003.png
          :class: sphx-glr-multi-img
 
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_004.png
+         :alt: energy [J]
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_004.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_005.png
+         :alt: plot 1 WP2
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_005.png
+         :class: sphx-glr-multi-img
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-55
+
+.. GENERATED FROM PYTHON SOURCE LINES 54-56
 
 Two identical bars, free and fixed ends
 ---------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-58
+.. GENERATED FROM PYTHON SOURCE LINES 56-60
 
 .. code-block:: default
 
     test2 = WP2(bc, comp, nstep=100, left='free', right='fixed')
     test2.plot('2b_freefixed')
+    test2.plotEnergy()
 
 
 
@@ -173,30 +189,44 @@ Two identical bars, free and fixed ends
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_004.png
-         :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_004.png
-         :class: sphx-glr-multi-img
-
-    *
-
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_005.png
-         :alt: Velocity [m/s]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_005.png
-         :class: sphx-glr-multi-img
-
-    *
-
       .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_006.png
-         :alt: Displacement [m]
+         :alt: Force [N]
          :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_006.png
          :class: sphx-glr-multi-img
 
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_007.png
+         :alt: Velocity [m/s]
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_007.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_008.png
+         :alt: Displacement [m]
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_008.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_009.png
+         :alt: energy [J]
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_009.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_010.png
+         :alt: plot 1 WP2
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_010.png
+         :class: sphx-glr-multi-img
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-64
+
+.. GENERATED FROM PYTHON SOURCE LINES 61-66
 
 Two different bars, infinite-ends
 ---------------------------------
@@ -204,7 +234,7 @@ Compression pulses cross the interface and are partly reflected because of the
 difference of impedance between the bars. At both end, no reflection occur 
 since infinite ends amounts to anechoic condition.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-67
+.. GENERATED FROM PYTHON SOURCE LINES 66-69
 
 .. code-block:: default
 
@@ -219,37 +249,37 @@ since infinite ends amounts to anechoic condition.
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_007.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_011.png
          :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_007.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_011.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_008.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_012.png
          :alt: Velocity [m/s]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_008.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_012.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_009.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_013.png
          :alt: Displacement [m]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_009.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_013.png
          :class: sphx-glr-multi-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-72
+.. GENERATED FROM PYTHON SOURCE LINES 70-74
 
 Two identical bars with traction pulse
 --------------------------------------
 The traction pulses do not cross the contact interface. The pulse is trapped 
 in the firt bar.
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-75
+.. GENERATED FROM PYTHON SOURCE LINES 74-77
 
 .. code-block:: default
 
@@ -264,42 +294,43 @@ in the firt bar.
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_010.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_014.png
          :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_010.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_014.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_011.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_015.png
          :alt: Velocity [m/s]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_011.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_015.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_012.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_016.png
          :alt: Displacement [m]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_012.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_016.png
          :class: sphx-glr-multi-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-80
+.. GENERATED FROM PYTHON SOURCE LINES 78-82
 
 Two bars, cross-section increase
 --------------------------------
 Compression is reflected as traction. 
 Recall that the limit case of cross-section increase is the fixed end.
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-85
+.. GENERATED FROM PYTHON SOURCE LINES 82-88
 
 .. code-block:: default
 
     test2a = WP2(bc2, comp, nstep=100, left='free', right='free')
     test2a.plot('2b_incre')
+    test2a.plotEnergy()
     # test2av = WP2(bc2, comp, nstep=100, left='free', right='free', Vinit=10)
     # test2av.plot('2baugmv')
 
@@ -311,37 +342,51 @@ Recall that the limit case of cross-section increase is the fixed end.
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_013.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_017.png
          :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_013.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_017.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_014.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_018.png
          :alt: Velocity [m/s]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_014.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_018.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_015.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_019.png
          :alt: Displacement [m]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_015.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_019.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_020.png
+         :alt: energy [J]
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_020.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_021.png
+         :alt: plot 1 WP2
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_021.png
          :class: sphx-glr-multi-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-90
+.. GENERATED FROM PYTHON SOURCE LINES 89-93
 
 Two bars, cross-section reduction
 ---------------------------------
 Compression is reflected as compression
 Recall that the limit case of cross-section reduction is the free end.
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-96
+.. GENERATED FROM PYTHON SOURCE LINES 93-100
 
 .. code-block:: default
 
@@ -350,6 +395,7 @@ Recall that the limit case of cross-section reduction is the free end.
     # test2dv = WP2(bc3, comp, nstep=100, left='free', right='free', Vinit=10)
     # test2dv.plot('2bdimiv')
     test2d.plotInterface(figname='interf')
+    test2d.plotEnergy()
 
 
 
@@ -359,30 +405,44 @@ Recall that the limit case of cross-section reduction is the free end.
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_016.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_022.png
          :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_016.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_022.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_017.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_023.png
          :alt: Velocity [m/s]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_017.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_023.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_018.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_024.png
          :alt: Displacement [m]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_018.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_024.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_019.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_025.png
          :alt: x = 0 m
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_019.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_025.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_026.png
+         :alt: energy [J]
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_026.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_027.png
+         :alt: plot 1 WP2
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_027.png
          :class: sphx-glr-multi-img
 
 
@@ -392,17 +452,17 @@ Recall that the limit case of cross-section reduction is the free end.
 
  .. code-block:: none
 
-    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:397: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:402: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
       ax1 = plt.subplot(nsbp, 1, 1)
-    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:404: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:409: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
       plt.subplot(nsbp, 1, 2, sharex=ax1)
-    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:411: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:416: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
       plt.subplot(nsbp, 1, 3, sharex=ax1)
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-107
+.. GENERATED FROM PYTHON SOURCE LINES 101-111
 
 First bar with initial velocity
 -------------------------------
@@ -415,12 +475,13 @@ traction with the same magnitude as the compression pulse: traction cancels
 compression and the force is null (traction can be considered as an unloading
 wave).
 
-.. GENERATED FROM PYTHON SOURCE LINES 107-110
+.. GENERATED FROM PYTHON SOURCE LINES 111-115
 
 .. code-block:: default
 
     test2v = WP2(bc4, comp, nstep=100, left='free', right='free', Vinit=10)
     test2v.plot('2b_veloc')
+    test2v.plotEnergy()
 
 
 
@@ -430,23 +491,37 @@ wave).
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_020.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_028.png
          :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_020.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_028.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_021.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_029.png
          :alt: Velocity [m/s]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_021.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_029.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_022.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_030.png
          :alt: Displacement [m]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_022.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_030.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_031.png
+         :alt: energy [J]
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_031.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_032.png
+         :alt: plot 1 WP2
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_032.png
          :class: sphx-glr-multi-img
 
 
@@ -461,19 +536,19 @@ wave).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-114
+.. GENERATED FROM PYTHON SOURCE LINES 116-119
 
 Negative velocity
 ^^^^^^^^^^^^^^^^^
 Nothing happens, the left bar travels to the left.
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-116
+.. GENERATED FROM PYTHON SOURCE LINES 119-121
 
 .. code-block:: default
 
     test2vn = WP2(bc4, comp, nstep=100, left='free', right='free', Vinit=-10)
     test2vn.plot('2b_negveloc')
-
+    test2vn.plotEnergy()
 
 
 .. rst-class:: sphx-glr-horizontal
@@ -481,23 +556,37 @@ Nothing happens, the left bar travels to the left.
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_023.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_033.png
          :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_023.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_033.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_024.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_034.png
          :alt: Velocity [m/s]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_024.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_034.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_025.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_035.png
          :alt: Displacement [m]
-         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_025.png
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_035.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_036.png
+         :alt: energy [J]
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_036.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_1_WP2_037.png
+         :alt: plot 1 WP2
+         :srcset: /auto_examples/images/sphx_glr_plot_1_WP2_037.png
          :class: sphx-glr-multi-img
 
 
@@ -515,7 +604,7 @@ Nothing happens, the left bar travels to the left.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.021 seconds)
+   **Total running time of the script:** ( 0 minutes  13.723 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_1_WP2.py:

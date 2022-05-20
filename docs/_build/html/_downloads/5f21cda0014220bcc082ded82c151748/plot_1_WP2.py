@@ -48,12 +48,14 @@ comp[15:] = -1e3
 # And so on. Which means the pulse is trapped in the second bar.
 test2 = WP2(bc, comp, nstep=100, left='free', right='free')
 test2.plot('2b_free')
+test2.plotEnergy()
 
 # %%
 # Two identical bars, free and fixed ends
 # ---------------------------------------
 test2 = WP2(bc, comp, nstep=100, left='free', right='fixed')
 test2.plot('2b_freefixed')
+test2.plotEnergy()
 
 # %%
 # Two different bars, infinite-ends
@@ -79,6 +81,7 @@ test2t.plot('2b_trac')
 # Recall that the limit case of cross-section increase is the fixed end.
 test2a = WP2(bc2, comp, nstep=100, left='free', right='free')
 test2a.plot('2b_incre')
+test2a.plotEnergy()
 # test2av = WP2(bc2, comp, nstep=100, left='free', right='free', Vinit=10)
 # test2av.plot('2baugmv')
 
@@ -92,6 +95,7 @@ test2d.plot('2b_reduc')
 # test2dv = WP2(bc3, comp, nstep=100, left='free', right='free', Vinit=10)
 # test2dv.plot('2bdimiv')
 test2d.plotInterface(figname='interf')
+test2d.plotEnergy()
 
 # %%
 # First bar with initial velocity
@@ -106,6 +110,7 @@ test2d.plotInterface(figname='interf')
 # wave).
 test2v = WP2(bc4, comp, nstep=100, left='free', right='free', Vinit=10)
 test2v.plot('2b_veloc')
+test2v.plotEnergy()
 
 # %%
 # Negative velocity
@@ -113,3 +118,4 @@ test2v.plot('2b_veloc')
 # Nothing happens, the left bar travels to the left.
 test2vn = WP2(bc4, comp, nstep=100, left='free', right='free', Vinit=-10)
 test2vn.plot('2b_negveloc')
+test2vn.plotEnergy()

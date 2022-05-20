@@ -65,6 +65,9 @@ test.plotcut(t=bb.dt*len(incw)/2)
 test.plot(typ='dir-D')  # Wave direction (dir) and Displacement (D)
 test.plot(typ='sig-eps')  # Stress (sig) and Strain (eps)
 
+test.plotEnergy()  # Last, plot the evolution of energy
+
+
 # %%
 # Free-fixed uniform bar
 # ----------------------
@@ -79,6 +82,7 @@ test.plot(typ='sig-eps')  # Stress (sig) and Strain (eps)
 test = Waveprop(bb, incw, nstep=3*len(incw), left='free', right='fixed')
 test.plot()
 test.plot(typ='D')  #  Displacement (D)
+test.plotEnergy()
 
 
 # %%
@@ -94,6 +98,7 @@ testf.plot()
 # The traction pulse reflects as traction on section increase.
 testa = Waveprop(b2, incw, nstep=170, left='free', right='free')
 testa.plot()
+testa.plotEnergy()
 
 # %%
 # Free-free bar with section reduction
@@ -101,6 +106,7 @@ testa.plot()
 # The traction pulse reflects as compression on the section reduction.
 testd = Waveprop(b3, incw, nstep=170, left='free', right='free')
 testd.plot()
+testd.plotEnergy()
 
 
 # %%

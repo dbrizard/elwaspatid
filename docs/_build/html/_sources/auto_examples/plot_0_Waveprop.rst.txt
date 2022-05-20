@@ -224,12 +224,15 @@ or at a given position `x`
 
 Additional diagrams are also available
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-68
+.. GENERATED FROM PYTHON SOURCE LINES 65-71
 
 .. code-block:: default
 
     test.plot(typ='dir-D')  # Wave direction (dir) and Displacement (D)
     test.plot(typ='sig-eps')  # Stress (sig) and Strain (eps)
+
+    test.plotEnergy()  # Last, plot the evolution of energy
+
 
 
 
@@ -265,11 +268,18 @@ Additional diagrams are also available
          :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_012.png
          :class: sphx-glr-multi-img
 
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_013.png
+         :alt: plot 0 Waveprop
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_013.png
+         :class: sphx-glr-multi-img
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-78
+
+.. GENERATED FROM PYTHON SOURCE LINES 72-81
 
 Free-fixed uniform bar
 ----------------------
@@ -281,7 +291,7 @@ Left end is free, right end is fixed:
 
 Note that velocity and displacement of the right end are null.
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-84
+.. GENERATED FROM PYTHON SOURCE LINES 81-88
 
 .. code-block:: default
 
@@ -289,6 +299,7 @@ Note that velocity and displacement of the right end are null.
     test = Waveprop(bb, incw, nstep=3*len(incw), left='free', right='fixed')
     test.plot()
     test.plot(typ='D')  #  Displacement (D)
+    test.plotEnergy()
 
 
 
@@ -299,59 +310,29 @@ Note that velocity and displacement of the right end are null.
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_013.png
-         :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_013.png
-         :class: sphx-glr-multi-img
-
-    *
-
       .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_014.png
-         :alt: Particule velocity [m/s]
+         :alt: Force [N]
          :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_014.png
          :class: sphx-glr-multi-img
 
     *
 
       .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_015.png
-         :alt: Displacement [m]
+         :alt: Particule velocity [m/s]
          :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_015.png
          :class: sphx-glr-multi-img
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 85-88
-
-Infinite-infinite uniform bar
------------------------------
-Infinite end amounts to anechoic condition: no reflecion of elastic wave.
-
-.. GENERATED FROM PYTHON SOURCE LINES 88-91
-
-.. code-block:: default
-
-    testf = Waveprop(bb, incw, nstep=100, left='infinite', right='infinite')
-    testf.plot()
-
-
-
-
-.. rst-class:: sphx-glr-horizontal
-
 
     *
 
       .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_016.png
-         :alt: Force [N]
+         :alt: Displacement [m]
          :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_016.png
          :class: sphx-glr-multi-img
 
     *
 
       .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_017.png
-         :alt: Particule velocity [m/s]
+         :alt: plot 0 Waveprop
          :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_017.png
          :class: sphx-glr-multi-img
 
@@ -359,18 +340,18 @@ Infinite end amounts to anechoic condition: no reflecion of elastic wave.
 
 
 
+.. GENERATED FROM PYTHON SOURCE LINES 89-92
+
+Infinite-infinite uniform bar
+-----------------------------
+Infinite end amounts to anechoic condition: no reflecion of elastic wave.
+
 .. GENERATED FROM PYTHON SOURCE LINES 92-95
-
-Free-free bar with section increase
------------------------------------
-The traction pulse reflects as traction on section increase.
-
-.. GENERATED FROM PYTHON SOURCE LINES 95-98
 
 .. code-block:: default
 
-    testa = Waveprop(b2, incw, nstep=170, left='free', right='free')
-    testa.plot()
+    testf = Waveprop(bb, incw, nstep=100, left='infinite', right='infinite')
+    testf.plot()
 
 
 
@@ -396,19 +377,19 @@ The traction pulse reflects as traction on section increase.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-102
+.. GENERATED FROM PYTHON SOURCE LINES 96-99
 
-Free-free bar with section reduction
-------------------------------------
-The traction pulse reflects as compression on the section reduction.
+Free-free bar with section increase
+-----------------------------------
+The traction pulse reflects as traction on section increase.
 
-.. GENERATED FROM PYTHON SOURCE LINES 102-106
+.. GENERATED FROM PYTHON SOURCE LINES 99-103
 
 .. code-block:: default
 
-    testd = Waveprop(b3, incw, nstep=170, left='free', right='free')
-    testd.plot()
-
+    testa = Waveprop(b2, incw, nstep=170, left='free', right='free')
+    testa.plot()
+    testa.plotEnergy()
 
 
 
@@ -430,11 +411,64 @@ The traction pulse reflects as compression on the section reduction.
          :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_021.png
          :class: sphx-glr-multi-img
 
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_022.png
+         :alt: plot 0 Waveprop
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_022.png
+         :class: sphx-glr-multi-img
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 107-114
+
+.. GENERATED FROM PYTHON SOURCE LINES 104-107
+
+Free-free bar with section reduction
+------------------------------------
+The traction pulse reflects as compression on the section reduction.
+
+.. GENERATED FROM PYTHON SOURCE LINES 107-112
+
+.. code-block:: default
+
+    testd = Waveprop(b3, incw, nstep=170, left='free', right='free')
+    testd.plot()
+    testd.plotEnergy()
+
+
+
+
+
+.. rst-class:: sphx-glr-horizontal
+
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_023.png
+         :alt: Force [N]
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_023.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_024.png
+         :alt: Particule velocity [m/s]
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_024.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_025.png
+         :alt: plot 0 Waveprop
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_025.png
+         :class: sphx-glr-multi-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 113-120
 
 Whatever pulse input is possible
 --------------------------------
@@ -444,7 +478,7 @@ For exemple, define a trapeze pulse shape and propagate it in a bar with
 constant section. Right end is ``free`` so the traction wave is reflected as
 a compression wave. Left end is ``infinite`` so no reflecion occur.
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-120
+.. GENERATED FROM PYTHON SOURCE LINES 120-126
 
 .. code-block:: default
 
@@ -462,35 +496,35 @@ a compression wave. Left end is ``infinite`` so no reflecion occur.
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_022.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_026.png
          :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_022.png
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_026.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_023.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_027.png
          :alt: Particule velocity [m/s]
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_023.png
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_027.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_024.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_028.png
          :alt: x=0.2 m
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_024.png
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_028.png
          :class: sphx-glr-multi-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-123
+.. GENERATED FROM PYTHON SOURCE LINES 127-129
 
 And why not a sine pulse?
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-138
+.. GENERATED FROM PYTHON SOURCE LINES 129-144
 
 .. code-block:: default
 
@@ -517,30 +551,30 @@ And why not a sine pulse?
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_025.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_029.png
          :alt: Force [N]
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_025.png
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_029.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_026.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_030.png
          :alt: Particule velocity [m/s]
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_026.png
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_030.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_027.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_031.png
          :alt: x=0.15 m
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_027.png
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_031.png
          :class: sphx-glr-multi-img
 
     *
 
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_028.png
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_0_Waveprop_032.png
          :alt: x=0.2 m
-         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_028.png
+         :srcset: /auto_examples/images/sphx_glr_plot_0_Waveprop_032.png
          :class: sphx-glr-multi-img
 
 
@@ -550,7 +584,7 @@ And why not a sine pulse?
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.521 seconds)
+   **Total running time of the script:** ( 0 minutes  10.771 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_0_Waveprop.py:

@@ -122,11 +122,17 @@ class WP2:
 
 
         time = np.arange(nT)*bar.dt
+        
+        Ec, Ep, Et = 0, 0, 0
         for ss in bar.seg:
             ss.setTime(time) #set :attr:`time` for each :class:`Segment`
             ss.computeStressStrain()
             ss.computeEnergy()
+            Ec += ss.energy['kinetic']
+            Ep += ss.energy['potential']
+            Et += ss.energy['total']
         
+        self.energy = {'kinetic':Ec, 'potential':Ep, 'total':Ec+Ep}
         self.time = time
         self.bar = bar
         self.gatherForce()
@@ -472,30 +478,41 @@ class WP2:
         plt.ylabel('x [m]')
         plt.box(on=False)
     
-    def plotEnergy(self, figname=None, ls='.-'):
-        """
+    def plotEnergy(self, figname=None, ls='.-', gather=True):
+        """Plot evolution of kinetic, potential and total energy in segments
 
         :param str figname: name for the figure
         :param str ls: linestyle
+        :param bool gather: plot also the kin., pot., tot. energies of the whole system
         """
         plt.figure(figname)
         for ii, ss in enumerate(self.bar.seg):
             if ii==0:
                 ax = plt.subplot(self.bar.nseg, 1, ii+1)
+                plt.title('energy [J]')
             else:
                 plt.subplot(self.bar.nseg, 1, ii+1, sharex=ax)
                 
             for kk in ss.energy:
                 plt.plot(ss.time, ss.energy[kk], ls, label=kk)
+                plt.ylabel('segment %i'%ii)
             # plt.plot(ss.time, ss.energy['kinetic'], '.--', label=ii)
             # plt.plot(ss.time, ss.energy['potential'], '.:', label=ii)
             # plt.plot(ss.time, ss.energy['total'], '.-', label=ii)
             if ii==0:
                 plt.legend()
         plt.xlabel('time [s]')
+        
+        if figname is not None:
+            figname += '-TOT'
+        plt.figure(figname)
+        for kk in self.energy:
+            plt.plot(self.time, self.energy[kk], ls, label=kk)
+        plt.xlabel('time [s]')
         plt.ylabel('energy [J]')
-        
-        
+        plt.legend()
+
+
 class Waveprop:
     '''One-dimensional wave propagation problem for a rod with a piecewise
     constant impedance.
