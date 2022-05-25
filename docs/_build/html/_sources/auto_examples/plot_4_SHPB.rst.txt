@@ -160,14 +160,14 @@ Plot forces in the sample to see the buildup of equilibrium in the sample.
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x7f678720ee10>
+    <matplotlib.legend.Legend object at 0x7f4c22df8ba8>
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.018 seconds)
+   **Total running time of the script:** ( 0 minutes  1.860 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_4_SHPB.py:

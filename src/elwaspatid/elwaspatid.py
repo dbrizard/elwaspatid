@@ -651,7 +651,7 @@ class Waveprop:
         
         # Kinetic and potential energy
         # Ec = 0.5*np.sum(self.Veloc[:,:-1]**2*bar.A*bar.rho*np.diff(bar.x) , axis=1) # wrong!
-        # Ep = 0.5*np.sum(self.Force[:,:-1]**2/bar.E/bar.A*np.diff(bar.x), axis=1) # wring!
+        # Ep = 0.5*np.sum(self.Force[:,:-1]**2/bar.E/bar.A*np.diff(bar.x), axis=1) # wrong!
         Ecm = 0.5*np.sum(self.Veloc[:,:-1]*self.Veloc[:,1:]*bar.A*bar.rho*np.diff(bar.x) , axis=1)
         Epm = 0.5*np.sum(self.Force[:,:-1]*self.Force[:,1:]/bar.E/bar.A*np.diff(bar.x), axis=1)
         self.energy = {'kinetic':Ecm, 'potential':Epm, 'total':Ecm+Epm}
@@ -1416,8 +1416,13 @@ class Segment(object):
 
         Should be used after the wave propagation.
         """
-        Ec = 0.5*np.sum(self.Veloc[:,:-1]*self.Veloc[:,1:]*self.A*self.rho*np.diff(self.x), axis=1)
-        Ep = 0.5*np.sum(self.Force[:,:-1]*self.Force[:,1:]/self.A/self.E  *np.diff(self.x), axis=1)
+        F2 = self.Force[:,:-1]*self.Force[:,1:]
+        V2 = self.Veloc[:,:-1]*self.Veloc[:,1:]
+        #Fmean2 = (self.Force[:,:-1]+self.Force[:,1:])**2/4
+        #Vmean2 = (self.Veloc[:,:-1] + self.Veloc[:,1:])**2/4
+        
+        Ec = 0.5*np.sum(V2*self.A*self.rho*np.diff(self.x), axis=1)
+        Ep = 0.5*np.sum(F2/self.A/self.E  *np.diff(self.x), axis=1)
         self.energy = {'kinetic':Ec, 'potential':Ep, 'total':Ec+Ep}
     
     def plotProperties(self, figname=None, label=None):

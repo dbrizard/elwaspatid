@@ -584,7 +584,7 @@ And why not a sine pulse?
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  10.771 seconds)
+   **Total running time of the script:** ( 0 minutes  11.003 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_0_Waveprop.py:
