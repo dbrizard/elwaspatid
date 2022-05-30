@@ -1,49 +1,106 @@
-
 <!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test WP2 class &#8212; elwaspatid 2.0.0 documentation</title>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test WP2 class &mdash; elwaspatid 2.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
+      <link rel="stylesheet" href="../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-rendered-html.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Compare ElasticImpact and WP2" href="plot_2_ElasticImpact.html" />
-    <link rel="prev" title="Test Waveprop class" href="plot_0_Waveprop.html" />
-   
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+    <link rel="prev" title="Test Waveprop class" href="plot_0_Waveprop.html" /> 
+</head>
 
-  </head><body>
-  
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> elwaspatid
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples of diagrams</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_0_Waveprop.html">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#two-identical-bars-free-ends">Two identical bars, free-ends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#two-identical-bars-free-and-fixed-ends">Two identical bars, free and fixed ends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#two-different-bars-infinite-ends">Two different bars, infinite-ends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#two-identical-bars-with-traction-pulse">Two identical bars with traction pulse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#two-bars-cross-section-increase">Two bars, cross-section increase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#two-bars-cross-section-reduction">Two bars, cross-section reduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#first-bar-with-initial-velocity">First bar with initial velocity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#positive-velocity-compression">Positive velocity: compression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#negative-velocity">Negative velocity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plot_2_ElasticImpact.html">Compare <code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticImpact</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_3_deSaintVenant.html">De Saint Venant displacement diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_4_SHPB.html">Use <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> to simulate SHPB test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_5_contactLoss.html">Displacement and contact loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_6_underHood.html">Under the hood</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
+        </div>
+      </div>
+    </nav>
 
-          <div class="body" role="main">
-            
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">elwaspatid</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Examples of diagrams</a> &raquo;</li>
+      <li>Test <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> class</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/auto_examples/plot_1_WP2.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
 <p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-plot-1-wp2-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="test-wp2-class">
-<span id="sphx-glr-auto-examples-plot-1-wp2-py"></span><h1>Test <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> class<a class="headerlink" href="#test-wp2-class" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples-plot-1-wp2-py"></span><h1>Test <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> class<a class="headerlink" href="#test-wp2-class" title="Permalink to this headline"></a></h1>
 <p>Define a <code class="xref py py-class docutils literal notranslate"><span class="pre">BarSet</span></code> bar configuration and use it with <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> to compute
 elastic wave propagation in simple test cases.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -73,7 +130,7 @@ elastic wave propagation in simple test cases.</p>
 </pre></div>
 </div>
 <div class="section" id="two-identical-bars-free-ends">
-<h2>Two identical bars, free-ends<a class="headerlink" href="#two-identical-bars-free-ends" title="Permalink to this headline">¶</a></h2>
+<h2>Two identical bars, free-ends<a class="headerlink" href="#two-identical-bars-free-ends" title="Permalink to this headline"></a></h2>
 <p>Contact interface between the two bars:</p>
 <ol class="arabic simple">
 <li><p>compression pulses cross the interface,</p></li>
@@ -93,7 +150,7 @@ as if this was a free end.</p></li>
 </ul>
 </div>
 <div class="section" id="two-identical-bars-free-and-fixed-ends">
-<h2>Two identical bars, free and fixed ends<a class="headerlink" href="#two-identical-bars-free-and-fixed-ends" title="Permalink to this headline">¶</a></h2>
+<h2>Two identical bars, free and fixed ends<a class="headerlink" href="#two-identical-bars-free-and-fixed-ends" title="Permalink to this headline"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;fixed&#39;</span><span class="p">)</span>
 <span class="n">test2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;2b_freefixed&#39;</span><span class="p">)</span>
 </pre></div>
@@ -105,7 +162,7 @@ as if this was a free end.</p></li>
 </ul>
 </div>
 <div class="section" id="two-different-bars-infinite-ends">
-<h2>Two different bars, infinite-ends<a class="headerlink" href="#two-different-bars-infinite-ends" title="Permalink to this headline">¶</a></h2>
+<h2>Two different bars, infinite-ends<a class="headerlink" href="#two-different-bars-infinite-ends" title="Permalink to this headline"></a></h2>
 <p>Compression pulses cross the interface and are partly reflected because of the
 difference of impedance between the bars. At both end, no reflection occur
 since infinite ends amounts to anechoic condition.</p>
@@ -120,7 +177,7 @@ since infinite ends amounts to anechoic condition.</p>
 </ul>
 </div>
 <div class="section" id="two-identical-bars-with-traction-pulse">
-<h2>Two identical bars with traction pulse<a class="headerlink" href="#two-identical-bars-with-traction-pulse" title="Permalink to this headline">¶</a></h2>
+<h2>Two identical bars with traction pulse<a class="headerlink" href="#two-identical-bars-with-traction-pulse" title="Permalink to this headline"></a></h2>
 <p>The traction pulses do not cross the contact interface. The pulse is trapped
 in the firt bar.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2t</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="o">-</span><span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">)</span>
@@ -134,7 +191,7 @@ in the firt bar.</p>
 </ul>
 </div>
 <div class="section" id="two-bars-cross-section-increase">
-<h2>Two bars, cross-section increase<a class="headerlink" href="#two-bars-cross-section-increase" title="Permalink to this headline">¶</a></h2>
+<h2>Two bars, cross-section increase<a class="headerlink" href="#two-bars-cross-section-increase" title="Permalink to this headline"></a></h2>
 <p>Compression is reflected as traction.
 Recall that the limit case of cross-section increase is the fixed end.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2a</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc2</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">)</span>
@@ -150,7 +207,7 @@ Recall that the limit case of cross-section increase is the fixed end.</p>
 </ul>
 </div>
 <div class="section" id="two-bars-cross-section-reduction">
-<h2>Two bars, cross-section reduction<a class="headerlink" href="#two-bars-cross-section-reduction" title="Permalink to this headline">¶</a></h2>
+<h2>Two bars, cross-section reduction<a class="headerlink" href="#two-bars-cross-section-reduction" title="Permalink to this headline"></a></h2>
 <p>Compression is reflected as compression
 Recall that the limit case of cross-section reduction is the free end.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2d</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc3</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">)</span>
@@ -177,9 +234,9 @@ Recall that the limit case of cross-section reduction is the free end.</p>
 </div>
 </div>
 <div class="section" id="first-bar-with-initial-velocity">
-<h2>First bar with initial velocity<a class="headerlink" href="#first-bar-with-initial-velocity" title="Permalink to this headline">¶</a></h2>
+<h2>First bar with initial velocity<a class="headerlink" href="#first-bar-with-initial-velocity" title="Permalink to this headline"></a></h2>
 <div class="section" id="positive-velocity-compression">
-<h3>Positive velocity: compression<a class="headerlink" href="#positive-velocity-compression" title="Permalink to this headline">¶</a></h3>
+<h3>Positive velocity: compression<a class="headerlink" href="#positive-velocity-compression" title="Permalink to this headline"></a></h3>
 <p>As the first bar (=stricker) impacts the second bar, a compression pulse
 develops in both bars. The stricker being shorter that the second bar, the
 compression pulse reaches the left end of the stricker and is reflected as
@@ -201,7 +258,7 @@ wave).</p>
 </div>
 </div>
 <div class="section" id="negative-velocity">
-<h3>Negative velocity<a class="headerlink" href="#negative-velocity" title="Permalink to this headline">¶</a></h3>
+<h3>Negative velocity<a class="headerlink" href="#negative-velocity" title="Permalink to this headline"></a></h3>
 <p>Nothing happens, the left bar travels to the left.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2vn</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc4</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">Vinit</span><span class="o">=-</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">test2vn</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;2b_negveloc&#39;</span><span class="p">)</span>
@@ -231,95 +288,34 @@ wave).</p>
 </div>
 
 
+           </div>
           </div>
-          
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="plot_0_Waveprop.html" class="btn btn-neutral float-left" title="Test Waveprop class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plot_2_ElasticImpact.html" class="btn btn-neutral float-right" title="Compare ElasticImpact and WP2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Denis Brizard.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../index.html">elwaspatid</a></h1>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
 
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting started</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples of diagrams</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="plot_0_Waveprop.html">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> class</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#two-identical-bars-free-ends">Two identical bars, free-ends</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#two-identical-bars-free-and-fixed-ends">Two identical bars, free and fixed ends</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#two-different-bars-infinite-ends">Two different bars, infinite-ends</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#two-identical-bars-with-traction-pulse">Two identical bars with traction pulse</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#two-bars-cross-section-increase">Two bars, cross-section increase</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#two-bars-cross-section-reduction">Two bars, cross-section reduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#first-bar-with-initial-velocity">First bar with initial velocity</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="plot_2_ElasticImpact.html">Compare <code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticImpact</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_3_deSaintVenant.html">De Saint Venant displacement diagrams</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_4_SHPB.html">Use <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> to simulate SHPB</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_5_contactLoss.html">Displacement and contact loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_6_underHood.html">Under the hood</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../api.html">API reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="index.html">Examples of diagrams</a><ul>
-      <li>Previous: <a href="plot_0_Waveprop.html" title="previous chapter">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> class</a></li>
-      <li>Next: <a href="plot_2_ElasticImpact.html" title="next chapter">Compare <code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticImpact</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2022, Denis Brizard.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="../_sources/auto_examples/plot_1_WP2.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+</body>
 </html>

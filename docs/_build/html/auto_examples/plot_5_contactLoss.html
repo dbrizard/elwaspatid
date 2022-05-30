@@ -1,49 +1,103 @@
-
 <!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Displacement and contact loss &#8212; elwaspatid 2.0.0 documentation</title>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Displacement and contact loss &mdash; elwaspatid 2.0.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
+      <link rel="stylesheet" href="../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-rendered-html.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Under the hood" href="plot_6_underHood.html" />
-    <link rel="prev" title="Use Waveprop to simulate SHPB" href="plot_4_SHPB.html" />
-   
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+    <link rel="prev" title="Use Waveprop to simulate SHPB test" href="plot_4_SHPB.html" /> 
+</head>
 
-  </head><body>
-  
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> elwaspatid
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples of diagrams</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_0_Waveprop.html">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_1_WP2.html">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_2_ElasticImpact.html">Compare <code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticImpact</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_3_deSaintVenant.html">De Saint Venant displacement diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_4_SHPB.html">Use <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> to simulate SHPB test</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Displacement and contact loss</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#small-impedance-against-large-impedance">Small impedance against large impedance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#large-impedance-against-small-impedance">Large impedance against small impedance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contact-loss-detection">Contact loss detection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#second-bar-with-section-increase">Second bar with section increase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#no-contact-loss">No contact loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contact-loss">Contact loss</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plot_6_underHood.html">Under the hood</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
+        </div>
+      </div>
+    </nav>
 
-          <div class="body" role="main">
-            
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">elwaspatid</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Examples of diagrams</a> &raquo;</li>
+      <li>Displacement and contact loss</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/auto_examples/plot_5_contactLoss.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
 <p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-plot-5-contactloss-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="displacement-and-contact-loss">
-<span id="sphx-glr-auto-examples-plot-5-contactloss-py"></span><h1>Displacement and contact loss<a class="headerlink" href="#displacement-and-contact-loss" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples-plot-5-contactloss-py"></span><h1>Displacement and contact loss<a class="headerlink" href="#displacement-and-contact-loss" title="Permalink to this headline"></a></h1>
 <p>This example illustrates the loss of contact when two bars in contact do not
 have the same impedance.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -61,7 +115,7 @@ have the same impedance.</p>
 </pre></div>
 </div>
 <div class="section" id="small-impedance-against-large-impedance">
-<h2>Small impedance against large impedance<a class="headerlink" href="#small-impedance-against-large-impedance" title="Permalink to this headline">¶</a></h2>
+<h2>Small impedance against large impedance<a class="headerlink" href="#small-impedance-against-large-impedance" title="Permalink to this headline"></a></h2>
 <p>The impacting bar stays in contact with the right bar during one back-and-forth
 travel of the compression wave in it. Then contact ceases and the left bar
 strarts travelling to the left.
@@ -92,7 +146,7 @@ Setting initial velocity of first segment (Vo=5)
 </div>
 </div>
 <div class="section" id="large-impedance-against-small-impedance">
-<h2>Large impedance against small impedance<a class="headerlink" href="#large-impedance-against-small-impedance" title="Permalink to this headline">¶</a></h2>
+<h2>Large impedance against small impedance<a class="headerlink" href="#large-impedance-against-small-impedance" title="Permalink to this headline"></a></h2>
 <p>In that case, the impacting bar stays in contact indefinitly with the right
 bar and a “stair” compression pulse develops in the right bar, with steps of
 decreasing amplitude.
@@ -122,7 +176,7 @@ See also <a class="reference internal" href="plot_2_ElasticImpact.html#sphx-glr-
 </div>
 </div>
 <div class="section" id="contact-loss-detection">
-<h2>Contact loss detection<a class="headerlink" href="#contact-loss-detection" title="Permalink to this headline">¶</a></h2>
+<h2>Contact loss detection<a class="headerlink" href="#contact-loss-detection" title="Permalink to this headline"></a></h2>
 <p><em>Did not find yet a combination of bar set and initial conditions (or incident
 wave) showing the usefulness of automatic contact loss detection.</em></p>
 <p>This example however shows how to:</p>
@@ -131,7 +185,7 @@ wave) showing the usefulness of automatic contact loss detection.</em></p>
 <li><p>set contact loss detection;</p></li>
 </ul>
 <div class="section" id="second-bar-with-section-increase">
-<h3>Second bar with section increase<a class="headerlink" href="#second-bar-with-section-increase" title="Permalink to this headline">¶</a></h3>
+<h3>Second bar with section increase<a class="headerlink" href="#second-bar-with-section-increase" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bar</span> <span class="o">=</span> <span class="n">BarSet</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">E</span><span class="p">],</span> <span class="p">[</span><span class="n">rho</span><span class="p">,</span> <span class="n">rho</span><span class="p">],</span> <span class="p">[</span><span class="mf">.2</span><span class="o">*</span><span class="n">L</span><span class="p">,</span> <span class="n">L</span><span class="p">],</span> <span class="p">[</span><span class="mf">.8</span><span class="o">*</span><span class="n">d</span><span class="p">,</span> <span class="n">d</span><span class="p">],</span> <span class="n">nmin</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">bar</span><span class="o">.</span><span class="n">changeSection</span><span class="p">(</span><span class="n">iseg</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">L</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>  <span class="c1"># first section change on second bar</span>
 <span class="n">bar</span><span class="o">.</span><span class="n">changeSection</span><span class="p">(</span><span class="n">iseg</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>  <span class="c1"># second section change on second bar</span>
@@ -145,7 +199,7 @@ Markers and step positions are not precise yet...
 </div>
 </div>
 <div class="section" id="no-contact-loss">
-<h3>No contact loss<a class="headerlink" href="#no-contact-loss" title="Permalink to this headline">¶</a></h3>
+<h3>No contact loss<a class="headerlink" href="#no-contact-loss" title="Permalink to this headline"></a></h3>
 <p>Check that no force cross the interface after separation of the two bars.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">testm</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;infinite&#39;</span><span class="p">,</span> <span class="n">Vinit</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">contactLoss</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">testm</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -172,7 +226,7 @@ Markers and step positions are not precise yet...
 </div>
 </div>
 <div class="section" id="contact-loss">
-<h3>Contact loss<a class="headerlink" href="#contact-loss" title="Permalink to this headline">¶</a></h3>
+<h3>Contact loss<a class="headerlink" href="#contact-loss" title="Permalink to this headline"></a></h3>
 <p>Again, check that no force cross the interface after separation of the two bars.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">testc</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;infinite&#39;</span><span class="p">,</span> <span class="n">Vinit</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">contactLoss</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
 <span class="n">testc</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -212,91 +266,34 @@ Markers and step positions are not precise yet...
 </div>
 
 
+           </div>
           </div>
-          
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="plot_4_SHPB.html" class="btn btn-neutral float-left" title="Use Waveprop to simulate SHPB test" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plot_6_underHood.html" class="btn btn-neutral float-right" title="Under the hood" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Denis Brizard.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../index.html">elwaspatid</a></h1>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
 
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting started</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples of diagrams</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="plot_0_Waveprop.html">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_1_WP2.html">Test <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_2_ElasticImpact.html">Compare <code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticImpact</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_3_deSaintVenant.html">De Saint Venant displacement diagrams</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_4_SHPB.html">Use <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> to simulate SHPB</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Displacement and contact loss</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#small-impedance-against-large-impedance">Small impedance against large impedance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#large-impedance-against-small-impedance">Large impedance against small impedance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#contact-loss-detection">Contact loss detection</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="plot_6_underHood.html">Under the hood</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../api.html">API reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="index.html">Examples of diagrams</a><ul>
-      <li>Previous: <a href="plot_4_SHPB.html" title="previous chapter">Use <code class="xref py py-class docutils literal notranslate"><span class="pre">Waveprop</span></code> to simulate SHPB</a></li>
-      <li>Next: <a href="plot_6_underHood.html" title="next chapter">Under the hood</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2022, Denis Brizard.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="../_sources/auto_examples/plot_5_contactLoss.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+</body>
 </html>
