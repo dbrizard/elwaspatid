@@ -2,8 +2,8 @@
 
 # Docs
 docs/auto_examples/
-docs/_build
-docs/_templates
+docs/_build/
+docs/_templates/
 
 # Python packaging
 dist/
