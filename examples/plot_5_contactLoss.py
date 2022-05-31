@@ -82,3 +82,4 @@ testc = WP2(bar, nstep=150, left='free', right='infinite', Vinit=5, contactLoss=
 testc.plot()
 testc.plotInterface(0, 'CL')
 print(testc.contact)
+plt.show()

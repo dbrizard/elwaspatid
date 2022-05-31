@@ -93,3 +93,4 @@ print(bar.seg)
 # %%
 # XXX a word on :class:`Bar`, used in :class:`BarSet`
 bar.bar_continuous.plot()
+plt.show()

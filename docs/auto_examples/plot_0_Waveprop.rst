@@ -490,7 +490,7 @@ a compression wave. Left end is ``infinite`` so no reflecion occur.
 And why not a sine pulse?
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-138
+.. GENERATED FROM PYTHON SOURCE LINES 123-132
 
 .. code-block:: default
 
@@ -502,13 +502,7 @@ And why not a sine pulse?
     tests.plotcut(x=0.15)
     tests.plotcut(x=0.20)
 
-    # inc = np.ones(int(np.rint(100e-6/plic.dt)))  # 100µs excitation
-    # # config proche SHPB
-    # essai = Waveprop(plic, inc, nstep=3000)
-    # essai.plot()  # c'est pas bon, la traction franchis les interfaces !!!
-    # essai.plotcut(x=3)
-    # essai.plotcut(x=2.01)
-
+    plt.show()
 
 
 
@@ -550,7 +544,7 @@ And why not a sine pulse?
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.521 seconds)
+   **Total running time of the script:** ( 0 minutes  9.510 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_0_Waveprop.py:

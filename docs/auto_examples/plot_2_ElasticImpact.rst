@@ -126,7 +126,6 @@ Three possible cases:
     comment calculer l'eq. 35 pour un choc viscoelastique??
     comment calculer l'eq. 35 pour un choc viscoelastique??
     comment calculer l'eq. 35 pour un choc viscoelastique??
-    ça va pas !!
 
 
 
@@ -214,7 +213,7 @@ Get force at at impacted side of the bar
 Compare analytical and numerical solutions
 ------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-75
+.. GENERATED FROM PYTHON SOURCE LINES 70-77
 
 .. code-block:: default
 
@@ -224,6 +223,8 @@ Compare analytical and numerical solutions
     plt.legend()
     plt.xlim(xmax=2.7e-3)
 
+    plt.show()
+
 
 
 .. image-sg:: /auto_examples/images/sphx_glr_plot_2_ElasticImpact_007.png
@@ -232,21 +233,13 @@ Compare analytical and numerical solutions
    :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-
-    (-0.0005105, 0.0027)
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.756 seconds)
+   **Total running time of the script:** ( 0 minutes  2.783 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_2_ElasticImpact.py:

@@ -1571,7 +1571,6 @@ class ElasticImpact(object):
         #---COMPUTE FORCE---
         if self.interf['r']>1:
             #---striker imp. higher than bar imp., -1<R<=0---
-            print("ça va pas !!")
             contrib = []
             NN = list(range(n))
             for nn in NN:
@@ -1625,21 +1624,24 @@ class ElasticImpact(object):
         
         :param str figname: name for the figure        
         """
-        plt.figure(figname)
-        ax = plt.subplot(211)
-        plt.grid()
-        plt.bar(list(range(1, len(self.Rn)+1)), self.Rn, zorder=10)
-#        plt.step(self.Rn, 'k.', where='mid')
-        plt.yscale('log')
-        plt.ylabel('$(-R)^n$')
-        
-        plt.subplot(212, sharex=ax)
-#        plt.bar(self.Rn)#, '.' , where='post')
-        plt.axhline(color='0.8')
-        plt.bar(list(range(1, len(self.Rn)+1)), self.Rn)
-        plt.xlabel('n')
-        plt.ylabel('$(-R)^n$')
-        
+        if hasattr(self, 'Rn'):
+            plt.figure(figname)
+            ax = plt.subplot(211)
+            plt.grid()
+            plt.bar(list(range(1, len(self.Rn)+1)), self.Rn, zorder=10)
+    #        plt.step(self.Rn, 'k.', where='mid')
+            plt.yscale('log')
+            plt.ylabel('$(-R)^n$')
+            
+            plt.subplot(212, sharex=ax)
+    #        plt.bar(self.Rn)#, '.' , where='post')
+            plt.axhline(color='0.8')
+            plt.bar(list(range(1, len(self.Rn)+1)), self.Rn)
+            plt.xlabel('n')
+            plt.ylabel('$(-R)^n$')
+        else:
+            print('Stricker impedance is not greater than Bar impedance:')
+            print('No Rn coefficients to plot!')
         
         
 

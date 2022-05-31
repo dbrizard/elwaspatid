@@ -72,3 +72,5 @@ plt.plot(testk.time, f1, '-', label='num')
 plt.plot(time, -EK.force, '--', label='ana')
 plt.legend()
 plt.xlim(xmax=2.7e-3)
+
+plt.show()

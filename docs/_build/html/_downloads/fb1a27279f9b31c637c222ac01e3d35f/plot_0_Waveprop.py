@@ -128,10 +128,4 @@ tests.plot()
 tests.plotcut(x=0.15)
 tests.plotcut(x=0.20)
 
-# inc = np.ones(int(np.rint(100e-6/plic.dt)))  # 100µs excitation
-# # config proche SHPB
-# essai = Waveprop(plic, inc, nstep=3000)
-# essai.plot()  # c'est pas bon, la traction franchis les interfaces !!!
-# essai.plotcut(x=3)
-# essai.plotcut(x=2.01)
-
+plt.show()

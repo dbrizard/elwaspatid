@@ -42,6 +42,7 @@ test2v.plot('2b_veloc')
 # it has a velocity smaller than the initial velocity of the impactor.
 test2v.plotDeSaintVenant(figname='deStV')
 plt.figure('deStV').set_figwidth(10)
+plt.show()
 # %%
 # .. figure:: ../_static/deSaintVenant_img-040.png
 # 

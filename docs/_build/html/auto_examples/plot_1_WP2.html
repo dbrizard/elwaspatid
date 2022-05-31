@@ -104,6 +104,7 @@ to download the full example code</p>
 <p>Define a <code class="xref py py-class docutils literal notranslate"><span class="pre">BarSet</span></code> bar configuration and use it with <code class="xref py py-class docutils literal notranslate"><span class="pre">WP2</span></code> to compute
 elastic wave propagation in simple test cases.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">elwaspatid</span> <span class="kn">import</span> <span class="n">WP2</span><span class="p">,</span> <span class="n">BarSet</span>
 </pre></div>
 </div>
@@ -224,11 +225,11 @@ Recall that the limit case of cross-section reduction is the free end.</p>
 <li><img src="../_images/sphx_glr_plot_1_WP2_019.png" srcset="../_images/sphx_glr_plot_1_WP2_019.png" alt="x = 0 m" class = "sphx-glr-multi-img"/></li>
 </ul>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:397: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:395: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
   ax1 = plt.subplot(nsbp, 1, 1)
-/home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:404: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+/home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:402: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
   plt.subplot(nsbp, 1, 2, sharex=ax1)
-/home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:411: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+/home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:409: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
   plt.subplot(nsbp, 1, 3, sharex=ax1)
 </pre></div>
 </div>
@@ -262,6 +263,8 @@ wave).</p>
 <p>Nothing happens, the left bar travels to the left.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test2vn</span> <span class="o">=</span> <span class="n">WP2</span><span class="p">(</span><span class="n">bc4</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">Vinit</span><span class="o">=-</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">test2vn</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;2b_negveloc&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
@@ -273,7 +276,7 @@ wave).</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Setting initial velocity of first segment (Vo=-10)
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  9.021 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  9.025 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-1-wp2-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/5f21cda0014220bcc082ded82c151748/plot_1_WP2.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_1_WP2.py</span></code></a></p>

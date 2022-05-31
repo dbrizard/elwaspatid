@@ -24,12 +24,13 @@ Test :class:`WP2` class
 Define a :class:`BarSet` bar configuration and use it with :class:`WP2` to compute
 elastic wave propagation in simple test cases.
 
-.. GENERATED FROM PYTHON SOURCE LINES 10-15
+.. GENERATED FROM PYTHON SOURCE LINES 10-16
 
 .. code-block:: default
 
 
     import numpy as np
+    import matplotlib.pyplot as plt
     from elwaspatid import WP2, BarSet
 
 
@@ -40,11 +41,11 @@ elastic wave propagation in simple test cases.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-17
+.. GENERATED FROM PYTHON SOURCE LINES 17-18
 
 Define a few parameters
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-23
+.. GENERATED FROM PYTHON SOURCE LINES 18-24
 
 .. code-block:: default
 
@@ -61,11 +62,11 @@ Define a few parameters
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-25
+.. GENERATED FROM PYTHON SOURCE LINES 25-26
 
 Create the bar configurations: two bars in contact.
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-31
+.. GENERATED FROM PYTHON SOURCE LINES 26-32
 
 .. code-block:: default
 
@@ -82,11 +83,11 @@ Create the bar configurations: two bars in contact.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-33
+.. GENERATED FROM PYTHON SOURCE LINES 33-34
 
 Define the incident wave vector
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-38
+.. GENERATED FROM PYTHON SOURCE LINES 34-39
 
 .. code-block:: default
 
@@ -102,7 +103,7 @@ Define the incident wave vector
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-49
+.. GENERATED FROM PYTHON SOURCE LINES 40-50
 
 Two identical bars, free-ends
 -----------------------------
@@ -115,7 +116,7 @@ Contact interface between the two bars:
 
 And so on. Which means the pulse is trapped in the second bar.
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-52
+.. GENERATED FROM PYTHON SOURCE LINES 50-53
 
 .. code-block:: default
 
@@ -153,12 +154,12 @@ And so on. Which means the pulse is trapped in the second bar.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-55
+.. GENERATED FROM PYTHON SOURCE LINES 54-56
 
 Two identical bars, free and fixed ends
 ---------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-58
+.. GENERATED FROM PYTHON SOURCE LINES 56-59
 
 .. code-block:: default
 
@@ -196,7 +197,7 @@ Two identical bars, free and fixed ends
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-64
+.. GENERATED FROM PYTHON SOURCE LINES 60-65
 
 Two different bars, infinite-ends
 ---------------------------------
@@ -204,7 +205,7 @@ Compression pulses cross the interface and are partly reflected because of the
 difference of impedance between the bars. At both end, no reflection occur 
 since infinite ends amounts to anechoic condition.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-67
+.. GENERATED FROM PYTHON SOURCE LINES 65-68
 
 .. code-block:: default
 
@@ -242,14 +243,14 @@ since infinite ends amounts to anechoic condition.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-72
+.. GENERATED FROM PYTHON SOURCE LINES 69-73
 
 Two identical bars with traction pulse
 --------------------------------------
 The traction pulses do not cross the contact interface. The pulse is trapped 
 in the firt bar.
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-75
+.. GENERATED FROM PYTHON SOURCE LINES 73-76
 
 .. code-block:: default
 
@@ -287,14 +288,14 @@ in the firt bar.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-80
+.. GENERATED FROM PYTHON SOURCE LINES 77-81
 
 Two bars, cross-section increase
 --------------------------------
 Compression is reflected as traction. 
 Recall that the limit case of cross-section increase is the fixed end.
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-85
+.. GENERATED FROM PYTHON SOURCE LINES 81-86
 
 .. code-block:: default
 
@@ -334,14 +335,14 @@ Recall that the limit case of cross-section increase is the fixed end.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-90
+.. GENERATED FROM PYTHON SOURCE LINES 87-91
 
 Two bars, cross-section reduction
 ---------------------------------
 Compression is reflected as compression
 Recall that the limit case of cross-section reduction is the free end.
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-96
+.. GENERATED FROM PYTHON SOURCE LINES 91-97
 
 .. code-block:: default
 
@@ -392,17 +393,17 @@ Recall that the limit case of cross-section reduction is the free end.
 
  .. code-block:: none
 
-    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:397: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:395: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
       ax1 = plt.subplot(nsbp, 1, 1)
-    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:404: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:402: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
       plt.subplot(nsbp, 1, 2, sharex=ax1)
-    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:411: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+    /home/dbrizard/Miscellaneous/prop1d/src/elwaspatid/elwaspatid.py:409: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
       plt.subplot(nsbp, 1, 3, sharex=ax1)
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-107
+.. GENERATED FROM PYTHON SOURCE LINES 98-108
 
 First bar with initial velocity
 -------------------------------
@@ -415,7 +416,7 @@ traction with the same magnitude as the compression pulse: traction cancels
 compression and the force is null (traction can be considered as an unloading
 wave).
 
-.. GENERATED FROM PYTHON SOURCE LINES 107-110
+.. GENERATED FROM PYTHON SOURCE LINES 108-111
 
 .. code-block:: default
 
@@ -461,19 +462,20 @@ wave).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-114
+.. GENERATED FROM PYTHON SOURCE LINES 112-115
 
 Negative velocity
 ^^^^^^^^^^^^^^^^^
 Nothing happens, the left bar travels to the left.
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-116
+.. GENERATED FROM PYTHON SOURCE LINES 115-118
 
 .. code-block:: default
 
     test2vn = WP2(bc4, comp, nstep=100, left='free', right='free', Vinit=-10)
     test2vn.plot('2b_negveloc')
 
+    plt.show()
 
 
 .. rst-class:: sphx-glr-horizontal
@@ -515,7 +517,7 @@ Nothing happens, the left bar travels to the left.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.021 seconds)
+   **Total running time of the script:** ( 0 minutes  9.025 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_1_WP2.py:

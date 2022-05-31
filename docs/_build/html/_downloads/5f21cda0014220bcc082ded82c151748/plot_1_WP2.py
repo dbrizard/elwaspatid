@@ -9,6 +9,7 @@ elastic wave propagation in simple test cases.
 """
 
 import numpy as np
+import matplotlib.pyplot as plt
 from elwaspatid import WP2, BarSet
 
 
@@ -113,3 +114,5 @@ test2v.plot('2b_veloc')
 # Nothing happens, the left bar travels to the left.
 test2vn = WP2(bc4, comp, nstep=100, left='free', right='free', Vinit=-10)
 test2vn.plot('2b_negveloc')
+
+plt.show()

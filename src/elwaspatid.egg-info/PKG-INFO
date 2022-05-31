@@ -1,16 +1,16 @@
 Metadata-Version: 2.1
 Name: elwaspatid
-Version: 2.0.1
+Version: 2.0.2
 Summary: Space-time diagrams for the propagation of elastic waves in 1D rods.
 Home-page: https://github.com/dbrizard/ELWA-SPATID
 Author: Denis Brizard
 Author-email: denis.brizard@univ-eiffel.fr
 License: UNKNOWN
 Project-URL: Documentation, https://elwaspatid.readthedocs.io
-Keywords: wave propagation,elastic wave,SHPB,rod,1D,traction,compression
+Keywords: wave propagation,elastic wave,SHPB,rod,1D,traction,compression,Lagrangian x-t diagram
 Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
-Classifier: License :: OSI Approved :: MIT License
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3.0
 Classifier: Operating System :: OS Independent
 Classifier: Intended Audience :: Education
 Classifier: Intended Audience :: Science/Research
@@ -25,9 +25,10 @@ License-File: LICENSE
 [![Documentation Status](https://readthedocs.org/projects/elwaspatid/badge/?version=latest)](https://elwaspatid.readthedocs.io/en/latest/?badge=latest) 
 [![PyPI version](https://badge.fury.io/py/elwaspatid.svg)](https://badge.fury.io/py/elwaspatid)
 
-`elwaspatid` is a Python module for the computation of space-time diagrams for
-the propagation of elastic waves in 1D rods. The rods can have impedance variations
-along the propagation axis, and it is possible to consider several rods in contact.
+`elwaspatid` is a Python module for the computation of space-time diagrams 
+(also called Lagrangian *x-t* diagram) for the propagation of elastic waves in 
+1D rods. The rods can have impedance variations along the propagation axis, 
+and it is possible to consider several rods in contact.
 
 Initial conditions can be:
 
