@@ -91,6 +91,9 @@ print(bar.seg)
 # compute the state (Force, Velocity) of all the elements of each :class:`Segment`.
 
 # %%
-# XXX a word on :class:`Bar`, used in :class:`BarSet`
+# :class:`Bar` is used to store and plot the evolution of the properties 
+# given to :class:`BarSet` at instantiation (in :attr:`BarSet.bar_continuous`)
+# Be carfeul, afterwards modifications with :meth:`BarSet.changeSection` do not 
+# affect :class:`Bar`.
 bar.bar_continuous.plot()
 plt.show()
