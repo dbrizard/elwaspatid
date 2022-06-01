@@ -4,13 +4,31 @@ Getting started
 Installation
 ------------
 
-Run the following pip command in a terminal to install the module:
+From PyPI
+^^^^^^^^^
 
+Run the following `pip` command in a terminal to install the module:
 
 ::
 
   pip install elwaspatid
 
+
+From VCS (GitHub)
+^^^^^^^^^^^^^^^^^
+
+To get the last version available on GitHub, run:
+
+::
+
+  python3 -m pip install -e git+https://github.com/dbrizard/elwaspatid.git#egg=elwaspatid
+
+You can also specify the version you want. 
+See `VCS Support <https://pip.pypa.io/en/latest/topics/vcs-support/>`_ 
+or `Installing from VCS <https://packaging.python.org/en/latest/tutorials/installing-packages/#installing-from-vcs>`_.
+
+Dependencies
+^^^^^^^^^^^^
 
 The present module only requires:
 
