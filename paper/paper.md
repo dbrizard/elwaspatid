@@ -58,8 +58,9 @@ at analysing seismic records.
 Concerning guided waves, many efforts are devoted to the computation of dispersion 
 curves for various waveguide geometries: Disperse [@lowe_disperse_2013] is based 
 on the global matrix method, axisym-safe-python [@kalkowski_axisymmetric_2018] 
-uses axisymmetric semi-analytical finite elements. Contact between rods and space-time
-diagrams are out of the scope of these methods.
+uses axisymmetric semi-analytical finite elements (SAFE), 
+GUIGUW [@bocchini_graphical_2011] is also based on the SAFE formulation. 
+Contact between rods and space-time diagrams are out of the scope of these methods.
 
 Some pieces of software are dedicated to the post-processing of the strain records 
 in the measuring bars of SHPB in order to obtain the stress and strain in the sample. 
