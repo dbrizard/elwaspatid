@@ -12,9 +12,10 @@ authors:
 affiliations:
  - name: Univ Lyon, Univ Gustave Eiffel, Univ Claude Bernard Lyon 1, LBMC UMR_T 9406, F-69622 Lyon, France
    index: 1
-date: March 2022
+date: June 2022
 bibliography: paper.bib
 ---
+<!-- LTeX: language=en-GB -->
 
 # Summary
 
@@ -45,14 +46,14 @@ is rather acceptable in numerous cases, when the length of the wave is several
 times greater than the bar radius [@johnson_impact_1972]. The material is also 
 supposed to stay in the elastic range of deformation. 
 
-# State of the field
-
-Wave propagation softwares can be found in many scientific fields. 
+To the best of our knowledge, there is no open source software available for the 
+computation of space-time diagrams, even if wave propagation software can be 
+found in many scientific fields. 
 Williams et al [@williams_one-dimensional_1996] proposed a FORTRAN program for 
 the propagation of wavefronts in layered media, this instructional tool is based 
 on finite-difference and outputs the displacement with respect to the spatial variable. 
 Computer Programs in Seismology [@herrmann_computer_2013] is a set of tools aimed 
-at analyzing seismic records. 
+at analysing seismic records. 
 
 Concerning guided waves, many efforts are devoted to the computation of dispersion 
 curves for various waveguide geometries: Disperse [@lowe_disperse_2013] is based 
@@ -60,7 +61,7 @@ on the global matrix method, axisym-safe-python [@kalkowski_axisymmetric_2018]
 uses axisymmetric semi-analytical finite elements. Contact between rods and space-time
 diagrams are out of the scope of these methods.
 
-Some softwares are dedicated to the post-processing of the strain records 
+Some pieces of software are dedicated to the post-processing of the strain records 
 in the measuring bars of SHPB in order to obtain the stress and strain in the sample. 
 They often take dispersion into account but space-time diagrams for 1D propagation 
 are not computed [@noauthor_surepulse_2022;@francis_split_2017;@gershanik_2barg_2022].
@@ -69,10 +70,10 @@ are not computed [@noauthor_surepulse_2022;@francis_split_2017;@gershanik_2barg_
 
 # Functionality
 
-The underlying equations are derived from [@bacon_numerical_1993], with a 
+The underlying equations used in `elwaspatid` are derived from [@bacon_numerical_1993], with a 
 formulation in force and velocity. The rods are discretized -between nodes- into 
 segments, each segment is supposed to have a constant impedance. The length of 
-each segments is chosen so that the transit time of the elastic wave in all the 
+each segment is chosen so that the transit time of the elastic wave in all the 
 segments is identical, which enables the use of the method of characteristics. 
 
 Force and velocity are computed at the nodes, the displacement is then deduced 
@@ -83,23 +84,23 @@ in the elements from the strain in the elements.
 ## Bar configuration, initial conditions
 
 The bar configuration can involve as many bar as needed. Each bar has constant
-properties (elastic module, cross section, density), and one-off cross-section 
+properties (elastic module, cross-section, density), and one-off cross-section 
 change can be defined. 
 
 The bars are supposed to
 be at rest (null velocity) and in contact with each other at time $t=0$. 
 
 It is possible to prescribe the initial velocity of the left bar and therefore 
-model an impactor or stricker.
-Conversly, one can provide the pulse shape arriving at the left end of the bar(s).
+model an impactor or striker.
+Conversely, one can provide the pulse shape arriving at the left end of the bar(s).
 
 ## Boundary conditions
 
-The following boundry conditions are available:
+The following boundary conditions are available:
 
 * contact interface between two bars. Compression waves can cross the interface,
   traction waves cannot;
-* free end. Traction waves are reflected back as compression waves, and vice verca;
+* free end. Traction waves are reflected back as compression waves, and vice versa;
 * fixed end. Equivalent to a bar clamped to another bar of infinite impedance;
 * infinite end. Equivalent to anechoic condition, no reflection of wave occur.
 
@@ -110,13 +111,13 @@ Wave propagation is computed from the bar configuration, the initial conditions
 and the boundary conditions. Space-time diagram are a convenient way to represent
 the propagation, both in space and in time, of the waves.
 
-Figure \autoref{fig:example} illustrates the following simple case: a stricker
+Figure \autoref{fig:example} illustrates the following simple case: a striker
 impacts a bar from the left. Both bars have the same impedance and a rectangular 
 compression pulse is generated from the impact. As the second bar has free ends,
 the compression pulse is reflected on its right end as a traction pulse.
 
-Space-time diagrams are pseudocolor plots with space as x-axis (in the initial
-configuration), time as y-axis and the wave quantity as color. The wave-related 
+Space-time diagrams are pseudocolour plots with space as x-axis (in the initial
+configuration), time as y-axis and the wave quantity as colour. The wave-related 
 quantity can be:
 
 * force (see Figure \autoref{fig:example}, top left);
@@ -124,10 +125,10 @@ quantity can be:
 * displacement (see Figure \autoref{fig:example}, bottom left)
 
 An additional space-time diagram, called "de Saint Venant" after the name of the
-french scientist who introduced it [@de_saint-venant_memoire_1867], is available
+French scientist who introduced it [@de_saint-venant_memoire_1867], is available
  (see Figure \autoref{fig:example}, bottom right). 
 It combines the actual position of nodes of the bars plotted with respect to time
-and the visualisation of the waves in the bars (force or velocity). It is the 
+and the visualization of the waves in the bars (force or velocity). It is the 
 discrete version of the continuous form proposed by de Saint Venant.
 
 ![Space-time diagrams: Force, Velocity; Displacement, de Saint Venant.\label{fig:example}](figures.png){ width=100% }
