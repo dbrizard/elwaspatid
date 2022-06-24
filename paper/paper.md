@@ -137,7 +137,7 @@ discrete version of the continuous form proposed by de Saint Venant.
 
 # Acknowledgements
 
-We acknowledge the support from Pr Eric Jacquelin 
+We acknowledge the support from Professor Eric Jacquelin 
 ([ORCID ID](https://orcid.org/0000-0001-8415-6712))
 for his helpful advice on this project.
 
