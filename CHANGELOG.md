@@ -39,6 +39,9 @@ Trying to comply with [semantic versioning](https://semver.org/spec/v2.0.0.html)
 ### To change
 
 
+## [2.0.2] - 2022-06-29
+Minor fixes (paper update). Release related to JOSS review.
+
 ## [2.0.1] - 2022-04-19
 ### Added
 * more comments on the interpretation of space-time diagrams of the examples.

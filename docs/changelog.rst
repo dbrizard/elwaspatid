@@ -43,13 +43,21 @@ Long term
    reference);
 -  impacting mass (left end); #### Short term
 -  test and check ``indV`` argument of ``Waveprop`` class;
--  plot Stress and Strain in ``Segment`` for ``WP2``.
--  *Lagrangian x-t diagram* keyword should appear and be in description
+-  plot Stress and Strain in ``Segment`` for ``WP2``;
+-  [STRIKEOUT:*Lagrangian x-t diagram* keyword should appear and be in
+   description] and in JOSS paper;
 -  modeling of impact on transfer flange (for tension testing
-   simulation)
+   simulation).
 
 To change
 ~~~~~~~~~
+
+[2.0.2] - 2022-06-29
+--------------------
+
+Minor fixes (paper update). Release related to JOSS review.
+
+.. _section-1:
 
 [2.0.1] - 2022-04-19
 --------------------
@@ -66,7 +74,7 @@ Changed
 -  ``Barhete`` is now ``BarSet``, which is more meaningfull;
 -  ``Barhomo`` is now ``BarSingle``, which is more meaningfull too.
 
-.. _section-1:
+.. _section-2:
 
 [2.0.0] - 2022-03-08
 --------------------
@@ -79,7 +87,7 @@ Changed
 -  New name for the module (``elwaspatid``), identical to project name,
    for consitancy.
 
-.. _section-2:
+.. _section-3:
 
 [1.1.0] - 2022-03-15
 --------------------
@@ -105,7 +113,7 @@ Changed
 
 -  ``plain`` boundary condition is now called ``infinite`` (meaningful).
 
-.. _section-3:
+.. _section-4:
 
 [1.0.2] - 2022-03
 -----------------
@@ -119,7 +127,7 @@ Added
 -  update boundary conditions (segment.left, .right) accordingly;
 -  plot impedance of ``Segment``, and of ``Barhete``.
 
-.. _section-4:
+.. _section-5:
 
 [1.0.1] - 2022-02
 -----------------
@@ -134,7 +142,7 @@ Added
 -  ``WP2``: compute displacement of nodes (**experimental**);
 -  ``WP2.getSignal``: choice of time scale (s, ms, µs).
 
-.. _section-5:
+.. _section-6:
 
 [1.0.0] - 2021
 --------------
@@ -154,7 +162,7 @@ Changed
 -  use of ``plt.pcolormesh`` modified in ``WP2.subplot`` method;
 -  test cases are now external files (removed from bottom of module).
 
-.. _section-6:
+.. _section-7:
 
 [0.8.0] - 2016
 --------------
@@ -166,7 +174,7 @@ Added
 
 -  ``WP2`` class to overcome the limitations of ``Waveprop``.
 
-.. _section-7:
+.. _section-8:
 
 [0.5.0] - 2014
 --------------
