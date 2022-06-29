@@ -27,7 +27,7 @@ longitudinally impacted rods : Applications to Hopkinson testing.
 *International Journal of Impact Engineering*, 13(4), 527‑539. 
 https://doi.org/10.1016/0734-743X(93)90084-K
 
-![Example of force space-time diagram: two successive compression pulses traveling down two bars (with identical cross-section) in contact.](docs/auto_examples/images/sphx_glr_plot_1_WP2_001.png)
+![Example of force space-time diagram: two successive compression pulses traveling down two bars (with identical cross-section) in contact.](sphx_glr_plot_1_WP2_001.png)
 
 
 ## Installation
