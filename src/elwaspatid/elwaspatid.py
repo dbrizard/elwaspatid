@@ -437,19 +437,24 @@ class WP2:
         F2, V2, D2, _ = self.getSignal(0, iseg2, figname=figname, marker='+')
     
     
-    def plotDeSaintVenant(self, scale=100, figname=None, ms=5, lines='0.8'):
+    def plotDeSaintVenant(self, scale=100, figname=None, ms=5, lines='0.8', marker='below'):
         """Plot x-t displacement diagram.
         
         :param float scale: scale factor to increase Displ and make it visible
         :param str figname: name for the figure
         :param float ms: give marker size to get points plotted (color=Force)
         :param color lines: give color to get lines plotted
+        :param str marker: markers can be placed 'below' or 'above' the lines
         """
         if ms is not None:
             ZVAL = [ss.Force for ss in self.bar.seg]
             AMPLI = [getMax(zz) for zz in ZVAL]
             ampli = np.max(AMPLI)
         
+        if marker=='below':
+            zorder = -1
+        elif marker=='above':
+            zorder = 1
         
         plt.figure(figname)
         for ii, ss in enumerate(self.bar.seg):
@@ -462,7 +467,7 @@ class WP2:
             if ms is not None:
                 time = np.tile(ss.time, (ss.Force.shape[1], 1))
                 plt.scatter(time.T, ss.x+scale*ss.Displ, s=ms, c=ss.Force,
-                            cmap='PiYG', vmin=-ampli, vmax=ampli)
+                            cmap='PiYG', vmin=-ampli, vmax=ampli, zorder=zorder)
         if ms is not None:
             plt.colorbar(label='Force [N]')
         
@@ -871,15 +876,22 @@ class Waveprop:
 #            plt.plot(x+dx*ii/nt, vv, '.-', drawstyle='steps-post')
 
     
-    def plotDeSaintVenant(self, scale=100, figname=None, ms=5, lines='0.8', XPplot=False):
+    def plotDeSaintVenant(self, scale=100, figname=None, ms=5, lines='0.8',
+                          marker='below', XPplot=False):
         """Plot x-t displacement diagram.
         
         :param float scale: scale factor to increase Displ and make it visible
         :param str figname: name for the figure
         :param float ms: give marker size to get points plotted (color=Force)
         :param color lines: give color to get lines plotted
+        :param str marker: markers can be placed 'below' or 'above' the lines
         :param bool XPplot: experimental plots with pcolor. Warning: grid is not correctly adjusted yet.
         """
+        if marker=='below':
+            zorder = -1
+        elif marker=='above':
+            zorder = 1
+        
         displacement = self.bar_discret.x+scale*self.Displ
         plt.figure(figname)
         if lines is not None:
@@ -889,7 +901,8 @@ class Waveprop:
         
         if ms is not None:
             time = np.tile(self.time, (self.Force.shape[1], 1))
-            plt.scatter(time.T, displacement, s=ms, c=self.Force, cmap='PuOr')
+            plt.scatter(time.T, displacement, s=ms, c=self.Force, cmap='PuOr', 
+                        zorder=zorder)
             plt.colorbar(label='Force [N]')
         
         
